@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { defineMessages, useIntl } from 'react-intl';
 import { Form } from '@plone/volto/components/manage/Form';
-import { submitForm } from 'volto-form-block/actions';
+import { submitForm } from '@plone/volto-form-block/actions';
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import { tryParseJSON } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { extractInvariantErrors } from '@plone/volto/helpers/FormValidation/FormValidation';

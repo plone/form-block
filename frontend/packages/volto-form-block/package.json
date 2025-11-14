@@ -1,6 +1,6 @@
 {
-  "name": "volto-form-block",
-  "version": "3.9.2",
+  "name": "@plone/volto-form-block",
+  "version": "0.0.0",
   "description": "Volto block to build a form",
   "main": "src/index.js",
   "license": "MIT",
@@ -13,10 +13,11 @@
     "form"
   ],
   "author": "Plone Community",
-  "homepage": "https://github.com/collective/volto-form-block#readme",
+  "homepage": "https://github.com/plone/form-block#readme",
   "repository": {
     "type": "git",
-    "url": "git@github.com:collective/volto-form-block.git"
+    "url": "git@github.com:plone/form-block.git",
+    "directory": "frontend/packages/volto-form-block"
   },
   "publishConfig": {
     "access": "public"
@@ -28,21 +29,25 @@
     "release-major-alpha": "release-it major --preRelease=alpha",
     "release-alpha": "release-it --preRelease=alpha"
   },
-  "addons": [
-    "volto-subblocks"
-  ],
+  "addons": [],
   "dependencies": {
     "@hcaptcha/react-hcaptcha": "^0.3.6",
     "file-saver": "^2.0.5",
-    "react-google-recaptcha-v3": "^1.8.0",
-    "volto-subblocks": "^2.1.0"
+    "react-google-recaptcha-v3": "^1.8.0"
   },
   "peerDependencies": {
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@plone/scripts": "^3.6.1",
-    "release-it": "^17.1.1"
+    "@plone/types": "workspace:*",
+    "@types/lodash": "^4.14.201",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.1",
+    "lodash": "4.17.21",
+    "release-it": "^19.0.5",
+    "typescript": "^5.7.3",
+    "vitest": "^3.1.2"
   }
 }
