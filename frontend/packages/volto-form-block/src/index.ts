@@ -1,3 +1,6 @@
+import type { ConfigType } from '@plone/registry';
+import installSettings from './config/settings';
+
 import { defineMessages } from 'react-intl';
 import loadable from '@loadable/component';
 import formSVG from '@plone/volto/icons/form.svg';
@@ -56,7 +59,9 @@ defineMessages({
   },
 });
 
-const applyConfig = (config) => {
+function applyConfig(config: ConfigType) {
+  installSettings(config);
+
   config.widgets.widget.honeypot = HoneypotCaptchaWidget;
   config.widgets.widget['norobots-captcha'] = NorobotsCaptchaWidget;
   config.widgets.widget['recaptcha'] = GoogleReCaptchaWidget;
@@ -133,6 +138,6 @@ const applyConfig = (config) => {
   );
 
   return config;
-};
+}
 
 export default applyConfig;

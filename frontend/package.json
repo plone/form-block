@@ -1,9 +1,9 @@
 {
-  "name": "volto-form-block-dev",
+  "name": "@plone/volto-form-block-dev",
   "version": "1.0.0-alpha.0",
-  "description": "Volto block to build a form",
-  "author": "Plone Community",
-  "homepage": "https://github.com/collective/volto-form-block",
+  "description": "Form Block add-on for Plone CMS.",
+  "author": "Plone Foundation",
+  "homepage": "https://github.com/plone/form-block",
   "license": "MIT",
   "keywords": [
     "volto-addon",

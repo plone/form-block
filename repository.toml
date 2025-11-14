@@ -1,0 +1,33 @@
+[repository]
+name = "form-block"
+changelog = "CHANGELOG.md"
+version = "version.txt"
+container_images_prefix = "plone/form-block"
+compose = ["docker-compose.yml"]
+
+[repository.towncrier]
+section = "Project"
+settings = "towncrier.toml"
+
+[backend.package]
+name = "collective.volto.formsupport"
+path = "backend"
+code_path = "src/collective/volto/formsupport"
+changelog = "backend/CHANGELOG.md"
+towncrier_settings = "backend/pyproject.toml"
+base_package = "Products.CMFPlone"
+publish = true
+
+[frontend.package]
+name = "volto-form-block"
+path = "frontend/packages/volto-form-block"
+code_path = "src"
+changelog = "frontend/packages/volto-form-block/CHANGELOG.md"
+towncrier_settings = "frontend/packages/volto-form-block/towncrier.toml"
+base_package = "@plone/volto"
+publish = true
+
+[cookieplone]
+template = "monorepo_addon"
+template_version = "562ef7e9ad24d2568566d74ca6edb15a9a506df3"
+generated_date = "2025-11-14 13:00:05"
