@@ -1,6 +1,6 @@
 {
   "name": "volto-form-block-dev",
-  "version": "3.10.1",
+  "version": "1.0.0-alpha.0",
   "description": "Volto block to build a form",
   "author": "Plone Community",
   "homepage": "https://github.com/collective/volto-form-block",
