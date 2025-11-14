@@ -1,187 +1,86 @@
 [project]
 name = "collective.volto.formsupport"
-description = "Add support for customizable forms in Volto"
 dynamic = ["version"]
-authors = [
-  { name = "RedTurtle Technology", email = "sviluppo@redturtle.it" },
-]
+description = "Form Block add-on for Plone CMS."
 readme = "README.md"
-requires-python = ">=3.8"
-license = "MIT"
-keywords = ["Plone", "Python", "forms", "CMS", "Volto"]
+license = "GPL-2.0-only"
+requires-python = ">=3.12"
+authors = [
+    { name = "Plone Foundation", email = "collective@plone.org" },
+]
+keywords = [
+    "CMS",
+    "Plone",
+    "Python",
+]
 classifiers = [
-  "Development Status :: 5 - Production/Stable",
-  "Environment :: Web Environment",
-  "Framework :: Plone",
-  "Framework :: Plone :: Addon",
-  "Framework :: Plone :: 6.0",
-  "Programming Language :: Python",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
-  "Operating System :: OS Independent",
-  "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+    "Development Status :: 3 - Alpha",
+    "Environment :: Web Environment",
+    "Framework :: Plone","Framework :: Plone :: 6.1",
+    "Framework :: Plone :: Addon",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python","Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-  "z3c.jbot",
-  "Zope",
-  "plone.api>=1.8.4",
-  "plone.dexterity",
-  "plone.keyring",
-  "plone.i18n",
-  "plone.memoize",
-  "plone.protect",
-  "plone.registry",
-  "plone.restapi>=8.36.0",
-  "plone.schema",
-  "plone.volto",
-  "Products.GenericSetup",
-  "Products.PortalTransforms",
-  "souper.plone",
-  "click",
-  "beautifulsoup4",
-  "jsonschema",
-  "pyotp",
+    "Products.CMFPlone",
+    "plone.api",
+    "plone.restapi",
+    "plone.volto",
 ]
 
-[project.urls]
-Documentation = "https://github.com/collective/collective.volto.formsupport#readme"
-Issues = "https://github.com/collective/collective.volto.formsupport/issues"
-Source = "https://github.com/collective/collective.volto.formsupport"
+[dependency-groups]
+test = [
+    "horse-with-no-namespace",
+    "plone.app.testing",
+    "plone.restapi[test]",
+    "pytest",
+    "pytest-cov",
+    "pytest-plone>=1.0.0a2",
+]
+container = [
+    "plone.app.upgrade",
+    "psycopg2==2.9.10",
+    "relstorage==4.1.1",
+    "zeo==6.0.0",
+]
 
-[project.entry-points."z3c.autoinclude.plugin"]
+
+[project.urls]
+Homepage = "https://github.com/plone/form-block"
+Source = "https://github.com/plone/form-block"
+Tracker = "https://github.com/plone/form-block/issues"
+
+[project.entry-points."plone.autoinclude.plugin"]
 target = "plone"
 
+[tool.uv]
+managed = false
+
 [tool.hatch.version]
-path = "src/collective/volto/formsupport/about.py"
+path = "src/collective/volto/formsupport/__init__.py"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.hatch.build]
-strict-naming = false
-packages = ["src/collective","src/collective/volto"]
+strict-naming = true
 
 [tool.hatch.build.targets.sdist]
 exclude = [
   "/.github",
 ]
 
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
-[tool.hatch.env]
-requires = [
-    "hatch-pip-compile"
-]
-
-[tool.hatch.envs.default]
-type = "pip-compile"
-path = ".venv"
-pip-compile-resolver = "uv"
-pip-compile-installer = "uv"
-lock-filename = "requirements.lock"
-pip-compile-args = [
-    "--constraint",
-    "constraints-mxdev.txt",
-]
-dependencies = [
-  "collective.honeypot",
-  "collective.MockMailHost",
-  "collective.z3cform.norobots",
-  "coverage[toml]>=6.5",
-  "hatch",
-  "hatchling==1.24.2",
-  "i18ndude",
-  "isort",
-  "plone.app.iterate",
-  "plone.app.testing",
-  "plone.app.upgrade",
-  "plone.browserlayer",
-  "plone.formwidget.hcaptcha",
-  "plone.formwidget.recaptcha",
-  "plone.restapi[test]",
-  "Products.MailHost",
-  "Products.PrintingMailHost",
-  "pytest-plone>=0.5.0",
-  "pytest",
-  "ruff",
-  "zpretty",
-]
-
-[tool.hatch.envs.default.scripts]
-test = "pytest {args:tests}"
-test-cov = "coverage run -m pytest {args:tests}"
-cov-report = [
-  "- coverage combine",
-  "coverage report",
-]
-cov = [
-  "test-cov",
-  "cov-report",
-]
-zpretty_lint = [
-  "find src -name '*.xml'|xargs zpretty -x --check",
-  "find src -name '*.zcml'|xargs zpretty -z --check",
-]
-zpretty_format = [
-  "find src -name '*.xml'|xargs zpretty -x -i",
-  "find src -name '*.zcml'|xargs zpretty -z -i",
-]
-lint = [
-  "ruff check",
-  "isort --check-only src/ tests/",
-  "zpretty_lint"
-]
-format = [
-  "ruff format",
-  "isort src/ tests/",
-  "zpretty_format"
-]
-i18n = [
-  "python -m collective.volto.formsupport.locales.update"
-]
-changelog-draft = "towncrier --draft"
-
-[[tool.hatch.envs.all.matrix]]
-python = ["3.10", "3.11", "3.12"]
-
-[tool.coverage.run]
-source_pkgs = ["collective.volto.formsupport", "tests"]
-branch = true
-parallel = true
-omit = [
-  "collective/volto/formsupport/locales/__init__.py",
-  "collective/volto/formsupport/locales/update.py",
-]
-
-[tool.coverage.paths]
-collective.volto.formsupport = ["src/collective/volto/formsupport"]
-tests = ["tests",]
-
-[tool.coverage.report]
-skip_empty = true
-show_missing = true
-exclude_lines = [
-  "no cov",
-  "if __name__ == .__main__.:",
-  "if TYPE_CHECKING:",
-]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-
-[tool.isort]
-profile = "plone"
+[tool.hatch.build.targets.wheel]
+packages = ["src/collective"]
 
 [tool.towncrier]
-package = "collective.volto.formsupport"
-package_dir = "src"
 directory = "news/"
-filename = "CHANGES.md"
+filename = "CHANGELOG.md"
 start_string = "<!-- towncrier release notes start -->\n"
 title_format = "## {version} ({project_date})"
 template = "news/.changelog_template.jinja"
+issue_format = "[#{issue}](https://github.com/plone/form-block/issues/{issue})"
 underlines = ["", "", ""]
 
 [[tool.towncrier.type]]
@@ -215,7 +114,7 @@ name = "Tests"
 showcontent = true
 
 [tool.ruff]
-target-version = "py310"
+target-version = "py312"
 line-length = 88
 fix = true
 lint.select = [
@@ -249,28 +148,30 @@ lint.select = [
 lint.ignore = [
     # DoNotAssignLambda
     "E731",
-    "S602",
-    "SIM102",
-    "S314",
-    "S324"
 ]
+
+[tool.ruff.lint.isort]
+case-sensitive = false
+no-sections = true
+force-single-line = true
+from-first = true
+lines-after-imports = 2
+lines-between-types = 1
+order-by-type = false
 
 [tool.ruff.format]
 preview = true
 
 [tool.ruff.lint.per-file-ignores]
-"tests/*" = ["S101"]
+"tests/*" = ["E501", "RUF001", "S101"]
 
-[tool.codespell]
-ignore-words-list = "discreet,vew"
-skip = "*.po,*.min.js"
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
-[tool.check-manifest]
-ignore = [
-    ".editorconfig",
-    ".flake8",
-    ".meta.toml",
-    ".pre-commit-config.yaml",
-    "dependabot.yml",
-    "mx.ini",
+[tool.coverage.run]
+source_pkgs = ["collective.volto.formsupport", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/collective/volto/formsupport/locales/*.py",
 ]
