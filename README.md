@@ -1,99 +1,137 @@
-# Project Title 🚀
+# form-block 🚀
 
-[![Built with Cookieplone](https://img.shields.io/badge/built%20with-Cookieplone-0083be.svg?logo=cookiecutter)](https://github.com/plone/cookiecutter-plone/)
-[![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
-[![Backend Tests](https://github.com/collective/volto-form-block/actions/workflows/backend.yml/badge.svg)](https://github.com/collective/volto-form-block/actions/workflows/backend.yml)
-[![Frontend Tests](https://github.com/collective/volto-form-block/actions/workflows/frontend.yml/badge.svg)](https://github.com/collective/volto-form-block/actions/workflows/frontend.yml)
+[![Built with Cookieplone](https://img.shields.io/badge/built%20with-Cookieplone-0083be.svg?logo=cookiecutter)](https://github.com/plone/cookieplone-templates/)
+[![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![CI](https://github.com/plone/form-block/actions/workflows/main.yml/badge.svg)](https://github.com/plone/form-block/actions/workflows/main.yml)
 
-A new project using Plone 6.
+Form Block add-on for Plone CMS.
 
 ## Quick Start 🏁
 
 ### Prerequisites ✅
 
-Ensure you have the following installed:
+-   An [operating system](https://6.docs.plone.org/install/create-project-cookieplone.html#prerequisites-for-installation) that runs all the requirements mentioned.
+-   [uv](https://6.docs.plone.org/install/create-project-cookieplone.html#uv)
+-   [nvm](https://6.docs.plone.org/install/create-project-cookieplone.html#nvm)
+-   [Node.js and pnpm](https://6.docs.plone.org/install/create-project.html#node-js) 24
+-   [Make](https://6.docs.plone.org/install/create-project-cookieplone.html#make)
+-   [Git](https://6.docs.plone.org/install/create-project-cookieplone.html#git)
+-   [Docker](https://docs.docker.com/get-started/get-docker/) (optional)
 
-- Python 3.11 🐍
-- Node 20 🟩
-- pnpm 🧶
-- Docker 🐳
 
 ### Installation 🔧
 
-1. Clone the repository:
+1.  Clone this repository, then change your working directory.
 
-```shell
-git clone git@github.com:collective/volto-form-block.git
-cd volto-form-block
-```
+    ```shell
+    git clone git@github.com:plone/form-block.git
+    cd kitconcept-gmbh-website
+    ```
 
-2. Install both Backend and Frontend:
+2.  Install this code base.
 
-```shell
-make install
-```
+    ```shell
+    make install
+    ```
+
 
 ### Fire Up the Servers 🔥
 
-1. Create a new Plone site on your first run:
+1.  Create a new Plone site on your first run.
 
-```shell
-make backend-create-site
-```
+    ```shell
+    make backend-create-site
+    ```
 
-2. Start the Backend at [http://localhost:8080/](http://localhost:8080/):
+2.  Start the backend at http://localhost:8080/.
 
-```shell
-make backend-start
-```
+    ```shell
+    make backend-start
+    ```
 
-3. In a new terminal, start the Frontend at [http://localhost:3000/](http://localhost:3000/):
+3.  In a new shell session, start the frontend at http://localhost:3000/.
 
-```shell
-make frontend-start
-```
+    ```shell
+    make frontend-start
+    ```
 
 Voila! Your Plone site should be live and kicking! 🎉
 
 ### Local Stack Deployment 📦
 
-Deploy a local `Docker Compose` environment that includes:
+Deploy a local Docker Compose environment that includes the following.
 
 - Docker images for Backend and Frontend 🖼️
-- A stack with a Traefik router and a Postgres database 🗃️
-- Accessible at [http://volto-form-block.localhost](http://volto-form-block.localhost) 🌐
+- A stack with a Traefik router and a PostgreSQL database 🗃️
+- Accessible at [http://kitconcept-gmbh-website.localhost](http://kitconcept-gmbh-website.localhost) 🌐
 
-Execute the following:
+Run the following commands in a shell session.
 
 ```shell
-make stack-start
 make stack-create-site
+make stack-start
 ```
 
 And... you're all set! Your Plone site is up and running locally! 🚀
 
-## Project Structure 🏗️
+## Project structure 🏗️
 
-This monorepo consists of three distinct sections: `backend`, `frontend`, and `devops`.
+This monorepo consists of the following distinct sections:
 
-- **backend**: Houses the API and Plone installation, utilizing pip instead of buildout, and includes a policy package named collective.voltoformblock.
+- **backend**: Houses the API and Plone installation, utilizing pip instead of buildout, and includes a policy package named kitconcept_gmbh.website.
 - **frontend**: Contains the React (Volto) package.
-- **devops**: Encompasses Docker Stack, Ansible playbooks, and Cache settings.
+- **devops**: Encompasses Docker stack, Ansible playbooks, and cache settings.
+- **docs**: Scaffold for writing documentation for your project.
 
-### Why This Structure? 🤔
+### Why this structure? 🤔
 
-- All necessary codebases to run the site are contained within the repo (excluding existing addons for Plone and React).
+- All necessary codebases to run the site are contained within the repository (excluding existing add-ons for Plone and React).
 - Specific GitHub Workflows are triggered based on changes in each codebase (refer to .github/workflows).
 - Simplifies the creation of Docker images for each codebase.
 - Demonstrates Plone installation/setup without buildout.
 
-## Code Quality Assurance 🧐
+## Code quality assurance 🧐
 
-To automatically format your code and ensure it adheres to quality standards, execute:
+To check your code against quality standards, run the following shell command.
 
 ```shell
 make check
 ```
+
+### Format the codebase
+
+To format and rewrite the code base, ensuring it adheres to quality standards, run the following shell command.
+
+```shell
+make format
+```
+
+| Section | Tool | Description | Configuration |
+| --- | --- | --- | --- |
+| backend | Ruff | Python code formatting, imports sorting  | [`backend/pyproject.toml`](./backend/pyproject.toml) |
+| backend | `zpretty` | XML and ZCML formatting  | -- |
+| frontend | ESLint | Fixes most common frontend issues | [`frontend/.eslintrc.js`](.frontend/.eslintrc.js) |
+| frontend | prettier | Format JS and Typescript code  | [`frontend/.prettierrc`](.frontend/.prettierrc) |
+| frontend | Stylelint | Format Styles (css, less, sass)  | [`frontend/.stylelintrc`](.frontend/.stylelintrc) |
+
+Formatters can also be run within the `backend` or `frontend` folders.
+
+### Linting the codebase
+or `lint`:
+
+ ```shell
+make lint
+```
+
+| Section | Tool | Description | Configuration |
+| --- | --- | --- | --- |
+| backend | Ruff | Checks code formatting, imports sorting  | [`backend/pyproject.toml`](./backend/pyproject.toml) |
+| backend | Pyroma | Checks Python package metadata  | -- |
+| backend | check-python-versions | Checks Python version information  | -- |
+| backend | `zpretty` | Checks XML and ZCML formatting  | -- |
+| frontend | ESLint | Checks JS / Typescript lint | [`frontend/.eslintrc.js`](.frontend/.eslintrc.js) |
+| frontend | prettier | Check JS / Typescript formatting  | [`frontend/.prettierrc`](.frontend/.prettierrc) |
+| frontend | Stylelint | Check Styles (css, less, sass) formatting  | [`frontend/.stylelintrc`](.frontend/.stylelintrc) |
 
 Linters can be run individually within the `backend` or `frontend` folders.
 
@@ -105,6 +143,6 @@ Generate translation files for Plone and Volto with ease:
 make i18n
 ```
 
-## Credits and Acknowledgements 🙏
+## Credits and acknowledgements 🙏
 
-Crafted with care by **Generated using [Cookieplone (0.7.1)](https://github.com/plone/cookieplone) and [cookiecutter-plone (aee0d59)](https://github.com/plone/cookiecutter-plone/commit/aee0d59c18bd0dd8af1da9c961014ff87a66ccfa) on 2024-07-08 12:03:37.289610**. A special thanks to all contributors and supporters!
+Generated using [Cookieplone (0.9.10)](https://github.com/plone/cookieplone) and [cookieplone-templates (8063e74)](https://github.com/plone/cookieplone-templates/commit/8063e74a542d07accadb9a8be81c2e6482256cb1) on 2025-11-05 17:52:22.460918. A special thanks to all contributors and supporters!
