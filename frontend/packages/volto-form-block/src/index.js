@@ -8,22 +8,22 @@ import {
   exportCsvFormData,
   clearFormData,
   sendOTP,
-} from 'volto-form-block/reducers';
+} from '@plone/volto-form-block/reducers';
 
-import { schemaFormBlockSchema } from 'volto-form-block/components/schema';
-import schemaFormBlockEdit from 'volto-form-block/components/EditSchemaForm';
-import schemaFormBlockView from 'volto-form-block/components/ViewSchemaForm';
+import { schemaFormBlockSchema } from '@plone/volto-form-block/components/schema';
+import schemaFormBlockEdit from '@plone/volto-form-block/components/EditSchemaForm';
+import schemaFormBlockView from '@plone/volto-form-block/components/ViewSchemaForm';
 
-import HoneypotCaptchaWidget from 'volto-form-block/components/Widgets/HoneypotCaptchaWidget';
-import NorobotsCaptchaWidget from 'volto-form-block/components/Widgets/NorobotsCaptchaWidget';
-import GoogleReCaptchaWidget from 'volto-form-block/components/Widgets/GoogleReCaptchaWidget';
+import HoneypotCaptchaWidget from '@plone/volto-form-block/components/Widgets/HoneypotCaptchaWidget';
+import NorobotsCaptchaWidget from '@plone/volto-form-block/components/Widgets/NorobotsCaptchaWidget';
+import GoogleReCaptchaWidget from '@plone/volto-form-block/components/Widgets/GoogleReCaptchaWidget';
 
 export {
   submitForm,
   getFormData,
   exportCsvFormData,
   sendOTP,
-} from 'volto-form-block/actions';
+} from '@plone/volto-form-block/actions';
 
 defineMessages({
   textarea: {

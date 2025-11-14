@@ -9,7 +9,7 @@ import {
   CLEAR_FORM_DATA,
   SEND_OTP,
   RESET_OTP,
-} from 'volto-form-block/actions';
+} from '@plone/volto-form-block/actions';
 
 function download(filename, text) {
   var element = document.createElement('a');

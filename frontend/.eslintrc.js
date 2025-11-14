@@ -50,7 +50,7 @@ module.exports = {
           ['@plone/volto-slate', `${coreLocation}/packages/volto-slate/src`],
           ['@plone/registry', `${coreLocation}/packages/registry/src`],
           [
-            'volto-form-block',
+            '@plone/volto-form-block',
             `${projectRootPath}/packages/volto-form-block/src`,
           ],
           ...addonAliases,
