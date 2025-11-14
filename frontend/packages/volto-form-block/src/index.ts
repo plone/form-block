@@ -59,7 +59,29 @@ defineMessages({
   },
 });
 
-function applyConfig(config: ConfigType) {
+declare module '@plone/types' {
+  export interface BlocksConfigData {
+    schemaForm: BlockConfigBase;
+  }
+
+  export interface BlockConfigBase {
+    widgets?: {
+      [key: string]: React.ComponentType<any>;
+    };
+    component?: React.ComponentType<any>;
+    buttonComponent?: React.ComponentType<any>;
+    captchaProvidersVocabulary?: string;
+    mailTemplatesVocabulary?: string;
+    disableEnter?: boolean;
+    filterFactory?: string[];
+    additionalFactory?: { value: string; label: string }[];
+    filterFactorySend?: string[];
+    defaultSender?: string;
+    defaultSenderName?: string;
+  }
+}
+
+export default function applyConfig(config: ConfigType) {
   installSettings(config);
 
   config.widgets.widget.honeypot = HoneypotCaptchaWidget;
@@ -113,10 +135,6 @@ function applyConfig(config: ConfigType) {
       defaultSenderName: 'Plone',
       restricted: false,
       mostUsed: true,
-      security: {
-        addPermission: [],
-        view: [],
-      },
       sidebarTab: 1,
     },
   };
@@ -139,5 +157,3 @@ function applyConfig(config: ConfigType) {
 
   return config;
 }
-
-export default applyConfig;
