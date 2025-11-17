@@ -26,17 +26,44 @@ dependencies = [
     "plone.api",
     "plone.restapi",
     "plone.volto",
+    "souper.plone",
+    "beautifulsoup4",
+    "collective.volto.otp",
 ]
 
-[dependency-groups]
+[project.optional-dependencies]
+hcaptcha = [
+    "plone.formwidget.hcaptcha>=1.0.3",
+]
+recaptcha = [
+    "plone.formwidget.recaptcha",
+]
+norobots = [
+    "collective.z3cform.norobots",
+]
+honeypot = [
+    "collective.honeypot>=2.1",
+]
+blocksfield = [
+    "collective.volto.blocksfield",
+]
 test = [
     "horse-with-no-namespace",
+    "collective.MockMailHost",
+    "collective.honeypot",
+    "plone.formwidget.hcaptcha",
+    "plone.formwidget.recaptcha",
+    "collective.z3cform.norobots",
+    "collective.volto.otp",
     "plone.app.testing",
     "plone.restapi[test]",
     "pytest",
     "pytest-cov",
     "pytest-plone>=1.0.0a2",
 ]
+
+
+[dependency-groups]
 container = [
     "plone.app.upgrade",
     "psycopg2==2.9.10",
