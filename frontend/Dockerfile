@@ -3,7 +3,7 @@ ARG VOLTO_VERSION
 # TODO: Replace with
 # FROM plone/frontend-builder:${VOLTO_VERSION}
 # when the main image is ready
-FROM ghcr.io/kitconcept/frontend-builder:${VOLTO_VERSION} AS builder
+FROM plone/frontend-builder:${VOLTO_VERSION} AS builder
 
 COPY --chown=node packages/volto-form-block /app/packages/volto-form-block
 COPY --chown=node volto.config.js /app/
@@ -21,7 +21,7 @@ EOT
 # TODO: Replace with
 # FROM plone/frontend-prod-config:${VOLTO_VERSION}
 # when the main image is ready
-FROM ghcr.io/kitconcept/frontend-prod-config:${VOLTO_VERSION}
+FROM plone/frontend-prod-config:${VOLTO_VERSION}
 
 LABEL maintainer="Plone Collective <collective@plone.org>" \
       org.label-schema.name="ghcr.io/collective/volto-form-block-frontend" \
