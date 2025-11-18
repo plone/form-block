@@ -15,7 +15,7 @@ RUN --mount=type=cache,id=pnpm,target=/app/.pnpm-store,uid=1000 <<EOT
     rm package.json.temp
     pnpm install && pnpm build:deps
     pnpm build
-    pnpm install --prod
+    CI=1 pnpm install --prod
 EOT
 
 # TODO: Replace with
