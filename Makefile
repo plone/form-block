@@ -11,11 +11,12 @@ MAKEFLAGS+=--no-builtin-rules
 CURRENT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 GIT_FOLDER=$(CURRENT_DIR)/.git
 
-PROJECT_NAME=volto-form-block
-STACK_NAME=volto-form-block-example-com
+REPOSITORY_SETTINGS := $(shell uvx repoplone settings dump)
 
-VOLTO_VERSION = $(shell cat frontend/mrs.developer.json | python -c "import sys, json; print(json.load(sys.stdin)['core']['tag'])")
-PLONE_VERSION=$(shell cat backend/version.txt)
+PROJECT_NAME := $(shell echo '$(REPOSITORY_SETTINGS)' | jq -r '.name')
+
+VOLTO_VERSION := $(shell echo '$(REPOSITORY_SETTINGS)' | jq -r '.frontend.volto_version')
+PLONE_VERSION := $(shell echo '$(REPOSITORY_SETTINGS)' | jq -r '.backend.base_package_version')
 
 # We like colors
 # From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
@@ -32,6 +33,13 @@ all: install
 .PHONY: help
 help: ## This help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+.PHONY: debug-settings
+debug-settings:  ## Debug settings
+	@echo "Debug settings"
+	@echo "PROJECT_NAME: $(PROJECT_NAME)"
+	@echo "VOLTO_VERSION: $(VOLTO_VERSION)"
+	@echo "PLONE_VERSION: $(PLONE_VERSION)"
 
 ###########################################
 # Frontend
@@ -82,17 +90,14 @@ backend-test:  ## Test backend codebase
 	@echo "Test backend"
 	$(MAKE) -C "./backend/" test
 
+###########################################
+# Environment
+###########################################
 .PHONY: install
 install:  ## Install
 	@echo "Install Backend & Frontend"
 	$(MAKE) backend-install
 	$(MAKE) frontend-install
-
-.PHONY: start
-start:  ## Start
-	@echo "Starting application"
-	$(MAKE) backend-start
-	$(MAKE) frontend-start
 
 .PHONY: clean
 clean:  ## Clean installation
@@ -100,46 +105,64 @@ clean:  ## Clean installation
 	$(MAKE) -C "./backend/" clean
 	$(MAKE) -C "./frontend/" clean
 
+###########################################
+# QA
+###########################################
 .PHONY: format
 format:  ## Format codebase
-	@echo "Format codebase"
+	@echo "Format the codebase"
 	$(MAKE) -C "./backend/" format
 	$(MAKE) -C "./frontend/" format
 
 .PHONY: lint
-lint:  ## Lint codebase
-	@echo "Lint codebase"
+lint:  ## Format codebase
+	@echo "Lint the codebase"
 	$(MAKE) -C "./backend/" lint
 	$(MAKE) -C "./frontend/" lint
 
+.PHONY: check
+check:  format lint ## Lint and Format codebase
+
+###########################################
+# i18n
+###########################################
 .PHONY: i18n
 i18n:  ## Update locales
 	@echo "Update locales"
 	$(MAKE) -C "./backend/" i18n
 	$(MAKE) -C "./frontend/" i18n
 
+###########################################
+# Testing
+###########################################
 .PHONY: test
 test:  backend-test frontend-test ## Test codebase
 
+###########################################
+# Container images
+###########################################
 .PHONY: build-images
-build-images:  ## Build docker images
+build-images:  ## Build container images
 	@echo "Build"
 	$(MAKE) -C "./backend/" build-image
 	$(MAKE) -C "./frontend/" build-image
 
-## Docker stack
+###########################################
+# Local Stack
+###########################################
+.PHONY: stack-create-site
+stack-create-site:  ## Local Stack: Create a new site
+	@echo "Create a new site in the local Docker stack"
+	@echo "(Stack must not be running already.)"
+	VOLTO_VERSION=$(VOLTO_VERSION) PLONE_VERSION=$(PLONE_VERSION) docker compose -f docker-compose.yml run --build backend ./docker-entrypoint.sh create-site
+
 .PHONY: stack-start
 stack-start:  ## Local Stack: Start Services
 	@echo "Start local Docker stack"
 	VOLTO_VERSION=$(VOLTO_VERSION) PLONE_VERSION=$(PLONE_VERSION) docker compose -f docker-compose.yml up -d --build
-	@echo "Now visit: http://volto-form-block.localhost"
+	@echo "Now visit: http://form-block.localhost"
 
-.PHONY: start-stack
-stack-create-site:  ## Local Stack: Create a new site
-	@echo "Create a new site in the local Docker stack"
-	@docker compose -f docker-compose.yml exec backend ./docker-entrypoint.sh create-site
-
-.PHONY: start-ps
+.PHONY: stack-status
 stack-status:  ## Local Stack: Check Status
 	@echo "Check the status of the local Docker stack"
 	@docker compose -f docker-compose.yml ps
@@ -156,32 +179,34 @@ stack-rm:  ## Local Stack: Remove Services and Volumes
 	@echo "Remove local volume data"
 	@docker volume rm $(PROJECT_NAME)_vol-site-data
 
-## Acceptance
+###########################################
+# Acceptance
+###########################################
 .PHONY: acceptance-backend-dev-start
-acceptance-backend-dev-start: ## Build Acceptance Servers
-	@echo "Build acceptance backend"
+acceptance-backend-dev-start:
+	@echo "Start acceptance backend"
 	$(MAKE) -C "./backend/" acceptance-backend-start
 
 .PHONY: acceptance-frontend-dev-start
-acceptance-frontend-dev-start: ## Build Acceptance Servers
-	@echo "Build acceptance backend"
+acceptance-frontend-dev-start:
+	@echo "Start acceptance frontend"
 	$(MAKE) -C "./frontend/" acceptance-frontend-dev-start
 
 .PHONY: acceptance-test
-acceptance-test: ## Start Acceptance tests in interactive mode
-	@echo "Build acceptance backend"
+acceptance-test:
+	@echo "Start acceptance tests in interactive mode"
 	$(MAKE) -C "./frontend/" acceptance-test
 
 # Build Docker images
 .PHONY: acceptance-frontend-image-build
-acceptance-frontend-image-build: ## Build Acceptance frontend server image
-	@echo "Build acceptance frontend"
-	@docker build frontend -t collective/volto-form-block-frontend:acceptance -f frontend/Dockerfile --build-arg VOLTO_VERSION=$(VOLTO_VERSION)
+acceptance-frontend-image-build:
+	@echo "Build acceptance frontend image"
+	@docker build frontend -t plone/form-block-frontend:acceptance -f frontend/Dockerfile --build-arg VOLTO_VERSION=$(VOLTO_VERSION)
 
 .PHONY: acceptance-backend-image-build
-acceptance-backend-image-build: ## Build Acceptance backend server image
-	@echo "Build acceptance backend"
-	@docker build backend -t collective/volto-form-block-backend:acceptance -f backend/Dockerfile.acceptance --build-arg PLONE_VERSION=$(PLONE_VERSION)
+acceptance-backend-image-build:
+	@echo "Build acceptance backend image"
+	@docker build backend -t plone/form-block-backend:acceptance -f backend/Dockerfile.acceptance --build-arg PLONE_VERSION=$(PLONE_VERSION)
 
 .PHONY: acceptance-images-build
 acceptance-images-build: ## Build Acceptance frontend/backend images
@@ -189,14 +214,14 @@ acceptance-images-build: ## Build Acceptance frontend/backend images
 	$(MAKE) acceptance-frontend-image-build
 
 .PHONY: acceptance-frontend-container-start
-acceptance-frontend-container-start: ## Start Acceptance frontend container
+acceptance-frontend-container-start:
 	@echo "Start acceptance frontend"
-	@docker run --rm -p 3000:3000 --name volto-form-block-frontend-acceptance --link volto-form-block-backend-acceptance:backend -e RAZZLE_API_PATH=http://localhost:55001/plone -e RAZZLE_INTERNAL_API_PATH=http://backend:55001/plone -d collective/volto-form-block-frontend:acceptance
+	@docker run --rm -p 3000:3000 --name form-block-frontend-acceptance --link form-block-backend-acceptance:backend -e RAZZLE_API_PATH=http://localhost:55001/plone -e RAZZLE_INTERNAL_API_PATH=http://backend:55001/plone -d plone/form-block-frontend:acceptance
 
 .PHONY: acceptance-backend-container-start
-acceptance-backend-container-start: ## Start Acceptance backend container
+acceptance-backend-container-start:
 	@echo "Start acceptance backend"
-	@docker run --rm -p 55001:55001 --name volto-form-block-backend-acceptance -d collective/volto-form-block-backend:acceptance
+	@docker run --rm -p 55001:55001 --name form-block-backend-acceptance -d plone/form-block-backend:acceptance
 
 .PHONY: acceptance-containers-start
 acceptance-containers-start: ## Start Acceptance containers
@@ -206,11 +231,12 @@ acceptance-containers-start: ## Start Acceptance containers
 .PHONY: acceptance-containers-stop
 acceptance-containers-stop: ## Stop Acceptance containers
 	@echo "Stop acceptance containers"
-	@docker stop volto-form-block-frontend-acceptance
-	@docker stop volto-form-block-backend-acceptance
+	@docker stop form-block-frontend-acceptance
+	@docker stop form-block-backend-acceptance
 
 .PHONY: ci-acceptance-test
-ci-acceptance-test: ## Run Acceptance tests in ci mode
+ci-acceptance-test:
+	@echo "Run acceptance tests in CI mode"
 	$(MAKE) acceptance-containers-start
 	pnpm dlx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000
 	$(MAKE) -C "./frontend/" ci-acceptance-test
