@@ -171,6 +171,7 @@ const FormBlockView = ({ data, id, path, moment: momentlib }) => {
         }),
       );
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error('Error saving form data to localStorage', e);
     }
   };
