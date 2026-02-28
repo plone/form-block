@@ -1,3 +1,6 @@
+import type { ConfigType } from '@plone/registry';
+import installSettings from './config/settings';
+
 import { defineMessages } from 'react-intl';
 import loadable from '@loadable/component';
 import formSVG from '@plone/volto/icons/form.svg';
@@ -56,7 +59,31 @@ defineMessages({
   },
 });
 
-const applyConfig = (config) => {
+declare module '@plone/types' {
+  export interface BlocksConfigData {
+    schemaForm: BlockConfigBase;
+  }
+
+  export interface BlockConfigBase {
+    widgets?: {
+      [key: string]: React.ComponentType<any>;
+    };
+    component?: React.ComponentType<any>;
+    buttonComponent?: React.ComponentType<any>;
+    captchaProvidersVocabulary?: string;
+    mailTemplatesVocabulary?: string;
+    disableEnter?: boolean;
+    filterFactory?: string[];
+    additionalFactory?: { value: string; label: string }[];
+    filterFactorySend?: string[];
+    defaultSender?: string;
+    defaultSenderName?: string;
+  }
+}
+
+export default function applyConfig(config: ConfigType) {
+  installSettings(config);
+
   config.widgets.widget.honeypot = HoneypotCaptchaWidget;
   config.widgets.widget['norobots-captcha'] = NorobotsCaptchaWidget;
   config.widgets.widget['recaptcha'] = GoogleReCaptchaWidget;
@@ -108,10 +135,6 @@ const applyConfig = (config) => {
       defaultSenderName: 'Plone',
       restricted: false,
       mostUsed: true,
-      security: {
-        addPermission: [],
-        view: [],
-      },
       sidebarTab: 1,
     },
   };
@@ -133,6 +156,4 @@ const applyConfig = (config) => {
   );
 
   return config;
-};
-
-export default applyConfig;
+}

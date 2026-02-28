@@ -1,38 +1,56 @@
-# syntax=docker/dockerfile:1
-ARG PLONE_VERSION=6.0.11
-FROM plone/server-builder:${PLONE_VERSION} AS builder
+# syntax=docker/dockerfile:1.9
+ARG PYTHON_VERSION=3.12
+FROM plone/server-builder:uv-${PYTHON_VERSION} AS builder
 
-WORKDIR /app
+# Install project dependencies based on uv.lock and pyproject.toml
+# We expect pyproject.toml to have an entry cointainer inside [dependency-groups]
+RUN --mount=type=cache,target=/root/.cache \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync \
+        --locked \
+        --no-dev \
+        --no-group test \
+        --group container \
+        --no-install-project
 
+COPY . /src
+WORKDIR /src
 
-# Add local code
-COPY scripts/ scripts/
-COPY . src
+# Install package
+RUN --mount=type=cache,target=/root/.cache \
+    uv sync \
+        --locked \
+        --no-dev \
+        --no-group test \
+        --group container \
+        --no-editable
 
-# Install local requirements and pre-compile mo files
+# Move skeleton files to /app
 RUN <<EOT
-    set -e
-    bin/pip install mxdev uv hatch
-    cd /app/src
-    ../bin/hatch build
-    ../bin/mxdev -c mx.ini
-    ../bin/uv pip install dist/*.whl -c constraints-mxdev.txt
-    ../bin/python /compile_mo.py
-    cd /app
-    rm -Rf /app/src
+    mv /app_skeleton/* /app
+    rm -Rf /app_skeleton
+    chmod +x /app/docker-entrypoint.sh
+    mv scripts/create_site.py /app/scripts/create_site.py
 EOT
 
-FROM plone/server-prod-config:${PLONE_VERSION}
+# Compile translation files
+RUN <<EOT
+    /app/bin/python /compile_mo.py
+EOT
+
+FROM plone/server-prod-config:uv-${PYTHON_VERSION}
 
 LABEL maintainer="Plone Foundation <collective@plone.org>" \
-      org.label-schema.name="volto-form-block-backend" \
-      org.label-schema.description="Volto Form Block: Backend" \
+      org.label-schema.name="form-block-backend" \
+      org.label-schema.description="Backend image for Form Block" \
       org.label-schema.vendor="Plone Foundation"
 
-# Copy /app from builder
-COPY --from=builder /app /app
+# Copy the pre-built `/app` directory to the runtime container
+# and change the ownership to user app and group app in one step.
+COPY --from=builder --chown=500:500 /app /app
 
 RUN <<EOT
-    set -e
     ln -s /data /app/var
+    chown -R 500:500 /data
 EOT
