@@ -1,20 +1,12 @@
 # Volto Add-on (volto-form-block)
 
 Volto addon which adds a customizable form using a block.
-Intended to be used with [collective.volto.formsupport](https://github.com/collective/collective.volto.formsupport).
+Intended to be used with [kitconcept-voltoformsupport]([https://github.com/collective/collective.volto.formsupport](https://pypi.org/project/kitconcept-voltoformsupport/).
 
 [![npm](https://img.shields.io/npm/v/volto-form-block)](https://www.npmjs.com/package/volto-form-block)
 [![](https://img.shields.io/badge/-Storybook-ff4785?logo=Storybook&logoColor=white&style=flat-square)](https://collective.github.io/volto-form-block/)
 [![Code analysis checks](https://github.com/collective/volto-form-block/actions/workflows/code.yml/badge.svg)](https://github.com/collective/volto-form-block/actions/workflows/code.yml)
 [![Unit tests](https://github.com/collective/volto-form-block/actions/workflows/unit.yml/badge.svg)](https://github.com/collective/volto-form-block/actions/workflows/unit.yml)
-
-## Compatibility
-
-> **Note**: Since version v2.0.0 of this addon, it's required [collective.volto.formsupport](https://github.com/collective/collective.volto.formsupport) 2.0.0 or higher (and its upgrade steps).
->
-> **Note**: Since version v2.1.2 of this addon, it's required Volto 14.2.0
->
-> **Note**: Since version v3.0.0 of this addon, it's required Volto >= 16.0.0-alpha.38
 
 ## Features
 
