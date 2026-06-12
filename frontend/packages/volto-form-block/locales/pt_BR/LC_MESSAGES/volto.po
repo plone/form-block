@@ -79,7 +79,7 @@ msgstr "Erro"
 msgid "Form"
 msgstr "Formulário"
 
-#. Default: "This site is protected by hCaptcha and its <a href="https://www.hcaptcha.com/privacy">Privacy Policy</a> and <a href="https://www.hcaptcha.com/terms">Terms of Service</a> apply."
+#. Default: "This site is protected by hCaptcha and its <a href=\"https://www.hcaptcha.com/privacy\">Privacy Policy</a> and <a href=\"https://www.hcaptcha.com/terms\">Terms of Service</a> apply."
 #: components/Widgets/HCaptchaWidget
 msgid "HCaptchaInvisibleInfo"
 msgstr "Este site é protegido pelo hCaptcha e sua <a href=“https://www.hcaptcha.com/privacy”>política de privacidade</a> e <a href=“https://www.hcaptcha.com/terms”>termos de serviço</a> se aplicam."
