@@ -1,3 +1,3 @@
 # Contributors
 
-- Plone Foundation [collective@plone.org]
+- Plone Community [releasemanager@plone.org]

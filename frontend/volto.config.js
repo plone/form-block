@@ -1,5 +1,5 @@
-const addons = ['@plone/volto-form-block'];
-const theme = '';
+const addons = ["@plone/volto-form-block"];
+const theme = "";
 
 module.exports = {
   addons,

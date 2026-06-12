@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-ARG PLONE_VERSION=6.0.11
+ARG PLONE_VERSION=6.2.0
 FROM plone/server-builder:${PLONE_VERSION} AS builder
 
 WORKDIR /app
@@ -12,22 +12,22 @@ COPY . src
 # Install local requirements and pre-compile mo files
 RUN <<EOT
     set -e
-    bin/pip install mxdev uv hatch
+    bin/pip install mxdev uv
+    sed -i 's/-e .\[test\]/./g' src/mx.ini
     cd /app/src
-    ../bin/hatch build
+    # remove potentially existing virtualenv from local build
+    rm -rf .venv
     ../bin/mxdev -c mx.ini
-    ../bin/uv pip install dist/*.whl -c constraints-mxdev.txt
+    ../bin/uv pip install -r requirements-mxdev.txt
     ../bin/python /compile_mo.py
-    cd /app
-    rm -Rf /app/src
 EOT
 
 FROM plone/server-prod-config:${PLONE_VERSION}
 
-LABEL maintainer="Plone Foundation <collective@plone.org>" \
-      org.label-schema.name="volto-form-block-backend" \
-      org.label-schema.description="Volto Form Block: Backend" \
-      org.label-schema.vendor="Plone Foundation"
+LABEL maintainer="Plone Community <releasemanager@plone.org>" \
+      org.label-schema.name="form-block-backend" \
+      org.label-schema.description="Form Block backend image." \
+      org.label-schema.vendor="Plone Community"
 
 # Copy /app from builder
 COPY --from=builder /app /app
