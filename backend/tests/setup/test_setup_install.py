@@ -1,19 +1,17 @@
-from collective.volto.formsupport import PACKAGE_NAME
+from plone.formblock import PACKAGE_NAME
 
 
 class TestSetupInstall:
     def test_addon_installed(self, installer):
-        """Test if collective.volto.formsupport is installed."""
+        """Test if plone.formblock is installed."""
         assert installer.is_product_installed(PACKAGE_NAME) is True
 
     def test_browserlayer(self, browser_layers):
         """Test that IBrowserLayer is registered."""
-        from collective.volto.formsupport.interfaces import (
-            ICollectiveVoltoFormsupportLayer,
-        )
+        from plone.formblock.interfaces import IBrowserLayer
 
-        assert ICollectiveVoltoFormsupportLayer in browser_layers
+        assert IBrowserLayer in browser_layers
 
     def test_latest_version(self, profile_last_version):
         """Test latest version of default profile."""
-        assert profile_last_version(f"{PACKAGE_NAME}:default") == "1400"
+        assert profile_last_version(f"{PACKAGE_NAME}:default") == "1000"

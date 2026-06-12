@@ -1,0 +1,106 @@
+from copy import deepcopy
+from plone import api
+from plone.base.interfaces import IPloneSiteRoot
+from plone.formblock.interfaces import IBrowserLayer
+from plone.formblock.interfaces import ICaptchaSupport
+from plone.restapi.behaviors import IBlocks
+from plone.restapi.interfaces import IBlockFieldSerializationTransformer
+from zope.component import adapter
+from zope.component import getMultiAdapter
+from zope.interface import implementer
+
+import os
+
+
+class FormSerializer:
+    """ """
+
+    order = 200  # after standard ones
+    block_type = "schemaForm"
+
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self, value):
+        """
+        If user can edit the context, return the full block data.
+        Otherwise, skip default values because we need them only in edit and
+        to send emails from the backend.
+        """
+        if value.get("captcha"):
+            value["captcha_props"] = getMultiAdapter(
+                (self.context, self.request),
+                ICaptchaSupport,
+                name=value["captcha"],
+            ).serialize()
+        attachments_limit = os.environ.get("FORM_ATTACHMENTS_LIMIT", "")
+        if attachments_limit:
+            value["attachments_limit"] = attachments_limit
+        if api.user.has_permission("Modify portal content", obj=self.context):
+            return value
+        return {k: v for k, v in value.items() if not k.startswith("default_")}
+
+
+@implementer(IBlockFieldSerializationTransformer)
+@adapter(IBlocks, IBrowserLayer)
+class FormSerializerContents(FormSerializer):
+    """Deserializer for content-types that implements IBlocks behavior"""
+
+
+@implementer(IBlockFieldSerializationTransformer)
+@adapter(IPloneSiteRoot, IBrowserLayer)
+class FormSerializerRoot(FormSerializer):
+    """Deserializer for site-root"""
+
+
+class SchemaFormBlockSerializer:
+    """ """
+
+    order = 200  # after standard ones
+    block_type = "schemaForm"
+
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self, value):
+        """
+        If user can edit the context, return the full block data.
+        Otherwise, skip default values because we need them only in edit and
+        to send emails from the backend.
+        """
+        if value.get("captcha"):
+            value["captcha_props"] = getMultiAdapter(
+                (self.context, self.request),
+                ICaptchaSupport,
+                name=value["captcha"],
+            ).serialize()
+
+            new_schema = deepcopy(value["schema"])
+            new_schema["properties"]["captchaWidget"] = {
+                "title": value["captcha"],
+                "widget": value["captcha"],
+                "captcha_props": value["captcha_props"],
+            }
+            if "captchaWidget" not in new_schema["fieldsets"][0]["fields"]:
+                new_schema["fieldsets"][0]["fields"].append("captchaWidget")
+            value["schema"] = new_schema
+        attachments_limit = os.environ.get("FORM_ATTACHMENTS_LIMIT", "")
+        if attachments_limit:
+            value["attachments_limit"] = attachments_limit
+        if api.user.has_permission("Modify portal content", obj=self.context):
+            return value
+        return {k: v for k, v in value.items() if not k.startswith("default_")}
+
+
+@implementer(IBlockFieldSerializationTransformer)
+@adapter(IBlocks, IBrowserLayer)
+class SchemaFormBlockSerializerContents(SchemaFormBlockSerializer):
+    """Deserializer for content-types that implements IBlocks behavior"""
+
+
+@implementer(IBlockFieldSerializationTransformer)
+@adapter(IPloneSiteRoot, IBrowserLayer)
+class SchemaFormBlockSerializerRoot(SchemaFormBlockSerializer):
+    """Deserializer for site-root"""

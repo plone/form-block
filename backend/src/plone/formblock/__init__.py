@@ -1,0 +1,13 @@
+"""Init and utils."""
+
+from zope.i18nmessageid import MessageFactory
+
+import logging
+
+
+__version__ = "1.0.0a2.dev0"
+
+PACKAGE_NAME = "plone.formblock"
+
+logger = logging.getLogger(PACKAGE_NAME)
+_ = MessageFactory(PACKAGE_NAME)
