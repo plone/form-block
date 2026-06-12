@@ -74,9 +74,8 @@ const applyConfig = (config) => {
       component: null,
       buttonComponent: null,
       blockSchema: schemaFormBlockSchema,
-      captchaProvidersVocabulary:
-        'collective.volto.formsupport.captcha.providers',
-      mailTemplatesVocabulary: 'collective.volto.formsupport.mail.templates',
+      captchaProvidersVocabulary: 'plone.formblock.captcha.providers',
+      mailTemplatesVocabulary: 'plone.formblock.mail.templates',
       disableEnter: true,
       filterFactory: [
         'label_text_field',

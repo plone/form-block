@@ -2,7 +2,7 @@
 
 ### Internal
 
-- Pending backports from the feature branches. @robgietema 
+- Pending backports from the feature branches. @robgietema
 
 ## 1.0.0-alpha.0 (2025-11-14)
 
@@ -346,7 +346,7 @@
 
 ### Features
 
-* handled collective.volto.formsupport.captcha.providers vocabulary ([12060e7](https://github.com/collective/volto-form-block/commit/12060e77eaa863a5b8792ad2c604f034546f7e06))
+* handled plone.formblock.captcha.providers vocabulary ([12060e7](https://github.com/collective/volto-form-block/commit/12060e77eaa863a5b8792ad2c604f034546f7e06))
 
 
 ### Bug Fixes
