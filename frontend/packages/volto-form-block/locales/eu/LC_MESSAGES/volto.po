@@ -75,10 +75,10 @@ msgstr "Errorea"
 msgid "Form"
 msgstr "Formularioa"
 
-#. Default: "This site is protected by hCaptcha and its <a href="https://www.hcaptcha.com/privacy">Privacy Policy</a> and <a href="https://www.hcaptcha.com/terms">Terms of Service</a> apply."
+#. Default: "This site is protected by hCaptcha and its <a href=\"https://www.hcaptcha.com/privacy\">Privacy Policy</a> and <a href=\"https://www.hcaptcha.com/terms\">Terms of Service</a> apply."
 #: components/Widgets/HCaptchaWidget
 msgid "HCaptchaInvisibleInfo"
-msgstr "Gune hau hCaptcha eta bere <a href="https://www.hcaptcha.com/privacy">Pribatutasun Politikak</a> babestuta dago eta <a href="https://www.hcaptcha.com/terms">Zerbitzu-baldintzak</a> aplikatzen dira."
+msgstr "Gune hau hCaptcha eta bere <a href=\"https://www.hcaptcha.com/privacy\">Pribatutasun Politikak</a> babestuta dago eta <a href=\"https://www.hcaptcha.com/terms\">Zerbitzu-baldintzak</a> aplikatzen dira."
 
 #. Default: "No"
 #: components/ViewSchemaForm

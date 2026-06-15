@@ -1,0 +1,10 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <include package="collective.honeypot" />
+  <include package="collective.MockMailHost" />
+
+  <subscriber
+      for="plone.formblock.interfaces.IPostEvent"
+      handler="plone.formblock.testing.event_handler.event_handler"
+      />
+</configure>

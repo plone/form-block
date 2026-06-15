@@ -73,7 +73,7 @@ msgstr ""
 msgid "Form"
 msgstr ""
 
-#. Default: "This site is protected by hCaptcha and its <a href="https://www.hcaptcha.com/privacy">Privacy Policy</a> and <a href="https://www.hcaptcha.com/terms">Terms of Service</a> apply."
+#. Default: "This site is protected by hCaptcha and its <a href=\"https://www.hcaptcha.com/privacy\">Privacy Policy</a> and <a href=\"https://www.hcaptcha.com/terms\">Terms of Service</a> apply."
 #: components/Widgets/HCaptchaWidget
 msgid "HCaptchaInvisibleInfo"
 msgstr ""

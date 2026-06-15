@@ -1,47 +1,27 @@
-import PropTypes from 'prop-types';
+import TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 
-const NorobotsCaptchaWidget = (props) => {
-  const { onEdit } = props;
+const NoRobotsCaptchaWidget = ({
+  id,
+  title,
+  value,
+  onEdit,
+  onChange,
+  captcha_props,
+}) => {
+  const titleValue = captcha_props?.title || title;
 
-  return onEdit ? <></> : <></>;
+  return onEdit ? (
+    <></>
+  ) : (
+    <TextWidget
+      id={id}
+      name={captcha_props.id}
+      label={titleValue}
+      title={titleValue}
+      onChange={onChange}
+      value={value}
+    />
+  );
 };
 
-export default NorobotsCaptchaWidget;
-
-NorobotsCaptchaWidget.propTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  required: PropTypes.bool,
-  error: PropTypes.arrayOf(PropTypes.string),
-  value: PropTypes.string,
-  focus: PropTypes.bool,
-  onChange: PropTypes.func,
-  onBlur: PropTypes.func,
-  onClick: PropTypes.func,
-  onEdit: PropTypes.func,
-  onDelete: PropTypes.func,
-  icon: PropTypes.shape({
-    xmlns: PropTypes.string,
-    viewBox: PropTypes.string,
-    content: PropTypes.string,
-  }),
-  iconAction: PropTypes.func,
-  wrapped: PropTypes.bool,
-  placeholder: PropTypes.string,
-};
-
-NorobotsCaptchaWidget.defaultProps = {
-  description: null,
-  required: false,
-  error: [],
-  value: null,
-  onChange: () => {},
-  onBlur: () => {},
-  onClick: () => {},
-  onEdit: null,
-  onDelete: null,
-  focus: false,
-  icon: null,
-  iconAction: null,
-};
+export default NoRobotsCaptchaWidget;

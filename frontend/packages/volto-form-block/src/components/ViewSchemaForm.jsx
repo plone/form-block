@@ -180,8 +180,8 @@ const FormBlockView = ({ data, id, path, moment: momentlib }) => {
     let submitData = { ...formData };
     let captcha = {
       provider: data.captcha,
+      props: data.captcha_props || {},
     };
-
     if (data.captcha === 'recaptcha') {
       captcha.token = await submitData.captchaWidget();
       delete submitData.captchaWidget;

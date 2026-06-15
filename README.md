@@ -1,10 +1,10 @@
-# form-block 🚀
+# Form Block 🚀
 
 [![Built with Cookieplone](https://img.shields.io/badge/built%20with-Cookieplone-0083be.svg?logo=cookiecutter)](https://github.com/plone/cookieplone-templates/)
 [![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![CI](https://github.com/plone/form-block/actions/workflows/main.yml/badge.svg)](https://github.com/plone/form-block/actions/workflows/main.yml)
 
-Form Block add-on for Plone CMS.
+A Plone add-on supporting the creation of forms inside blocks
 
 ## Quick Start 🏁
 
@@ -25,7 +25,7 @@ Form Block add-on for Plone CMS.
 
     ```shell
     git clone git@github.com:plone/form-block.git
-    cd kitconcept-gmbh-website
+    cd form-block
     ```
 
 2.  Install this code base.
@@ -63,7 +63,7 @@ Deploy a local Docker Compose environment that includes the following.
 
 - Docker images for Backend and Frontend 🖼️
 - A stack with a Traefik router and a PostgreSQL database 🗃️
-- Accessible at [http://kitconcept-gmbh-website.localhost](http://kitconcept-gmbh-website.localhost) 🌐
+- Accessible at [http://form-block.localhost](http://form-block.localhost) 🌐
 
 Run the following commands in a shell session.
 
@@ -78,7 +78,7 @@ And... you're all set! Your Plone site is up and running locally! 🚀
 
 This monorepo consists of the following distinct sections:
 
-- **backend**: Houses the API and Plone installation, utilizing pip instead of buildout, and includes a policy package named kitconcept_gmbh.website.
+- **backend**: Houses the API and Plone installation, utilizing pip instead of buildout, and includes a policy package named plone.formblock.
 - **frontend**: Contains the React (Volto) package.
 - **devops**: Encompasses Docker stack, Ansible playbooks, and cache settings.
 - **docs**: Scaffold for writing documentation for your project.
@@ -145,4 +145,4 @@ make i18n
 
 ## Credits and acknowledgements 🙏
 
-Generated using [Cookieplone (0.9.10)](https://github.com/plone/cookieplone) and [cookieplone-templates (8063e74)](https://github.com/plone/cookieplone-templates/commit/8063e74a542d07accadb9a8be81c2e6482256cb1) on 2025-11-05 17:52:22.460918. A special thanks to all contributors and supporters!
+Generated using [Cookieplone (2.0.0b3)](https://github.com/plone/cookieplone) and [cookieplone-templates (6678734)](https://github.com/plone/cookieplone-templates/commit/6678734cc3713f3fab9ea510616cef59dc466514) on 2026-06-10 18:43:35.112495. A special thanks to all contributors and supporters!

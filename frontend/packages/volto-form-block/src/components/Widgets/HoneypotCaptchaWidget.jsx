@@ -28,7 +28,7 @@ const HoneypotCaptchaWidget = ({
   return onEdit ? (
     <></>
   ) : (
-    <div className="honey-wrapper2" key={'honeypot-captcha'}>
+    <div className="honey-wrapper" key={'honeypot-captcha'}>
       <TextWidget
         id={captcha_props.id}
         name={captcha_props.id}

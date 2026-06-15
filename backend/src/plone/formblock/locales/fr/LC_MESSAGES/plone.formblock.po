@@ -1,0 +1,153 @@
+#--- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+#SOME DESCRIPTIVE TITLE.
+#FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-06-12 21:55+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone.formblock\n"
+
+#: plone/formblock/profiles.zcml:23
+msgid "Create example content for the Form Block."
+msgstr ""
+
+#: plone/formblock/restapi/services/validation/email.py:52
+msgid "Email confirmation code"
+msgstr ""
+
+#: plone/formblock/profiles.zcml:14
+msgid "Form Block"
+msgstr ""
+
+#: plone/formblock/profiles.zcml:23
+msgid "Form Block (example content)"
+msgstr ""
+
+#: plone/formblock/profiles.zcml:31
+msgid "Form Block (uninstall)"
+msgstr ""
+
+#: plone/formblock/captcha/recaptcha.py:12
+msgid "Google ReCaptcha"
+msgstr "Google ReCaptcha"
+
+#: plone/formblock/captcha/hcaptcha.py:12
+msgid "HCaptcha"
+msgstr "HCaptcha"
+
+#: plone/formblock/captcha/hcaptcha.py:62
+msgid "HCaptcha Invisible"
+msgstr ""
+
+#: plone/formblock/captcha/honeypot.py:10
+msgid "Honeypot Support"
+msgstr ""
+
+#: plone/formblock/profiles.zcml:14
+msgid "Installs the plone.formblock add-on."
+msgstr ""
+
+#: plone/formblock/processors/email.py:197
+msgid "No"
+msgstr "Non"
+
+#: plone/formblock/captcha/hcaptcha.py:46
+#: plone/formblock/captcha/norobots.py:50
+#: plone/formblock/captcha/recaptcha.py:47
+msgid "No captcha token provided."
+msgstr ""
+
+#: plone/formblock/captcha/norobots.py:10
+msgid "NoRobots ReCaptcha Support"
+msgstr ""
+
+#: plone/formblock/restapi/services/validation/email.py:95
+msgid "OTP is wrong"
+msgstr ""
+
+#: plone/formblock/browser/templates/email_confirm_view.pt:17
+msgid "Simple Transactional Email"
+msgstr ""
+
+#: plone/formblock/captcha/hcaptcha.py:55
+#: plone/formblock/captcha/norobots.py:74
+#: plone/formblock/captcha/recaptcha.py:57
+msgid "The code you entered was wrong, please enter the new one."
+msgstr ""
+
+#: plone/formblock/restapi/services/validation/email.py:65
+msgid "The email field is missing"
+msgstr ""
+
+#: plone/formblock/browser/templates/email_confirm_view.pt:386
+msgid "The form on ${page} was compiled with this email address, if it was not you, ignore the message."
+msgstr ""
+
+#: plone/formblock/restapi/services/validation/email.py:89
+msgid "The otp field is missing"
+msgstr ""
+
+#: plone/formblock/restapi/services/validation/email.py:68
+msgid "The provided email address is not valid"
+msgstr ""
+
+#: plone/formblock/restapi/services/validation/email.py:71
+msgid "The uid field is missing"
+msgstr ""
+
+#: plone/formblock/profiles.zcml:31
+msgid "Uninstalls the plone.formblock add-on."
+msgstr ""
+
+#: plone/formblock/processors/email.py:192
+msgid "Yes"
+msgstr "Oui"
+
+#: plone/formblock/browser/templates/email_confirm_view.pt:371
+msgid "Your code to validate the email address:"
+msgstr ""
+
+#. Default: "Attachments too big. You uploaded ${uploaded_str}, but limit is ${max} MB. Try to compress files."
+#: plone/formblock/restapi/services/submit_form/post.py:142
+msgid "attachments_too_big"
+msgstr ""
+
+#. Default: "Block with @type \"schemaForm\" and id \"$block\" not found in this context: $context"
+#: plone/formblock/restapi/services/submit_form/post.py:82
+msgid "block_form_not_found_label"
+msgstr ""
+
+#. Default: "Empty form data."
+#: plone/formblock/restapi/services/submit_form/post.py:96
+msgid "empty_form_data"
+msgstr ""
+
+#. Default: "Unable to process form. Please retry later or contact site administrator."
+#: plone/formblock/restapi/services/submit_form/post.py:44
+msgid "form_action_exception"
+msgstr ""
+
+#. Default: "Error submitting form."
+#: plone/formblock/captcha/honeypot.py:27
+msgid "honeypot_error"
+msgstr ""
+
+#. Default: "Invalid form data."
+#: plone/formblock/restapi/services/submit_form/post.py:58
+msgid "invalid_form_data"
+msgstr ""
+
+#. Default: "Missing block_id"
+#: plone/formblock/restapi/services/submit_form/post.py:75
+msgid "missing_blockid_label"
+msgstr ""
