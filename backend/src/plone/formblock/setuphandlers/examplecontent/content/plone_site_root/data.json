@@ -4,222 +4,139 @@
   "UID": "plone_site_root",
   "allow_discussion": null,
   "blocks": {
-    "47c92ffe-c201-493c-97c9-a2d4e0beab69": {
-      "@type": "slate",
-      "plaintext": "Plone is a powerful content management system built on a rock-solid application stack written in the Python and JavaScript programming languages.",
-      "value": [
+    "0e7ae8c9-e5d9-4700-83da-40802728f495": {
+      "@type": "teaser",
+      "description": "Test no robots captcha",
+      "head_title": null,
+      "href": [
         {
-          "children": [
-            {
-              "text": "Plone is a powerful content management system built on a rock-solid application stack written in the "
-            },
-            {
-              "children": [
-                {
-                  "text": "Python"
-                }
-              ],
-              "type": "em"
-            },
-            {
-              "text": " and "
-            },
-            {
-              "children": [
-                {
-                  "text": "JavaScript"
-                }
-              ],
-              "type": "em"
-            },
-            {
-              "text": " programming languages."
-            }
-          ],
-          "type": "p"
+          "@id": "resolveuid/3a99320001f84752b94ecf5786a05ecd",
+          "@type": "Document",
+          "Description": "Test no robots captcha",
+          "Title": "No Robots",
+          "description": "Test no robots captcha",
+          "effective": "2026-06-15T17:49:00+00:00",
+          "end": null,
+          "getObjSize": "0 KB",
+          "getRemoteUrl": null,
+          "hasPreviewImage": null,
+          "head_title": null,
+          "image_field": "",
+          "mime_type": "text/plain",
+          "nav_title": null,
+          "review_state": "published",
+          "start": null,
+          "title": "No Robots",
+          "type_title": "Page"
         }
-      ]
+      ],
+      "overwrite": false,
+      "styles": {
+        "align": "left"
+      },
+      "title": "No Robots"
+    },
+    "26bdf01a-3482-4747-a25f-685c6bb375db": {
+      "@type": "teaser",
+      "description": "Test honeypot captcha",
+      "head_title": null,
+      "href": [
+        {
+          "@id": "resolveuid/756393fb0a7444daac4ed7198120014d",
+          "@type": "Document",
+          "Description": "Test honeypot captcha",
+          "Title": "Honeypot",
+          "description": "Test honeypot captcha",
+          "effective": "2026-06-15T17:49:00+00:00",
+          "end": null,
+          "getObjSize": "0 KB",
+          "getRemoteUrl": null,
+          "hasPreviewImage": null,
+          "head_title": null,
+          "image_field": "",
+          "mime_type": "text/plain",
+          "nav_title": null,
+          "review_state": "published",
+          "start": null,
+          "title": "Honeypot",
+          "type_title": "Page"
+        }
+      ],
+      "overwrite": false,
+      "styles": {
+        "align": "left"
+      },
+      "title": "Honeypot"
     },
     "5f31e9e4-173f-4ec1-ab48-64e9e2789b76": {
       "@type": "title"
     },
-    "68357972-bd25-47e2-a098-c7932a923182": {
-      "@type": "image",
-      "alt": "Plone Foundation Logo",
+    "607b37ea-67ae-4146-95dc-bbe5c96976a1": {
+      "@type": "teaser",
+      "description": "Test reCaptcha captcha",
+      "head_title": null,
       "href": [
         {
-          "@id": "https://plone.org/foundation",
-          "title": "plone.org/foundation"
+          "@id": "resolveuid/0c0baf3e27f74d589748ba78f45c48f1",
+          "@type": "Document",
+          "Description": "Test reCaptcha captcha",
+          "Title": "reCaptcha",
+          "hasPreviewImage": null,
+          "head_title": null,
+          "image_field": "",
+          "title": "reCaptcha"
         }
       ],
-      "image_field": "image",
-      "url": "resolveuid/a58ccead718140c1baa98d43595fc3e6"
+      "overwrite": false,
+      "styles": {
+        "align": "left"
+      },
+      "title": "reCaptcha"
     },
-    "ae41d44d-c4b1-426c-acf6-2e28cb9a97a0": {
+    "b697aa5e-fc55-4fa7-a6da-781bcc997ef5": {
+      "@type": "teaser",
+      "description": "Test hCaptcha captcha",
+      "head_title": null,
+      "href": [
+        {
+          "@id": "resolveuid/a3b34f1ba7a0497ab14f15de1f46b711",
+          "@type": "Document",
+          "Description": "Test hCaptcha captcha",
+          "Title": "hCaptcha",
+          "hasPreviewImage": null,
+          "head_title": null,
+          "image_field": "",
+          "title": "hCaptcha"
+        }
+      ],
+      "overwrite": false,
+      "styles": {
+        "align": "left"
+      },
+      "title": "hCaptcha"
+    },
+    "bac4c41d-490c-42e7-8ea8-8774d1efc88e": {
       "@type": "slate",
-      "plaintext": "Find out more about Plone",
+      "plaintext": "Captcha Support",
       "value": [
         {
           "children": [
             {
-              "text": "Find out more about Plone"
+              "text": "Captcha Support"
             }
           ],
           "type": "h3"
         }
       ]
     },
-    "d9707a27-2565-4d7d-9daa-6c61d60ce8fd": {
-      "@type": "slate",
-      "plaintext": " The features of Plone   Plone Documentation   Plone Training   Plone Community Forum   Add-ons for Plone (backend)   Add-ons for Volto (frontend) ",
-      "value": [
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "text": ""
-                },
-                {
-                  "children": [
-                    {
-                      "text": "The features of Plone"
-                    }
-                  ],
-                  "data": {
-                    "url": "https://plone.org/why-plone/features"
-                  },
-                  "type": "link"
-                },
-                {
-                  "text": ""
-                }
-              ],
-              "type": "li"
-            },
-            {
-              "children": [
-                {
-                  "text": ""
-                },
-                {
-                  "children": [
-                    {
-                      "text": "Plone Documentation"
-                    }
-                  ],
-                  "data": {
-                    "url": "https://docs.plone.org/"
-                  },
-                  "type": "link"
-                },
-                {
-                  "text": ""
-                }
-              ],
-              "type": "li"
-            },
-            {
-              "children": [
-                {
-                  "text": ""
-                },
-                {
-                  "children": [
-                    {
-                      "text": "Plone Training"
-                    }
-                  ],
-                  "data": {
-                    "url": "https://training.plone.org/"
-                  },
-                  "type": "link"
-                },
-                {
-                  "text": ""
-                }
-              ],
-              "type": "li"
-            },
-            {
-              "children": [
-                {
-                  "text": ""
-                },
-                {
-                  "children": [
-                    {
-                      "text": "Plone Community Forum"
-                    }
-                  ],
-                  "data": {
-                    "url": "https://community.plone.org/"
-                  },
-                  "type": "link"
-                },
-                {
-                  "text": ""
-                }
-              ],
-              "type": "li"
-            },
-            {
-              "children": [
-                {
-                  "text": ""
-                },
-                {
-                  "children": [
-                    {
-                      "text": "Add-ons for Plone (backend)"
-                    }
-                  ],
-                  "data": {
-                    "url": "https://github.com/collective/awesome-plone#readme"
-                  },
-                  "type": "link"
-                },
-                {
-                  "text": ""
-                }
-              ],
-              "type": "li"
-            },
-            {
-              "children": [
-                {
-                  "text": ""
-                },
-                {
-                  "children": [
-                    {
-                      "text": "Add-ons for Volto (frontend)"
-                    }
-                  ],
-                  "data": {
-                    "url": "https://github.com/collective/awesome-volto#readme"
-                  },
-                  "type": "link"
-                },
-                {
-                  "text": ""
-                }
-              ],
-              "type": "li"
-            }
-          ],
-          "type": "ul"
-        }
-      ]
-    },
     "e5ace182-3746-472c-ad81-696425a2b161": {
       "@type": "slate",
-      "plaintext": "Welcome to your new Plone site!",
+      "plaintext": "Plone support for JSON schema based block forms for Volto",
       "value": [
         {
           "children": [
             {
-              "text": "Welcome to your new Plone site!"
+              "text": "Plone support for JSON schema based block forms for Volto"
             }
           ],
           "type": "h2"
@@ -231,10 +148,11 @@
     "items": [
       "5f31e9e4-173f-4ec1-ab48-64e9e2789b76",
       "e5ace182-3746-472c-ad81-696425a2b161",
-      "ae41d44d-c4b1-426c-acf6-2e28cb9a97a0",
-      "47c92ffe-c201-493c-97c9-a2d4e0beab69",
-      "d9707a27-2565-4d7d-9daa-6c61d60ce8fd",
-      "68357972-bd25-47e2-a098-c7932a923182"
+      "bac4c41d-490c-42e7-8ea8-8774d1efc88e",
+      "26bdf01a-3482-4747-a25f-685c6bb375db",
+      "0e7ae8c9-e5d9-4700-83da-40802728f495",
+      "b697aa5e-fc55-4fa7-a6da-781bcc997ef5",
+      "607b37ea-67ae-4146-95dc-bbe5c96976a1"
     ]
   },
   "contributors": [],
@@ -243,25 +161,24 @@
   ],
   "description": "",
   "effective": null,
-  "exclude_from_nav": false,
   "expires": null,
   "exportimport.constrains": {},
   "exportimport.conversation": [],
-  "exportimport.versions": {},
   "id": "Plone",
   "is_folderish": true,
-  "items_total": 0,
+  "items_total": 1,
   "language": "##DEFAULT##",
+  "layout": "document_view",
   "lock": {
     "locked": false,
     "stealable": true
   },
-  "parent": {},
   "review_state": null,
   "rights": "",
   "subjects": [],
-  "table_of_contents": null,
-  "title": "Project Title",
+  "title": "Plone Form Block",
   "type_title": "Plone Site",
-  "workflow_history": {}
+  "workflow_history": {},
+  "working_copy": null,
+  "working_copy_of": null
 }

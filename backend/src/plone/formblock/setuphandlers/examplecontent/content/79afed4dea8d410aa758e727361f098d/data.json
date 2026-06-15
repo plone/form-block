@@ -1,0 +1,196 @@
+{
+  "@id": "/captchas",
+  "@type": "Document",
+  "UID": "79afed4dea8d410aa758e727361f098d",
+  "allow_discussion": null,
+  "blocks": {
+    "37e04839-b3cb-41f1-8088-e050059a4e27": {
+      "@type": "slate"
+    },
+    "3efa7b29-e112-42cd-8d5b-529b14862a78": {
+      "@type": "teaser",
+      "description": "Test no robots captcha",
+      "head_title": null,
+      "href": [
+        {
+          "@id": "../resolveuid/3a99320001f84752b94ecf5786a05ecd",
+          "@type": "Document",
+          "Description": "Test no robots captcha",
+          "Title": "No Robots",
+          "description": "Test no robots captcha",
+          "effective": "2026-06-15T17:49:00+00:00",
+          "end": null,
+          "getObjSize": "0 KB",
+          "getRemoteUrl": null,
+          "hasPreviewImage": null,
+          "head_title": null,
+          "image_field": "",
+          "mime_type": "text/plain",
+          "nav_title": null,
+          "review_state": "published",
+          "start": null,
+          "title": "No Robots",
+          "type_title": "Page"
+        }
+      ],
+      "overwrite": false,
+      "styles": {
+        "align": "left"
+      },
+      "title": "No Robots"
+    },
+    "4155b53e-563a-4214-9b07-c1a1bdceb889": {
+      "@type": "teaser",
+      "description": "Test no robots captcha",
+      "head_title": null,
+      "href": [
+        {
+          "@id": "../resolveuid/0c0baf3e27f74d589748ba78f45c48f1",
+          "@type": "Document",
+          "Description": "Test no robots captcha",
+          "Title": "reCaptcha",
+          "hasPreviewImage": null,
+          "head_title": null,
+          "image_field": "",
+          "title": "reCaptcha"
+        }
+      ],
+      "overwrite": false,
+      "styles": {
+        "align": "left"
+      },
+      "title": "reCaptcha"
+    },
+    "4e64b86d-5b90-4278-a341-e310ab1e68bb": {
+      "@type": "teaser",
+      "description": "Test hCaptcha captcha",
+      "head_title": null,
+      "href": [
+        {
+          "@id": "../resolveuid/a3b34f1ba7a0497ab14f15de1f46b711",
+          "@type": "Document",
+          "Description": "Test no robots captcha",
+          "Title": "hCaptcha",
+          "description": "Test hCaptcha captcha",
+          "effective": "2026-06-15T17:49:00+00:00",
+          "end": null,
+          "getObjSize": "0 KB",
+          "getRemoteUrl": null,
+          "hasPreviewImage": null,
+          "head_title": null,
+          "image_field": "",
+          "mime_type": "text/plain",
+          "nav_title": null,
+          "review_state": "published",
+          "start": null,
+          "title": "hCaptcha",
+          "type_title": "Page"
+        }
+      ],
+      "overwrite": false,
+      "styles": {
+        "align": "left"
+      },
+      "title": "hCaptcha"
+    },
+    "4ec7425a-9911-444e-b0f5-7c54701b7a3b": {
+      "@type": "title"
+    },
+    "a7dd8f17-af33-4aa5-bff7-baf9f02ef34b": {
+      "@type": "description"
+    },
+    "b47744ae-9c37-43b1-8708-1838a3338ec7": {
+      "@type": "teaser",
+      "description": "Test honeypot captcha",
+      "head_title": "Captcha",
+      "href": [
+        {
+          "@id": "../resolveuid/756393fb0a7444daac4ed7198120014d",
+          "@type": "Document",
+          "Description": "Test honeypot captcha",
+          "Title": "Honeypot",
+          "description": "Test honeypot captcha",
+          "effective": "2026-06-15T17:49:00+00:00",
+          "end": null,
+          "getObjSize": "0 KB",
+          "getRemoteUrl": null,
+          "hasPreviewImage": null,
+          "head_title": null,
+          "image_field": "",
+          "mime_type": "text/plain",
+          "nav_title": null,
+          "review_state": "published",
+          "start": null,
+          "title": "Honeypot",
+          "type_title": "Page"
+        }
+      ],
+      "overwrite": true,
+      "styles": {
+        "align": "left"
+      },
+      "title": "Honeypot"
+    }
+  },
+  "blocks_layout": {
+    "items": [
+      "4ec7425a-9911-444e-b0f5-7c54701b7a3b",
+      "a7dd8f17-af33-4aa5-bff7-baf9f02ef34b",
+      "b47744ae-9c37-43b1-8708-1838a3338ec7",
+      "3efa7b29-e112-42cd-8d5b-529b14862a78",
+      "4e64b86d-5b90-4278-a341-e310ab1e68bb",
+      "4155b53e-563a-4214-9b07-c1a1bdceb889",
+      "37e04839-b3cb-41f1-8088-e050059a4e27"
+    ]
+  },
+  "changeNote": "",
+  "contributors": [],
+  "created": "2026-06-15T17:48:20+00:00",
+  "creators": [
+    "admin"
+  ],
+  "description": "Example of captchas usage",
+  "effective": "2026-06-15T17:49:00+00:00",
+  "exclude_from_nav": false,
+  "expires": null,
+  "exportimport.constrains": {},
+  "exportimport.conversation": [],
+  "id": "captchas",
+  "is_folderish": true,
+  "language": "##DEFAULT##",
+  "layout": "document_view",
+  "lock": {
+    "locked": false,
+    "stealable": true
+  },
+  "modified": "2026-06-15T19:00:34+00:00",
+  "nav_title": null,
+  "preview_caption_link": null,
+  "review_state": "published",
+  "rights": "",
+  "subjects": [],
+  "title": "Captchas",
+  "type_title": "Page",
+  "version": "current",
+  "versioning_enabled": true,
+  "workflow_history": {
+    "simple_publication_workflow": [
+      {
+        "action": null,
+        "actor": "admin",
+        "comments": "",
+        "review_state": "private",
+        "time": "2026-06-15T17:48:20+00:00"
+      },
+      {
+        "action": "publish",
+        "actor": "admin",
+        "comments": "",
+        "review_state": "published",
+        "time": "2026-06-15T17:49:37+00:00"
+      }
+    ]
+  },
+  "working_copy": null,
+  "working_copy_of": null
+}

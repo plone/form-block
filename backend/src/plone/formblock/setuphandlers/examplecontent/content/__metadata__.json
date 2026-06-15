@@ -1,23 +1,104 @@
 {
   "__version__": "1.0.0",
-  "_blob_files_": [
-    "a58ccead718140c1baa98d43595fc3e6/image/plone-foundation.png"
-  ],
+  "_blob_files_": [],
   "_data_files_": [
     "plone_site_root/data.json",
-    "a720393b3c0240e5bd27c43fcd2cfd1e/data.json",
-    "a58ccead718140c1baa98d43595fc3e6/data.json"
+    "79afed4dea8d410aa758e727361f098d/data.json",
+    "a3b34f1ba7a0497ab14f15de1f46b711/data.json",
+    "756393fb0a7444daac4ed7198120014d/data.json",
+    "3a99320001f84752b94ecf5786a05ecd/data.json",
+    "0c0baf3e27f74d589748ba78f45c48f1/data.json"
   ],
   "default_page": {},
+  "local_permissions": {
+    "0c0baf3e27f74d589748ba78f45c48f1": {},
+    "3a99320001f84752b94ecf5786a05ecd": {},
+    "756393fb0a7444daac4ed7198120014d": {},
+    "79afed4dea8d410aa758e727361f098d": {},
+    "a3b34f1ba7a0497ab14f15de1f46b711": {},
+    "plone_site_root": {
+      "Add portal member": {
+        "acquire": false,
+        "roles": [
+          "Manager",
+          "Site Administrator",
+          "Owner"
+        ]
+      },
+      "Content rules: Manage rules": {
+        "acquire": false,
+        "roles": [
+          "Manager",
+          "Site Administrator"
+        ]
+      },
+      "Set own password": {
+        "acquire": false,
+        "roles": [
+          "Authenticated",
+          "Manager",
+          "Site Administrator"
+        ]
+      },
+      "Set own properties": {
+        "acquire": false,
+        "roles": [
+          "Authenticated",
+          "Manager",
+          "Site Administrator"
+        ]
+      },
+      "Show Toolbar": {
+        "acquire": false,
+        "roles": [
+          "Authenticated"
+        ]
+      },
+      "plone.resource: Export ZIP file": {
+        "acquire": false,
+        "roles": [
+          "Manager"
+        ]
+      },
+      "plone.resourceeditor: Manage Sources": {
+        "acquire": false,
+        "roles": [
+          "Manager",
+          "Site Administrator"
+        ]
+      }
+    }
+  },
   "local_roles": {
-    "a58ccead718140c1baa98d43595fc3e6": {
+    "0c0baf3e27f74d589748ba78f45c48f1": {
       "local_roles": {
         "admin": [
           "Owner"
         ]
       }
     },
-    "a720393b3c0240e5bd27c43fcd2cfd1e": {
+    "3a99320001f84752b94ecf5786a05ecd": {
+      "local_roles": {
+        "admin": [
+          "Owner"
+        ]
+      }
+    },
+    "756393fb0a7444daac4ed7198120014d": {
+      "local_roles": {
+        "admin": [
+          "Owner"
+        ]
+      }
+    },
+    "79afed4dea8d410aa758e727361f098d": {
+      "local_roles": {
+        "admin": [
+          "Owner"
+        ]
+      }
+    },
+    "a3b34f1ba7a0497ab14f15de1f46b711": {
       "local_roles": {
         "admin": [
           "Owner"
@@ -33,8 +114,11 @@
     }
   },
   "ordering": {
-    "a58ccead718140c1baa98d43595fc3e6": 0,
-    "a720393b3c0240e5bd27c43fcd2cfd1e": 42
+    "0c0baf3e27f74d589748ba78f45c48f1": 3,
+    "3a99320001f84752b94ecf5786a05ecd": 1,
+    "756393fb0a7444daac4ed7198120014d": 0,
+    "79afed4dea8d410aa758e727361f098d": 41,
+    "a3b34f1ba7a0497ab14f15de1f46b711": 2
   },
   "relations": []
 }
