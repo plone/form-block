@@ -67,7 +67,6 @@ class NoRobotsSupport(CaptchaSupport):
         )
         id_ = captcha_props.get("id")
         id_check = captcha_props.get("id_check")
-
         if not view.verify(input=value, question_id=id_, id_check=id_check):
             raise BadRequest(
                 translate(

@@ -30,7 +30,9 @@ class TestCaptcha:
             },
             commit=True,
         )
-        mock_submit.assert_called_once_with("12345", "private", "127.0.0.1")
+        mock_submit.assert_called_once_with(
+            "12345", "private", "127.0.0.1", verify_server="www.recaptcha.net"
+        )
         assert response.status_code == 400
         res = response.json()
         assert (
@@ -49,5 +51,7 @@ class TestCaptcha:
             },
             commit=True,
         )
-        mock_submit.assert_called_once_with("12345", "private", "127.0.0.1")
+        mock_submit.assert_called_once_with(
+            "12345", "private", "127.0.0.1", verify_server="www.recaptcha.net"
+        )
         assert response.status_code == 200
