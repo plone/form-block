@@ -1,0 +1,1 @@
+Refactored `EmailFormProcessor`, extracting reusable e-mail helpers (`create_message`, `is_mailhost_configured`, `substitute_variables`) and splitting the admin and confirmation message building. @ericof
