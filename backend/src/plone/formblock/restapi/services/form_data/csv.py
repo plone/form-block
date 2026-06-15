@@ -22,7 +22,7 @@ class FormDataExportGet(BaseService):
             return
         for _id, block in blocks.items():
             block_type = block.get("@type", "")
-            if block_type == "form":
+            if block_type == "schemaForm":
                 self.form_block = block
 
         if self.form_block:
