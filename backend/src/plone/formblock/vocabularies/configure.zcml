@@ -1,0 +1,13 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <utility
+      name="plone.formblock.captcha.providers"
+      component=".captchas.captcha_providers_vocabulary_factory"
+      />
+
+  <utility
+      name="plone.formblock.mail.templates"
+      component=".templates.mail_templates_vocabulary_factory"
+      />
+
+</configure>
