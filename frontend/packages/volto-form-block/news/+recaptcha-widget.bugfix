@@ -1,0 +1,1 @@
+Fix the Google reCAPTCHA v3 widget to mint a fresh token on submit (instead of pinning the initial, undefined one) and load the script from `recaptcha.net`. @ericof

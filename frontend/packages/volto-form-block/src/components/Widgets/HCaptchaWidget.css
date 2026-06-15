@@ -1,0 +1,6 @@
+.hCaptchaWidget {
+  padding: 0.5em;
+}
+.hCaptchaWidget .four.wide.column .wrapper {
+  border-bottom: unset !important;
+}

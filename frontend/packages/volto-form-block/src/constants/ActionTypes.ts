@@ -1,0 +1,6 @@
+export const SUBMIT_FORM_ACTION = 'SUBMIT_FORM_ACTION';
+export const EXPORT_CSV_FORMDATA = 'EXPORT_CSV_FORMDATA';
+export const GET_FORM_DATA = 'GET_FORMDATA';
+export const CLEAR_FORM_DATA = 'CLEAR_FORM_DATA';
+export const SEND_OTP = 'SEND_OTP';
+export const RESET_OTP = 'RESET_OTP';
