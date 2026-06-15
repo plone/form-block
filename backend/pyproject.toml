@@ -62,6 +62,7 @@ test = [
     "plone.formwidget.hcaptcha",
     "plone.formwidget.recaptcha",
     "plone.restapi[test]",
+    "Products.PrintingMailHost",
     "pytest",
     "pytest-cov",
     "pytest-plone>=1.0.0",
