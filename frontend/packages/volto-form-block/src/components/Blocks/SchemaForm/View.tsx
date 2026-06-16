@@ -25,7 +25,7 @@ import {
   isUndefined,
   fromPairs,
 } from 'lodash';
-import { Grid, Message } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import config from '@plone/volto/registry';
 import { renderToString } from 'react-dom/server';
 import { stripRequiredProperty } from '@plone/volto-form-block/helpers/schema';
