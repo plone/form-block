@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-06-12 21:55+0000\n"
+"POT-Creation-Date: 2026-06-16 00:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,11 +34,11 @@ msgstr ""
 msgid "Form Block (uninstall)"
 msgstr ""
 
-#: plone/formblock/captcha/recaptcha.py:12
+#: plone/formblock/captcha/recaptcha.py:11
 msgid "Google ReCaptcha"
 msgstr "Google ReCaptcha"
 
-#: plone/formblock/captcha/hcaptcha.py:12
+#: plone/formblock/captcha/hcaptcha.py:10
 msgid "HCaptcha"
 msgstr "HCaptcha"
 
@@ -54,13 +54,13 @@ msgstr ""
 msgid "Installs the plone.formblock add-on."
 msgstr ""
 
-#: plone/formblock/processors/email.py:197
+#: plone/formblock/processors/email.py:141
 msgid "No"
 msgstr "Nein"
 
-#: plone/formblock/captcha/hcaptcha.py:46
+#: plone/formblock/captcha/hcaptcha.py:47
 #: plone/formblock/captcha/norobots.py:50
-#: plone/formblock/captcha/recaptcha.py:47
+#: plone/formblock/captcha/recaptcha.py:61
 msgid "No captcha token provided."
 msgstr "Kein Captcha-Token angegeben."
 
@@ -77,8 +77,8 @@ msgid "Simple Transactional Email"
 msgstr ""
 
 #: plone/formblock/captcha/hcaptcha.py:55
-#: plone/formblock/captcha/norobots.py:74
-#: plone/formblock/captcha/recaptcha.py:57
+#: plone/formblock/captcha/norobots.py:73
+#: plone/formblock/captcha/recaptcha.py:75
 msgid "The code you entered was wrong, please enter the new one."
 msgstr "Der eingegebene Code war falsch. Bitte geben Sie den neuen Code ein."
 
@@ -106,7 +106,7 @@ msgstr ""
 msgid "Uninstalls the plone.formblock add-on."
 msgstr ""
 
-#: plone/formblock/processors/email.py:192
+#: plone/formblock/processors/email.py:136
 msgid "Yes"
 msgstr "Ja"
 
@@ -115,23 +115,23 @@ msgid "Your code to validate the email address:"
 msgstr ""
 
 #. Default: "Attachments too big. You uploaded ${uploaded_str}, but limit is ${max} MB. Try to compress files."
-#: plone/formblock/restapi/services/submit_form/post.py:142
+#: plone/formblock/restapi/services/submit_form/post.py:145
 msgid "attachments_too_big"
 msgstr "Anhang ist zu groß (${uploaded_str}). Die Größe darf ${max} MB nicht überschreiten. Versuchen Sie Dateien zu komprimieren."
 
 #. Default: "Block with @type \"schemaForm\" and id \"$block\" not found in this context: $context"
-#: plone/formblock/restapi/services/submit_form/post.py:82
+#: plone/formblock/restapi/services/submit_form/post.py:83
 #, fuzzy
 msgid "block_form_not_found_label"
 msgstr "Kein Formular-Block mit der ID \"$block\" in diesem Kontext gefunden: $context"
 
 #. Default: "Empty form data."
-#: plone/formblock/restapi/services/submit_form/post.py:96
+#: plone/formblock/restapi/services/submit_form/post.py:97
 msgid "empty_form_data"
 msgstr "Leere Formulardaten."
 
 #. Default: "Unable to process form. Please retry later or contact site administrator."
-#: plone/formblock/restapi/services/submit_form/post.py:44
+#: plone/formblock/restapi/services/submit_form/post.py:45
 msgid "form_action_exception"
 msgstr "Formular kann aktuell nicht bearbeitet werden. Bitte versuchen sie es später."
 
@@ -141,11 +141,11 @@ msgid "honeypot_error"
 msgstr "Formular konnte nicht abgeschickt werden."
 
 #. Default: "Invalid form data."
-#: plone/formblock/restapi/services/submit_form/post.py:58
+#: plone/formblock/restapi/services/submit_form/post.py:59
 msgid "invalid_form_data"
 msgstr "Formulardaten können nicht verarbeitet werden."
 
 #. Default: "Missing block_id"
-#: plone/formblock/restapi/services/submit_form/post.py:75
+#: plone/formblock/restapi/services/submit_form/post.py:76
 msgid "missing_blockid_label"
 msgstr "Fehlende block_id"
