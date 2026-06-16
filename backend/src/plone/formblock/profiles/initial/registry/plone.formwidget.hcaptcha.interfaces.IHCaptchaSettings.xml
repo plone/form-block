@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <registry>
   <records interface="plone.formwidget.hcaptcha.interfaces.IHCaptchaSettings">
-    <value key="public_key"></value>
-    <value key="private_key"></value>
+    <value key="public_key" />
+    <value key="private_key" />
     <value key="display_theme">light</value>
     <value key="display_type">image</value>
     <value key="display_size">normal</value>
