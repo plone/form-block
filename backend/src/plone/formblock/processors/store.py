@@ -14,14 +14,14 @@ class StoreFormProcessor:
 
     order = 2
 
-    def __init__(self, context):
+    def __init__(self, context: FormSubmissionContext):
         self.context = context.context
         self.request = context.request
         self.block = context.block
         self.form_data = context.form_data
         self.records = context.get_records()
 
-    def __call__(self):
+    def __call__(self) -> None:
         if not self.block.get("store"):
             return
 
