@@ -12,29 +12,29 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. Default: "Admin email"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Admin email"
 msgstr "Administration E-Mail"
 
 #. Default: "Blind copy"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Blind copy"
 msgstr "Blind Copy (BCC) E-Mail"
 
 #. Default: "Cancel"
-#: components/EditSchemaForm
-#: components/schema
-#: components/ViewSchemaForm
+#: components/Blocks/SchemaForm/Edit
+#: components/Blocks/SchemaForm/schema
+#: components/Blocks/SchemaForm/View
 msgid "Cancel"
 msgstr "Abbrechen"
 
 #. Default: "Cancel button label"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Cancel button label"
 msgstr "Beschriftung des Abbrechen-Buttons"
 
 #. Default: "Data wipe"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Data wipe"
 msgstr "Datenlöschung"
 
@@ -44,7 +44,7 @@ msgid "Delete"
 msgstr ""
 
 #. Default: "Description"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -54,22 +54,22 @@ msgid "Edit"
 msgstr ""
 
 #. Default: "Email footer"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Email footer"
 msgstr "E-Mail Footer"
 
 #. Default: "Email header"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Email header"
 msgstr "E-Mail Header"
 
 #. Default: "Error"
-#: components/ViewSchemaForm
+#: components/Blocks/SchemaForm/View
 msgid "Error"
 msgstr "Fehler"
 
 #. Default: "Form"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Form"
 msgstr "Formular"
 
@@ -79,129 +79,129 @@ msgid "HCaptchaInvisibleInfo"
 msgstr "Diese Website ist durch hCaptcha geschützt und es gelten die <a href=\"https://www.hcaptcha.com/privacy\">Datenschutzbestimmungen</a> und <a href=\"https://www.hcaptcha.com/terms\">Nutzungsbedingungen</a>."
 
 #. Default: "No"
-#: components/ViewSchemaForm
+#: components/Blocks/SchemaForm/View
 msgid "No"
 msgstr "Nein"
 
 #. Default: "Number of days after which, the data should be deleted. Enter -1 to store indefinitely."
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Number of days after which, the data should be deleted. Enter -1 to store indefinitely."
 msgstr "Anzahl der Tage, nach denen die Daten gelöscht werden sollen. Geben Sie -1 ein, um die Daten unbegrenzt zu speichern."
 
 #. Default: "Send email to admin"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Send email to admin"
 msgstr "E-Mail an Administration senden"
 
 #. Default: "Sender"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Sender"
 msgstr "Absender"
 
 #. Default: "Sender name"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Sender name"
 msgstr "Absender Name"
 
 #. Default: "Show cancel button"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Show cancel button"
 msgstr "Abbrechen-Button anzeigen"
 
 #. Default: "Store data"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Store data"
 msgstr "Daten speichern"
 
 #. Default: "Subject"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Subject"
 msgstr "Betreff"
 
 #. Default: "Submit"
-#: components/EditSchemaForm
-#: components/schema
-#: components/ViewSchemaForm
+#: components/Blocks/SchemaForm/Edit
+#: components/Blocks/SchemaForm/schema
+#: components/Blocks/SchemaForm/View
 msgid "Submit"
 msgstr "Senden"
 
 #. Default: "Submit button label"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Submit button label"
 msgstr "Beschriftung des Senden-Buttons"
 
 #. Default: "Text at the beginning of the email."
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Text at the beginning of the email."
 msgstr "Text am Anfang der E-Mail."
 
 #. Default: "Text at the end of the email."
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Text at the end of the email."
 msgstr "Text am Ende der E-Mail."
 
 #. Default: "The email address of the sender."
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "The email address of the sender"
 msgstr "Die E-Mail-Adresse des Absenders"
 
 #. Default: "The email addresses the submitted form data will be sent to as blind carbon copy. Multiple email addresses can be entered separated by a semicolon."
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "The email addresses the submitted form data will be sent to as blind carbon copy. Multiple email addresses can be entered separated by a semicolon."
 msgstr "Die übermittelten Formulardaten werden an die E-Mail-Adressen als Blindkopie gesendet. Mehrere E-Mail-Adressen können durch ein Semikolon getrennt eingegeben werden."
 
 #. Default: "The email addresses the submitted form data will be sent to. Multiple email addresses can be entered separated by a semicolon."
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "The email addresses the submitted form data will be sent to. Multiple email addresses can be entered separated by a semicolon."
 msgstr "Die E-Mail-Adressen, an die die übermittelten Formulardaten gesendet werden. Mehrere E-Mail-Adressen können durch ein Semikolon getrennt eingegeben werden."
 
 #. Default: "The name of the sender."
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "The name of the sender"
 msgstr "Der Name des Absenders"
 
 #. Default: "The subject used in the sent email."
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "The subject used in the sent email."
 msgstr "Der Betreff der gesendeten E-Mail."
 
 #. Default: "Title"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "Title"
 msgstr "Titel"
 
 #. Default: "When activated, the data will be stored for later use when the form is submitted"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "When activated, the data will be stored for later use when the form is submitted"
 msgstr "Bei Aktivierung werden die Daten für eine spätere Verwendung beim Absenden des Formulars gespeichert"
 
 #. Default: "Yes"
-#: components/ViewSchemaForm
+#: components/Blocks/SchemaForm/View
 msgid "Yes"
 msgstr "Ja"
 
 #. Default: "Your form could not be sent. Please reload the page and try again. The data you entered will be retained."
-#: components/ViewSchemaForm
+#: components/Blocks/SchemaForm/View
 msgid "Your form could not be sent. Please reload the page and try again. The data you entered will be retained."
 msgstr "Ihr Formular konnte nicht versendet werden. Bitte laden Sie die Seite neu und versuchen Sie es erneut. Ihre eingegebenen Daten bleiben erhalten."
 
 #. Default: "Your form could not be sent. Please try again later."
-#: components/ViewSchemaForm
+#: components/Blocks/SchemaForm/View
 msgid "Your form could not be sent. Please try again later."
 msgstr "Das Formular konnte nicht gesendet werden. Bitte versuchen Sie es später nochmal."
 
 #. Default: "Admin info"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "admin_info"
 msgstr "Administrations-Info"
 
 #. Default: "This field can be used to store additional information which should only be displayed in the email sent to the administration email (not for the user email)."
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "admin_info_description"
 msgstr "In diesem Feld können zusätzliche Informationen gespeichert werden, die nur in der E-Mail angezeigt werden sollen, die an die Administrations-E-Mail gesendet wird (nicht für die Benutzer-E-Mail)."
 
 #. Default: "Captcha provider"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "captcha"
 msgstr "Captcha-Anbieter"
 
@@ -216,27 +216,27 @@ msgid "choose_file"
 msgstr "Datei auswählen"
 
 #. Default: "Recipient"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "confirmation_recipients"
 msgstr "Empfänger"
 
 #. Default: "Send confirmation to the email entered in the following field"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "confirmation_recipients_description"
 msgstr "Bestätigung an in folgendem Feld eingetragene Adresse senden"
 
 #. Default: "Confirmation-Page"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "fieldset_confirmation"
 msgstr "Dankesseite"
 
 #. Default: "Mailing"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "fieldset_mailing"
 msgstr "E-Mail senden"
 
 #. Default: "Fixed attachment"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "fixed_attachment"
 msgstr "Fixer Anhang"
 
@@ -257,12 +257,12 @@ msgid "form_required"
 msgstr "Pflichtfeld"
 
 #. Default: "Forward user to"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "forward_user_to"
 msgstr "Weiterleiten nach"
 
 #. Default: "If a page is specified, the user will be directed there after submitting the form. The thank you message will not be displayed."
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "forward_user_to_description"
 msgstr "Falls eine Seite angegeben ist, wird der User nach dem Absenden des Formulares dort hin geleitet. Die Dankesnachricht wird nicht angezeigt."
 
@@ -272,7 +272,7 @@ msgid "hidden"
 msgstr "Versteckt"
 
 #. Default: "Mail template"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "mail_template"
 msgstr "Mail-Vorlage"
 
@@ -292,7 +292,7 @@ msgid "radio_group"
 msgstr "Radiogruppe"
 
 #. Default: "{field} is required to be checked."
-#: components/ViewSchemaForm
+#: components/Blocks/SchemaForm/View
 msgid "requiredCheckbox"
 msgstr "{field} muss aktiviert werden."
 
@@ -303,12 +303,12 @@ msgid "select"
 msgstr "Bitte wählen..."
 
 #. Default: "Send confirmation email"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "send_confirmation"
 msgstr "E-Mail an Nutzenden senden"
 
 #. Default: "When activated, an email will be sent to the admin recipients (see below) when a form is submitted"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "send_description"
 msgstr "Wenn diese Option aktiviert ist, wird eine E-Mail an die Administratorempfänger (siehe unten) gesendet, wenn ein Formular übermittelt wird"
 
@@ -318,12 +318,12 @@ msgid "static_text"
 msgstr "Statischer Text"
 
 #. Default: "Success message"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "success"
 msgstr "Erfolgsnachricht"
 
 #. Default: "Thank you! You have submitted the following data:"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "success_default"
 msgstr "Vielen Dank! Sie haben folgende Daten übermittelt:"
 
@@ -333,12 +333,12 @@ msgid "textarea"
 msgstr "Textbereichsfeld"
 
 #. Default: "Thank you message"
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "thankyou"
 msgstr "Dankesnachricht"
 
 #. Default: "A text with simple formatting can be entered. Also it is possible to use variables; ${field_id} can be used to display the value of a field inside the form. The ${formfields} variable lists all form fields in a tabular view."
-#: components/schema
+#: components/Blocks/SchemaForm/schema
 msgid "thankyou_description"
 msgstr "Ein Text mit einfacher Formatierung kann eingegeben werden. Außerdem ist es möglich, Variablen zu verwenden; ${field_id} kann verwendet werden, um den Wert eines Feldes im Formular anzuzeigen. Die Variable ${formfields} listet alle Formularfelder in einer tabellarischen Ansicht auf."
 

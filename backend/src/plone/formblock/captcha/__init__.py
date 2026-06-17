@@ -1,3 +1,4 @@
+from plone import api
 from plone.dexterity.content import DexterityContent
 from zope.publisher.http import HTTPRequest
 
@@ -28,3 +29,25 @@ class CaptchaSupport:
         if remote_addr == "::1":
             remote_addr = "127.0.0.1"
         return str(remote_addr)
+
+
+class ExternalCaptchaSupport(CaptchaSupport):
+    _registry_keys = ("public_key", "private_key")
+    interface: type
+    public_key: str = ""
+    private_key: str = ""
+
+    def _get_registry_settings(self):
+        for attr in self._registry_keys:
+            try:
+                value = api.portal.get_registry_record(
+                    interface=self.interface, name=attr
+                )
+            except KeyError:
+                value = ""
+            if value:
+                setattr(
+                    self,
+                    attr,
+                    value,
+                )

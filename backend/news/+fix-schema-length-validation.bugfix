@@ -1,0 +1,1 @@
+Cast `minLength` / `maxLength` to integers before validating submissions, so string-valued length constraints no longer break form validation. @ericof

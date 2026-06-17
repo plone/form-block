@@ -16,4 +16,8 @@ class TestBlockSerializationRecaptcha:
         response = anon_request.get(self.url)
         res = response.json()
         captcha_props = res["blocks"]["form-id"]["captcha_props"]
-        assert captcha_props == {"provider": "recaptcha", "public_key": "public"}
+        assert captcha_props == {
+            "provider": "recaptcha",
+            "public_key": "public",
+            "use_recaptcha_net": True,
+        }

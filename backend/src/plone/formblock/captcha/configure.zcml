@@ -48,14 +48,4 @@
       zcml:condition="installed collective.honeypot"
       />
 
-  <utility
-      name="plone.formblock.captcha.providers"
-      component=".vocabularies.captcha_providers_vocabulary_factory"
-      />
-
-  <utility
-      name="plone.formblock.mail.templates"
-      component=".vocabularies.mail_templates_vocabulary_factory"
-      />
-
 </configure>

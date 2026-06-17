@@ -1,0 +1,1 @@
+Rewrote the `volto-form-block` frontend in TypeScript (widgets, wrappers, blocks, actions, reducers, helpers and configuration). @ericof

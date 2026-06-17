@@ -1,0 +1,232 @@
+{
+  "@id": "/captchas/captcha-recaptcha",
+  "@type": "Document",
+  "UID": "0c0baf3e27f74d589748ba78f45c48f1",
+  "allow_discussion": null,
+  "blocks": {
+    "0dd828ad-01d0-4a99-a811-9e187ccac848": {
+      "@type": "schemaForm",
+      "bcc": "another@plone.org",
+      "cancel_label": "Cancel",
+      "captcha": "recaptcha",
+      "captcha_props": {
+        "id": "question1",
+        "id_check": "74f27522c5861d4a57486b79d834f3f9",
+        "provider": "norobots-captcha",
+        "title": "What is 10 + 4 ?"
+      },
+      "confirmation_recipients": "${email}",
+      "data_wipe": -1,
+      "description": "We want to know more about you",
+      "mail_footer": {
+        "data": "<p>Howdy!</p>"
+      },
+      "mail_header": {
+        "data": "<p>Someone filled the form</p>"
+      },
+      "recipients": "noreply@plone.org",
+      "schema": {
+        "fieldsets": [
+          {
+            "fields": [
+              "name",
+              "email",
+              "country",
+              "interests",
+              "message",
+              "captchaWidget"
+            ],
+            "id": "default",
+            "title": "Default"
+          }
+        ],
+        "properties": {
+          "captchaToken": {},
+          "captchaWidget": {
+            "captcha_props": {
+              "id": "question1",
+              "id_check": "74f27522c5861d4a57486b79d834f3f9",
+              "provider": "norobots-captcha",
+              "public_key": "",
+              "title": "What is 10 + 4 ?"
+            },
+            "title": "norobots-captcha",
+            "widget": "norobots-captcha"
+          },
+          "country": {
+            "choices": [
+              [
+                "Brazil",
+                "Brazil"
+              ],
+              [
+                "Spain",
+                "Spain"
+              ],
+              [
+                "Germany",
+                "Germany"
+              ]
+            ],
+            "default": "Brazil",
+            "factory": "label_choice_field",
+            "id": "country",
+            "title": "Where do you live?",
+            "type": "string",
+            "values": [
+              "Brazil",
+              "Spain",
+              "Germany"
+            ]
+          },
+          "email": {
+            "description": "Your e-mail",
+            "factory": "label_email",
+            "id": "email",
+            "title": "E-mail",
+            "type": "string",
+            "widget": "email"
+          },
+          "interests": {
+            "choices": [
+              [
+                "Plone",
+                "Plone"
+              ],
+              [
+                "Python",
+                "Python"
+              ],
+              [
+                "React",
+                "React"
+              ],
+              [
+                "Star Trek",
+                "Star Trek"
+              ],
+              [
+                "World Cup",
+                "World Cup"
+              ]
+            ],
+            "description": "Select some topics you want to know more",
+            "factory": "checkbox_group",
+            "id": "interests",
+            "title": "Your Interests",
+            "type": "array",
+            "values": [
+              "Plone",
+              "Python",
+              "React",
+              "Star Trek",
+              "World Cup"
+            ],
+            "widget": "checkbox_group"
+          },
+          "message": {
+            "description": "Please, let us know a bit more about you",
+            "factory": "textarea",
+            "id": "message",
+            "minLength": "50",
+            "title": "Additional information",
+            "type": "string",
+            "widget": "textarea"
+          },
+          "name": {
+            "description": "Please, tell us your name",
+            "factory": {
+              "label": "Text",
+              "value": "label_text_field"
+            },
+            "id": "name",
+            "placeholder": "John Smith",
+            "title": "Your name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "country",
+          "interests",
+          "message"
+        ]
+      },
+      "send": true,
+      "send_confirmation": true,
+      "sender": "noreply@plone.org",
+      "sender_name": "Our amazing site",
+      "show_cancel": false,
+      "store": true,
+      "subject": "A new message from the site",
+      "submit_label": "Submit",
+      "success": "Thank you! You have submitted the following data:",
+      "thankyou": "Those were your answers:\n${formfields}",
+      "title": "Contact us"
+    },
+    "d3e7f055-f1e4-433d-9628-83910810acee": {
+      "@type": "description"
+    },
+    "f5283db5-fed3-4ad6-9184-300b3feb7f21": {
+      "@type": "title"
+    }
+  },
+  "blocks_layout": {
+    "items": [
+      "f5283db5-fed3-4ad6-9184-300b3feb7f21",
+      "d3e7f055-f1e4-433d-9628-83910810acee",
+      "0dd828ad-01d0-4a99-a811-9e187ccac848"
+    ]
+  },
+  "changeNote": "",
+  "contributors": [],
+  "created": "2026-06-15T17:46:51+00:00",
+  "creators": [
+    "admin"
+  ],
+  "description": "Test reCaptcha captcha",
+  "effective": "2026-06-15T17:49:00+00:00",
+  "exclude_from_nav": false,
+  "expires": null,
+  "exportimport.constrains": {},
+  "exportimport.conversation": [],
+  "id": "captcha-recaptcha",
+  "is_folderish": true,
+  "language": "##DEFAULT##",
+  "layout": "document_view",
+  "lock": {
+    "locked": false,
+    "stealable": true
+  },
+  "modified": "2026-06-15T19:00:50+00:00",
+  "nav_title": null,
+  "preview_caption_link": null,
+  "review_state": "published",
+  "rights": "",
+  "subjects": [],
+  "title": "reCaptcha",
+  "type_title": "Page",
+  "version": "current",
+  "versioning_enabled": true,
+  "workflow_history": {
+    "simple_publication_workflow": [
+      {
+        "action": null,
+        "actor": "admin",
+        "comments": "",
+        "review_state": "private",
+        "time": "2026-06-15T18:57:57+00:00"
+      },
+      {
+        "action": "publish",
+        "actor": "admin",
+        "comments": "",
+        "review_state": "published",
+        "time": "2026-06-15T18:58:40+00:00"
+      }
+    ]
+  },
+  "working_copy": null,
+  "working_copy_of": null
+}

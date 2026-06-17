@@ -1,37 +1,38 @@
-from . import CaptchaSupport
+from . import ExternalCaptchaSupport
 from plone.formblock import _
 from plone.formwidget.hcaptcha.interfaces import IHCaptchaSettings
 from plone.formwidget.hcaptcha.nohcaptcha import submit
-from plone.registry.interfaces import IRegistry
 from zExceptions import BadRequest
-from zope.component import queryUtility
 from zope.i18n import translate
 
 
-class HCaptchaSupport(CaptchaSupport):
+class HCaptchaSupport(ExternalCaptchaSupport):
     name = _("HCaptcha")
+    interface = IHCaptchaSettings
+    _registry_keys = ("public_key", "private_key")
+    public_key: str = ""
+    private_key: str = ""
 
     def __init__(self, context, request):
         super().__init__(context, request)
-        registry = queryUtility(IRegistry)
-        self.settings = registry.forInterface(IHCaptchaSettings, check=False)
+        self._get_registry_settings()
 
     def isEnabled(self) -> bool:
-        return self.settings and self.settings.public_key and self.settings.private_key
+        return bool(self.public_key and self.private_key)
 
     def serialize(self):
-        if not self.settings.public_key:
+        if not self.public_key:
             raise ValueError(
                 "No hcaptcha public key configured. Go to "
                 "path/to/site/@@hcaptcha-settings to configure."
             )
         return {
             "provider": "hcaptcha",
-            "public_key": self.settings.public_key,
+            "public_key": self.public_key,
         }
 
     def verify(self, form_data: dict | None = None):
-        if not self.settings.private_key:
+        if not self.private_key:
             raise ValueError(
                 "No hcaptcha private key configured. Go to "
                 "path/to/site/@@hcaptcha-settings to configure."
@@ -47,8 +48,7 @@ class HCaptchaSupport(CaptchaSupport):
                     context=self.request,
                 )
             )
-        remote_addr = self._get_remote_addr()
-        res = submit(value, self.settings.private_key, remote_addr)
+        res = submit(value, self.private_key)
         if not res.is_valid:
             raise BadRequest(
                 translate(

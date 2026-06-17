@@ -11,7 +11,7 @@ class TestCaptcha:
         schema = block_schema()
         assert "captchaWidget" in schema["properties"]
         field = schema["properties"]["captchaWidget"]
-        assert field["captcha_props"]["id"] == "protected_1"
+        assert field["captcha_props"]["provider"] == "protected_1"
 
     def test_captcha_no_value(self, submit_form):
         response = submit_form(

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<registry>
+  <records interface="plone.formwidget.recaptcha.interfaces.IReCaptchaSettings">
+    <value key="public_key" />
+    <value key="private_key" />
+    <value key="display_theme">light</value>
+    <value key="display_type">image</value>
+    <value key="display_size">normal</value>
+    <value key="api_version">v3</value>
+    <value key="v3_score_threshold">50</value>
+  </records>
+</registry>

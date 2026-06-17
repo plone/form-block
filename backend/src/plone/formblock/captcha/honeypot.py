@@ -17,7 +17,7 @@ class HoneypotSupport(CaptchaSupport):
         if not HONEYPOT_FIELD:
             # no field is set, so we only want to log.
             return {}
-        return {"id": HONEYPOT_FIELD}
+        return {"provider": HONEYPOT_FIELD}
 
     def verify(self, form_data: dict | None = None):
         form_data = form_data or {}

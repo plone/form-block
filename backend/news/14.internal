@@ -1,0 +1,1 @@
+Refactored the captcha providers onto a shared `ExternalCaptchaSupport` base class, added reCAPTCHA v3 support (via `recaptcha.net` and a configurable score threshold), and standardized the serialized `provider` key across providers. @ericof

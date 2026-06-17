@@ -4,6 +4,7 @@ from plone.formblock.interfaces import FormSubmissionContext
 from plone.formblock.interfaces import ICaptchaSupport
 from plone.formblock.interfaces import IFormSubmissionProcessor
 from plone.formblock.restapi.services.base import BaseService
+from plone.formblock.utils import fix_block_schema
 from plone.formblock.utils import get_blocks
 from plone.protect.interfaces import IDisableCSRFProtection
 from plone.restapi.deserializer import json_body
@@ -112,9 +113,11 @@ class SubmitPost(BaseService):
             ).verify(body)
 
     def validate_schema(self):
-        validator = jsonschema.Draft202012Validator(self.block.get("schema", {}))
+        schema = fix_block_schema(self.block).get("schema", {})
+        validator = jsonschema.Draft202012Validator(schema)
         errors = []
-        for err in validator.iter_errors(self.form_data):
+        raw_errors = list(validator.iter_errors(self.form_data))
+        for err in raw_errors:
             error = {"message": err.message}
             if err.path:
                 error["field"] = ".".join(err.path)

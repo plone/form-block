@@ -17,5 +17,6 @@
   <include package=".restapi" />
   <include package=".captcha" />
   <include package=".processors" />
+  <include package=".vocabularies" />
 
 </configure>
