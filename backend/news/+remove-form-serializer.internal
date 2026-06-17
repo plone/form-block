@@ -1,0 +1,1 @@
+Removed the redundant legacy `FormSerializer` block serializer, now fully superseded by `SchemaFormBlockSerializer`. @ericof

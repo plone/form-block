@@ -5,15 +5,6 @@
     >
 
   <subscriber
-      factory=".blocks.FormSerializerContents"
-      provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
-      />
-  <subscriber
-      factory=".blocks.FormSerializerRoot"
-      provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
-      />
-
-  <subscriber
       factory=".blocks.SchemaFormBlockSerializerContents"
       provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
       />
