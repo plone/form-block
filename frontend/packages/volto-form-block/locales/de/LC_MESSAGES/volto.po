@@ -25,6 +25,7 @@ msgstr "Blind Copy (BCC) E-Mail"
 #: components/Blocks/SchemaForm/Edit
 #: components/Blocks/SchemaForm/schema
 #: components/Blocks/SchemaForm/View
+#: components/DataTable/messages
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -102,6 +103,16 @@ msgstr "Absender"
 #: components/Blocks/SchemaForm/schema
 msgid "Sender name"
 msgstr "Absender Name"
+
+#. Default: "Show Data"
+#: components/Blocks/SchemaForm/Edit
+msgid "Show Data"
+msgstr ""
+
+#. Default: "Show Form"
+#: components/Blocks/SchemaForm/Edit
+msgid "Show Form"
+msgstr ""
 
 #. Default: "Show cancel button"
 #: components/Blocks/SchemaForm/schema
@@ -239,6 +250,41 @@ msgstr "E-Mail senden"
 #: components/Blocks/SchemaForm/schema
 msgid "fixed_attachment"
 msgstr "Fixer Anhang"
+
+#. Default: "Clear data"
+#: components/DataTable/messages
+msgid "form_clear_data"
+msgstr ""
+
+#. Default: "Are you sure you want to delete all saved items?"
+#: components/DataTable/messages
+msgid "form_confirmClearData"
+msgstr ""
+
+#. Default: "Export data"
+#: components/DataTable/messages
+msgid "form_edit_exportCsv"
+msgstr ""
+
+#. Default: "Items stored"
+#: components/DataTable/messages
+msgid "form_formDataCount"
+msgstr ""
+
+#. Default: "Item stored"
+#: components/DataTable/messages
+msgid "form_formDataCountSingle"
+msgstr ""
+
+#. Default: "No"
+#: components/DataTable/messages
+msgid "form_formValueNo"
+msgstr ""
+
+#. Default: "Yes"
+#: components/DataTable/messages
+msgid "form_formValueYes"
+msgstr ""
 
 #. Default: "Required"
 #: components/Wrappers/CheckboxGroupWrapper
