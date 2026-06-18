@@ -65,6 +65,10 @@ jobs:
       working-directory: ${{ inputs.working-directory }}
       deploy: ${{ inputs.storybook-deploy }}
       deploy_mode: ${{ inputs.storybook-deploy-mode }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
 
   release:
     name: "Frontend: Build and publish container image"
