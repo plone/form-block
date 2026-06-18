@@ -33,10 +33,14 @@ A Plone add-on supporting the creation of forms inside blocks.
 
 This add-on is composed of two packages:
 
-* Backend: [`plone.formblock`](https://pypi.org/project/plone.formblock/)
-* Frontend: [`@plone/volto-form-block`](https://www.npmjs.com/package/@plone/volto-form-block)
+* Backend: [`plone.formblock`](https://pypi.org/project/plone.formblock/), for Plone 6.1 and 6.2.
+* Frontend: [`@plone/volto-form-block`](https://www.npmjs.com/package/@plone/volto-form-block), for Volto 19 or later.
 
 In order to have the complete solution you need to install both of them in your project, please follow the instructions: [`backend`](./backend/README.md) and [`frontend`](./frontend/README.md).
+
+### Relation to collective.volto.formsupport / volto-form-block
+
+This add-on began as an evolution of RedTurtle Technology's [volto-form-block](https://github.com/collective/volto-form-block) and [collective.volto.formsupport](https://github.com/collective/collective.volto.formsupport), but has since taken its own direction and is not compatible with forms created by those add-ons.
 
 ## Quick Start 🏁
 
