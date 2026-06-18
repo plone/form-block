@@ -46,6 +46,8 @@ Add `@plone/volto-form-block` to your `package.json`.
 }
 ```
 
+The Plone backend should also have the [`plone.formblock`](https://pypi.org/project/plone.formblock/) installed and configured.
+
 ## Test installation
 
 Visit http://localhost:3000/ in a browser, log in, and add a **Form** block to a page.
