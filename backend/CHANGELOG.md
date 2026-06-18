@@ -8,3 +8,29 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 1.0.0a2 (2026-06-18)
+
+
+### Bug fixes:
+
+- Cast `minLength` / `maxLength` to integers before validating submissions, so string-valued length constraints no longer break form validation. @ericof 
+
+
+### Internal:
+
+- Rename internal package to plone.formblock @ericof [#7](https://github.com/plone/form-block/issues/7)
+- Rewrite all backend tests @ericof [#8](https://github.com/plone/form-block/issues/8)
+- Added `Products.PrintingMailHost` to the development environment to print outgoing emails to the log. @ericof [#11](https://github.com/plone/form-block/issues/11)
+- Added example content with pages using form blocks, plus default captcha and mail configuration, to the `initial` profile. @ericof [#12](https://github.com/plone/form-block/issues/12)
+- Refactored `EmailFormProcessor`, extracting reusable e-mail helpers (`create_message`, `is_mailhost_configured`, `substitute_variables`) and splitting the admin and confirmation message building. @ericof [#13](https://github.com/plone/form-block/issues/13)
+- Refactored the captcha providers onto a shared `ExternalCaptchaSupport` base class, added reCAPTCHA v3 support (via `recaptcha.net` and a configurable score threshold), and standardized the serialized `provider` key across providers. @ericof [#14](https://github.com/plone/form-block/issues/14)
+- Refactored the form data store: extracted the schema-field and record builders into `utils/datamanager.py` with type hints and `TypedDict` definitions, and added a `total_records_in_block` helper. @ericof [#16](https://github.com/plone/form-block/issues/16)
+- Moved the captcha-provider and mail-template vocabularies into a dedicated `vocabularies` package, with tests. @ericof 
+- Removed the redundant legacy `FormSerializer` block serializer, now fully superseded by `SchemaFormBlockSerializer`. @ericof 
+- Updated the i18n message catalogs. @ericof 
+
+
+### Documentation:
+
+- Update README.md file. @ericof

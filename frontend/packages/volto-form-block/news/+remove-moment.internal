@@ -1,1 +1,0 @@
-Replaced `moment` with the native `Intl.DateTimeFormat` API for date and time formatting in the form view. @ericof

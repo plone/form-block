@@ -1,1 +1,0 @@
-Refactored the form data store: extracted the schema-field and record builders into `utils/datamanager.py` with type hints and `TypedDict` definitions, and added a `total_records_in_block` helper. @ericof

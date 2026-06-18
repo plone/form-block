@@ -1,6 +1,6 @@
 {
   "name": "@plone/volto-form-block-dev",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.2",
   "description": "A Plone add-on supporting the creation of forms inside blocks",
   "author": "Plone Community",
   "homepage": "https://github.com/plone/form-block",

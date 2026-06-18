@@ -1,1 +1,0 @@
-Moved the captcha-provider and mail-template vocabularies into a dedicated `vocabularies` package, with tests. @ericof
