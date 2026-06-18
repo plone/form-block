@@ -12,48 +12,6 @@ from zope.interface import implementer
 import os
 
 
-class FormSerializer:
-    """ """
-
-    order = 200  # after standard ones
-    block_type = "schemaForm"
-
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
-
-    def __call__(self, value):
-        """
-        If user can edit the context, return the full block data.
-        Otherwise, skip default values because we need them only in edit and
-        to send emails from the backend.
-        """
-        if value.get("captcha"):
-            value["captcha_props"] = getMultiAdapter(
-                (self.context, self.request),
-                ICaptchaSupport,
-                name=value["captcha"],
-            ).serialize()
-        attachments_limit = os.environ.get("FORM_ATTACHMENTS_LIMIT", "")
-        if attachments_limit:
-            value["attachments_limit"] = attachments_limit
-        if api.user.has_permission("Modify portal content", obj=self.context):
-            return value
-        return {k: v for k, v in value.items() if not k.startswith("default_")}
-
-
-@implementer(IBlockFieldSerializationTransformer)
-@adapter(IBlocks, IBrowserLayer)
-class FormSerializerContents(FormSerializer):
-    """Deserializer for content-types that implements IBlocks behavior"""
-
-
-@implementer(IBlockFieldSerializationTransformer)
-@adapter(IPloneSiteRoot, IBrowserLayer)
-class FormSerializerRoot(FormSerializer):
-    """Deserializer for site-root"""
-
-
 class SchemaFormBlockSerializer:
     """ """
 

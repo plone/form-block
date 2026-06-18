@@ -20,34 +20,35 @@ msgstr ""
 #. Default: "Admin email"
 #: components/Blocks/SchemaForm/schema
 msgid "Admin email"
-msgstr ""
+msgstr "Email para gestores do site"
 
 #. Default: "Blind copy"
 #: components/Blocks/SchemaForm/schema
 msgid "Blind copy"
-msgstr ""
+msgstr "Cópia oculta"
 
 #. Default: "Cancel"
 #: components/Blocks/SchemaForm/Edit
 #: components/Blocks/SchemaForm/schema
 #: components/Blocks/SchemaForm/View
+#: components/DataTable/messages
 msgid "Cancel"
 msgstr "Cancelar"
 
 #. Default: "Cancel button label"
 #: components/Blocks/SchemaForm/schema
 msgid "Cancel button label"
-msgstr ""
+msgstr "Texto do botão de cancelar"
 
 #. Default: "Data wipe"
 #: components/Blocks/SchemaForm/schema
 msgid "Data wipe"
-msgstr ""
+msgstr "Remover dados"
 
 #. Default: "Delete"
 #: components/Wrappers/FormFieldWrapper
 msgid "Delete"
-msgstr ""
+msgstr "Remover"
 
 #. Default: "Description"
 #: components/Blocks/SchemaForm/schema
@@ -57,17 +58,17 @@ msgstr "Descrição"
 #. Default: "Edit"
 #: components/Wrappers/FormFieldWrapper
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #. Default: "Email footer"
 #: components/Blocks/SchemaForm/schema
 msgid "Email footer"
-msgstr ""
+msgstr "Rodapé do email"
 
 #. Default: "Email header"
 #: components/Blocks/SchemaForm/schema
 msgid "Email header"
-msgstr ""
+msgstr "Cabeçalho do email"
 
 #. Default: "Error"
 #: components/Blocks/SchemaForm/View
@@ -87,89 +88,99 @@ msgstr "Este site é protegido pelo hCaptcha e sua <a href=“https://www.hcaptc
 #. Default: "No"
 #: components/Blocks/SchemaForm/View
 msgid "No"
-msgstr ""
+msgstr "Não"
 
 #. Default: "Number of days after which, the data should be deleted. Enter -1 to store indefinitely."
 #: components/Blocks/SchemaForm/schema
 msgid "Number of days after which, the data should be deleted. Enter -1 to store indefinitely."
-msgstr ""
+msgstr "Número de dias após os quais os dados devem ser excluídos. Digite -1 para armazenar indefinidamente."
 
 #. Default: "Send email to admin"
 #: components/Blocks/SchemaForm/schema
 msgid "Send email to admin"
-msgstr ""
+msgstr "Enviar email para os gestores do site"
 
 #. Default: "Sender"
 #: components/Blocks/SchemaForm/schema
 msgid "Sender"
-msgstr ""
+msgstr "Remetente"
 
 #. Default: "Sender name"
 #: components/Blocks/SchemaForm/schema
 msgid "Sender name"
-msgstr ""
+msgstr "Nome do remetente"
+
+#. Default: "Show Data"
+#: components/Blocks/SchemaForm/Edit
+msgid "Show Data"
+msgstr "Exibir dados"
+
+#. Default: "Show Form"
+#: components/Blocks/SchemaForm/Edit
+msgid "Show Form"
+msgstr "Exibir formulário"
 
 #. Default: "Show cancel button"
 #: components/Blocks/SchemaForm/schema
 msgid "Show cancel button"
-msgstr ""
+msgstr "Exibir botão de cancelar"
 
 #. Default: "Store data"
 #: components/Blocks/SchemaForm/schema
 msgid "Store data"
-msgstr ""
+msgstr "Armazenar dados"
 
 #. Default: "Subject"
 #: components/Blocks/SchemaForm/schema
 msgid "Subject"
-msgstr ""
+msgstr "Assunto"
 
 #. Default: "Submit"
 #: components/Blocks/SchemaForm/Edit
 #: components/Blocks/SchemaForm/schema
 #: components/Blocks/SchemaForm/View
 msgid "Submit"
-msgstr ""
+msgstr "Enviar"
 
 #. Default: "Submit button label"
 #: components/Blocks/SchemaForm/schema
 msgid "Submit button label"
-msgstr ""
+msgstr "Texto do botão de enviar"
 
 #. Default: "Text at the beginning of the email."
 #: components/Blocks/SchemaForm/schema
 msgid "Text at the beginning of the email."
-msgstr ""
+msgstr "Texto no início do email."
 
 #. Default: "Text at the end of the email."
 #: components/Blocks/SchemaForm/schema
 msgid "Text at the end of the email."
-msgstr ""
+msgstr "Texto ao final do email."
 
 #. Default: "The email address of the sender."
 #: components/Blocks/SchemaForm/schema
 msgid "The email address of the sender"
-msgstr ""
+msgstr "O endereço de email do remetente"
 
 #. Default: "The email addresses the submitted form data will be sent to as blind carbon copy. Multiple email addresses can be entered separated by a semicolon."
 #: components/Blocks/SchemaForm/schema
 msgid "The email addresses the submitted form data will be sent to as blind carbon copy. Multiple email addresses can be entered separated by a semicolon."
-msgstr ""
+msgstr "O endereço de email para o qual os dados do formulário enviado serão enviados como cópia oculta. Vários endereços de email podem ser inseridos separados por ponto e vírgula."
 
 #. Default: "The email addresses the submitted form data will be sent to. Multiple email addresses can be entered separated by a semicolon."
 #: components/Blocks/SchemaForm/schema
 msgid "The email addresses the submitted form data will be sent to. Multiple email addresses can be entered separated by a semicolon."
-msgstr ""
+msgstr "O endereço de email para o qual os dados do formulário enviado serão enviados. Vários endereços de email podem ser inseridos separados por ponto e vírgula."
 
 #. Default: "The name of the sender."
 #: components/Blocks/SchemaForm/schema
 msgid "The name of the sender"
-msgstr ""
+msgstr "Nome do remetente"
 
 #. Default: "The subject used in the sent email."
 #: components/Blocks/SchemaForm/schema
 msgid "The subject used in the sent email."
-msgstr ""
+msgstr "O assunto usado no email enviado."
 
 #. Default: "Title"
 #: components/Blocks/SchemaForm/schema
@@ -179,32 +190,32 @@ msgstr "Título"
 #. Default: "When activated, the data will be stored for later use when the form is submitted"
 #: components/Blocks/SchemaForm/schema
 msgid "When activated, the data will be stored for later use when the form is submitted"
-msgstr ""
+msgstr "Quando ativado, os dados serão armazenados para uso posterior quando o formulário for enviado"
 
 #. Default: "Yes"
 #: components/Blocks/SchemaForm/View
 msgid "Yes"
-msgstr ""
+msgstr "Sim"
 
 #. Default: "Your form could not be sent. Please reload the page and try again. The data you entered will be retained."
 #: components/Blocks/SchemaForm/View
 msgid "Your form could not be sent. Please reload the page and try again. The data you entered will be retained."
-msgstr ""
+msgstr "Seu formulário não pôde ser enviado. Por favor, recarregue a página e tente novamente. Os dados que você inseriu serão mantidos."
 
 #. Default: "Your form could not be sent. Please try again later."
 #: components/Blocks/SchemaForm/View
 msgid "Your form could not be sent. Please try again later."
-msgstr ""
+msgstr "Seu formulário não pôde ser enviado. Por favor, tente novamente mais tarde."
 
 #. Default: "Admin info"
 #: components/Blocks/SchemaForm/schema
 msgid "admin_info"
-msgstr ""
+msgstr "Informações adicionais"
 
 #. Default: "This field can be used to store additional information which should only be displayed in the email sent to the administration email (not for the user email)."
 #: components/Blocks/SchemaForm/schema
 msgid "admin_info_description"
-msgstr ""
+msgstr "Esse campo pode ser usado para armazenar informações adicionais que devem ser exibidas apenas no email enviado para o email de administração (não para o email do usuário)."
 
 #. Default: "Captcha provider"
 #: components/Blocks/SchemaForm/schema
@@ -214,37 +225,72 @@ msgstr "Provedor de Captcha"
 #. Default: "Checkbox Group"
 #: index
 msgid "checkbox_group"
-msgstr ""
+msgstr "Grupo de caixas de seleção"
 
 #. Default: "Choose file"
 #: components/Wrappers/FileWrapper
 msgid "choose_file"
-msgstr ""
+msgstr "Escolher arquivo"
 
 #. Default: "Recipient"
 #: components/Blocks/SchemaForm/schema
 msgid "confirmation_recipients"
-msgstr ""
+msgstr "Destinatário"
 
 #. Default: "Send confirmation to the email entered in the following field"
 #: components/Blocks/SchemaForm/schema
 msgid "confirmation_recipients_description"
-msgstr ""
+msgstr "Enviar confirmação para o email inserido no campo a seguir"
 
 #. Default: "Confirmation-Page"
 #: components/Blocks/SchemaForm/schema
 msgid "fieldset_confirmation"
-msgstr ""
+msgstr "Página de confirmação"
 
 #. Default: "Mailing"
 #: components/Blocks/SchemaForm/schema
 msgid "fieldset_mailing"
-msgstr ""
+msgstr "Envio de email"
 
 #. Default: "Fixed attachment"
 #: components/Blocks/SchemaForm/schema
 msgid "fixed_attachment"
-msgstr ""
+msgstr "Anexo fixo"
+
+#. Default: "Clear data"
+#: components/DataTable/messages
+msgid "form_clear_data"
+msgstr "Limpar dados"
+
+#. Default: "Are you sure you want to delete all saved items?"
+#: components/DataTable/messages
+msgid "form_confirmClearData"
+msgstr "Você tem certeza de que deseja excluir todos os itens salvos?"
+
+#. Default: "Export data"
+#: components/DataTable/messages
+msgid "form_edit_exportCsv"
+msgstr "Exportar dados"
+
+#. Default: "Items stored"
+#: components/DataTable/messages
+msgid "form_formDataCount"
+msgstr "Itens armazenados"
+
+#. Default: "Item stored"
+#: components/DataTable/messages
+msgid "form_formDataCountSingle"
+msgstr "Item armazenado"
+
+#. Default: "No"
+#: components/DataTable/messages
+msgid "form_formValueNo"
+msgstr "Não"
+
+#. Default: "Yes"
+#: components/DataTable/messages
+msgid "form_formValueYes"
+msgstr "Sim"
 
 #. Default: "Required"
 #: components/Wrappers/CheckboxGroupWrapper
@@ -260,95 +306,95 @@ msgstr ""
 #: components/Wrappers/TextWrapper
 #: components/Wrappers/TimeWrapper
 msgid "form_required"
-msgstr ""
+msgstr "Obrigatório"
 
 #. Default: "Forward user to"
 #: components/Blocks/SchemaForm/schema
 msgid "forward_user_to"
-msgstr ""
+msgstr "Redirecionar usuário para"
 
 #. Default: "If a page is specified, the user will be directed there after submitting the form. The thank you message will not be displayed."
 #: components/Blocks/SchemaForm/schema
 msgid "forward_user_to_description"
-msgstr ""
+msgstr "Caso uma página seja especificada, o usuário será direcionado para lá após enviar o formulário. A mensagem de agradecimento não será exibida."
 
 #. Default: "Hidden"
 #: index
 msgid "hidden"
-msgstr ""
+msgstr "Oculto"
 
 #. Default: "Mail template"
 #: components/Blocks/SchemaForm/schema
 msgid "mail_template"
-msgstr ""
+msgstr "Template de email"
 
 #. Default: "No file chosen"
 #: components/Wrappers/FileWrapper
 msgid "no_file"
-msgstr ""
+msgstr "Nenhum arquivo escolhido"
 
 #. Default: "Number"
 #: index
 msgid "number"
-msgstr ""
+msgstr "Número"
 
 #. Default: "Radio Group"
 #: index
 msgid "radio_group"
-msgstr ""
+msgstr "Grupo de botões de opção"
 
 #. Default: "{field} is required to be checked."
 #: components/Blocks/SchemaForm/View
 msgid "requiredCheckbox"
-msgstr ""
+msgstr "{field} é obrigatório ser selecionado."
 
 #. Default: "Select..."
 #: components/Wrappers/CheckboxGroupWrapper
 #: components/Wrappers/SelectWrapper
 msgid "select"
-msgstr ""
+msgstr "Selecionar..."
 
 #. Default: "Send confirmation email"
 #: components/Blocks/SchemaForm/schema
 msgid "send_confirmation"
-msgstr ""
+msgstr "Enviar email de confirmação"
 
 #. Default: "When activated, an email will be sent to the admin recipients (see below) when a form is submitted"
 #: components/Blocks/SchemaForm/schema
 msgid "send_description"
-msgstr ""
+msgstr "Quando ativado, um email será enviado para os destinatários de administração (veja abaixo) quando um formulário for enviado"
 
 #. Default: "Static Text"
 #: index
 msgid "static_text"
-msgstr ""
+msgstr "Texto estático"
 
 #. Default: "Success message"
 #: components/Blocks/SchemaForm/schema
 msgid "success"
-msgstr ""
+msgstr "Mensagem de sucesso"
 
 #. Default: "Thank you! You have submitted the following data:"
 #: components/Blocks/SchemaForm/schema
 msgid "success_default"
-msgstr ""
+msgstr "Obrigado! Você enviou os seguintes dados:"
 
 #. Default: "Textarea"
 #: index
 msgid "textarea"
-msgstr ""
+msgstr "Área de texto"
 
 #. Default: "Thank you message"
 #: components/Blocks/SchemaForm/schema
 msgid "thankyou"
-msgstr ""
+msgstr "Mensagem de agradecimento"
 
 #. Default: "A text with simple formatting can be entered. Also it is possible to use variables; ${field_id} can be used to display the value of a field inside the form. The ${formfields} variable lists all form fields in a tabular view."
 #: components/Blocks/SchemaForm/schema
 msgid "thankyou_description"
-msgstr ""
+msgstr "Texto com formatação simples pode ser inserido. Também é possível usar variáveis; ${field_id} pode ser usado para exibir o valor de um campo dentro do formulário. A variável ${formfields} lista todos os campos do formulário em uma visualização tabular."
 
 #. Default: "Time"
 #: index
 msgid "time"
-msgstr ""
+msgstr "Horário"
