@@ -10,7 +10,7 @@
       "cancel_label": "Cancel",
       "captcha": "honeypot",
       "captcha_props": {
-        "id": "protected_1"
+        "provider": "protected_1"
       },
       "confirmation_recipients": "${email}",
       "data_wipe": -1,
@@ -41,7 +41,7 @@
           "captchaToken": {},
           "captchaWidget": {
             "captcha_props": {
-              "id": "protected_1"
+              "provider": "protected_1"
             },
             "title": "honeypot",
             "widget": "honeypot"
@@ -146,8 +146,8 @@
           "message"
         ]
       },
-      "send": true,
-      "send_confirmation": true,
+      "send": false,
+      "send_confirmation": false,
       "sender": "noreply@plone.org",
       "sender_name": "Our amazing site",
       "show_cancel": false,
@@ -192,7 +192,7 @@
     "locked": false,
     "stealable": true
   },
-  "modified": "2026-06-15T17:49:37+00:00",
+  "modified": "2026-06-17T14:07:52+00:00",
   "nav_title": null,
   "preview_caption_link": null,
   "review_state": "published",

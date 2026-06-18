@@ -1,17 +1,100 @@
 # plone.formblock
 
-A Plone add-on supporting the creation of forms inside blocks
+A Plone add-on supporting the creation of forms inside blocks.
 
 ## Features
 
-TODO: List our awesome features
+### Send submissions by email
+
+When the **Send** action is enabled on a form block, each submission is emailed to the configured recipients. The subject, sender and recipients are configured on the block, and the submitted values are rendered into the message body.
+
+### Store submissions
+
+When the **Store data** action is enabled, each submission is stored on the content object. Stored submissions can be reviewed, exported to CSV and cleared directly from the form block editor in Volto.
+
+### Captcha support
+
+Captcha support requires a specific name adapter that implements ICaptchaSupport. This product contains implementations for:
+
+* HCaptcha (plone.formwidget.hcaptcha)
+* Google ReCaptcha (plone.formwidget.recaptcha)
+* Custom questions and answers (collective.z3cform.norobots)
+* Honeypot (collective.honeypot)
+
+Each implementation must be included, installed and configured separately.
+
+To include one implementation, you need to install the egg with the needed extras_require:
+
+* plone.formblock[recaptcha]
+* plone.formblock[hcaptcha]
+* plone.formblock[norobots]
+* plone.formblock[honeypot]
+
+During the form post, the token captcha will be verified with the defined captcha method.
+
+#### Honeypot configuration
+
+If honeypot dependency is available in your installation, the honeypot validation is enabled and selectable in forms.
+
+Default field name is **protected_1** and you can change it with an environment variable. See the [collective.honeypot configuration](https://github.com/collective/collective.honeypot?tab=readme-ov-file#configuration) for details.
+
+### Attachments upload limits
+
+Forms can have one or more attachment field to allow users to upload some files.
+
+These files will be sent via mail, so it could be a good idea setting a limit to them. For example if you use GMail as mail server, you can't send messages with attachments > 25MB.
+
+There is an environment variable that you can use to set that limit (in MB):
+
+```bash
+export FORM_ATTACHMENTS_LIMIT=25
+```
+
+By default this is not set.
+
+The upload limit is also passed to the frontend in the form data with the attachments_limit key.
+
+### Content-transfer-encoding
+
+It is possible to set the content-transfer-encoding for the email body, settings the environment variable `MAIL_CONTENT_TRANSFER_ENCODING`:
+
+```bash
+export MAIL_CONTENT_TRANSFER_ENCODING=base64
+```
+
+This is useful for some SMTP servers that have problems with quoted-printable encoding.
+
+By default the content-transfer-encoding is quoted-printable as overridden in [Products.MailHost](https://github.com/zopefoundation/Products.MailHost/blob/master/src/Products/MailHost/MailHost.py#L65)
+
+### Email subject templating
+
+You can also interpolate the form values to the email subject using the field id, in this way: `${field_name}`
+
+### Header forwarding
+
+It is possible to configure some headers from the form POST request to be included in the email's headers by configuring the httpHeaders field in your Volto block.
+
+The [@plone/volto-form-block](https://www.npmjs.com/package/@plone/volto-form-block) package allows the following headers to be forwarded:
+
+* `HTTP_X_FORWARDED_FOR`
+* `HTTP_X_FORWARDED_PORT`
+* `REMOTE_ADDR`
+* `PATH_INFO`
+* `HTTP_USER_AGENT`
+* `HTTP_REFERER`
 
 ## Installation
 
-Install plone.formblock with uv.
+Install plone.formblock with uv:
 
 ```shell
 uv add plone.formblock
+```
+
+Or with pip:
+
+```shell
+pip install plone.formblock
 ```
 
 Create the Plone site.
@@ -49,39 +132,14 @@ make create-site
     ```
 
 
-### Add features using `plonecli` or `bobtemplates.plone`
-
-This package provides markers as strings (`<!-- extra stuff goes here -->`) that are compatible with [`plonecli`](https://github.com/plone/plonecli) and [`bobtemplates.plone`](https://github.com/plone/bobtemplates.plone).
-These markers act as hooks to add all kinds of features through subtemplates, including behaviors, control panels, upgrade steps, or other subtemplates from `bobtemplates.plone`.
-`plonecli` is a command line client for `bobtemplates.plone`, adding autocompletion and other features.
-
-To add a feature as a subtemplate to your package, use the following command pattern.
-
-```shell
-make add <template_name>
-```
-
-For example, you can add a content type to your package with the following command.
-
-```shell
-make add content_type
-```
-
-You can add a behavior with the following command.
-
-```shell
-make add behavior
-```
-
-```{seealso}
-You can check the list of available subtemplates in the [`bobtemplates.plone` `README.md` file](https://github.com/plone/bobtemplates.plone/?tab=readme-ov-file#provided-subtemplates).
-See also the documentation of [Mockup and Patternslib](https://6.docs.plone.org/classic-ui/mockup.html) for how to build the UI toolkit for Classic UI.
-```
-
 ## License
 
 The project is licensed under GPLv2.
 
 ## Credits and acknowledgements 🙏
+
+This add-on is built on top of the awesome [collective.volto.formsupport](https://github.com/collective/collective.volto.formsupport) developed by **RedTurtle Technology**.
+
+The current version of the codebase was developed by **kitconcept GmbH** and sponsored by the **Fachhochschule Nordwestschweiz**.
 
 Generated using [Cookieplone (2.0.0b3)](https://github.com/plone/cookieplone) and [cookieplone-templates (6678734)](https://github.com/plone/cookieplone-templates/commit/6678734cc3713f3fab9ea510616cef59dc466514) on 2026-06-10 18:43:35.112495. A special thanks to all contributors and supporters!

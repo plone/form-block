@@ -10,7 +10,10 @@
       "cancel_label": "Cancel",
       "captcha": "norobots-captcha",
       "captcha_props": {
-        "id": "protected_1"
+        "id": "question1",
+        "id_check": "74f27522c5861d4a57486b79d834f3f9",
+        "provider": "norobots-captcha",
+        "title": "What is 10 + 4 ?"
       },
       "confirmation_recipients": "${email}",
       "data_wipe": -1,
@@ -41,10 +44,13 @@
           "captchaToken": {},
           "captchaWidget": {
             "captcha_props": {
-              "id": "protected_1"
+              "id": "question1",
+              "id_check": "74f27522c5861d4a57486b79d834f3f9",
+              "provider": "norobots-captcha",
+              "title": "What is 10 + 4 ?"
             },
-            "title": "honeypot",
-            "widget": "honeypot"
+            "title": "norobots-captcha",
+            "widget": "norobots-captcha"
           },
           "country": {
             "choices": [
@@ -158,6 +164,34 @@
       "thankyou": "Those were your answers:\n${formfields}",
       "title": "Contact us"
     },
+    "936e2d08-4184-47fa-80e3-c7c13830a9e9": {
+      "@type": "slate",
+      "plaintext": "It is possible to configure the questions on the Control Panel for collective.z3cform.norobots ",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "It is possible to configure the questions on the Control Panel for "
+            },
+            {
+              "children": [
+                {
+                  "text": "collective.z3cform.norobots"
+                }
+              ],
+              "data": {
+                "url": "http://localhost:3000/controlpanel/collective.z3cform.norobots.settings"
+              },
+              "type": "link"
+            },
+            {
+              "text": ""
+            }
+          ],
+          "type": "p"
+        }
+      ]
+    },
     "d3e7f055-f1e4-433d-9628-83910810acee": {
       "@type": "description"
     },
@@ -169,6 +203,7 @@
     "items": [
       "f5283db5-fed3-4ad6-9184-300b3feb7f21",
       "d3e7f055-f1e4-433d-9628-83910810acee",
+      "936e2d08-4184-47fa-80e3-c7c13830a9e9",
       "0dd828ad-01d0-4a99-a811-9e187ccac848"
     ]
   },
@@ -192,7 +227,7 @@
     "locked": false,
     "stealable": true
   },
-  "modified": "2026-06-15T17:52:59+00:00",
+  "modified": "2026-06-18T12:54:03+00:00",
   "nav_title": null,
   "preview_caption_link": null,
   "review_state": "published",

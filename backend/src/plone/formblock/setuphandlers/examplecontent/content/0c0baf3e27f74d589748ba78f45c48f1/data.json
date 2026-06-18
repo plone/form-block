@@ -10,10 +10,9 @@
       "cancel_label": "Cancel",
       "captcha": "recaptcha",
       "captcha_props": {
-        "id": "question1",
-        "id_check": "74f27522c5861d4a57486b79d834f3f9",
-        "provider": "norobots-captcha",
-        "title": "What is 10 + 4 ?"
+        "provider": "recaptcha",
+        "public_key": "2332323",
+        "use_recaptcha_net": true
       },
       "confirmation_recipients": "${email}",
       "data_wipe": -1,
@@ -44,14 +43,12 @@
           "captchaToken": {},
           "captchaWidget": {
             "captcha_props": {
-              "id": "question1",
-              "id_check": "74f27522c5861d4a57486b79d834f3f9",
-              "provider": "norobots-captcha",
-              "public_key": "",
-              "title": "What is 10 + 4 ?"
+              "provider": "recaptcha",
+              "public_key": "2332323",
+              "use_recaptcha_net": true
             },
-            "title": "norobots-captcha",
-            "widget": "norobots-captcha"
+            "title": "recaptcha",
+            "widget": "recaptcha"
           },
           "country": {
             "choices": [
@@ -165,6 +162,56 @@
       "thankyou": "Those were your answers:\n${formfields}",
       "title": "Contact us"
     },
+    "8f1d716d-9807-4ae1-9ef5-25f1949f6f65": {
+      "@type": "slate",
+      "plaintext": " Edit the settings for reCaptcha in the control panel for   reCaptcha  ",
+      "value": [
+        {
+          "children": [
+            {
+              "text": ""
+            },
+            {
+              "children": [
+                {
+                  "text": "Edit the settings for reCaptcha in the control panel for "
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "text": ""
+            },
+            {
+              "children": [
+                {
+                  "text": ""
+                },
+                {
+                  "children": [
+                    {
+                      "text": "reCaptcha"
+                    }
+                  ],
+                  "data": {
+                    "url": "http://localhost:3000/controlpanel/recaptcha"
+                  },
+                  "type": "link"
+                },
+                {
+                  "text": ""
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "text": ""
+            }
+          ],
+          "type": "p"
+        }
+      ]
+    },
     "d3e7f055-f1e4-433d-9628-83910810acee": {
       "@type": "description"
     },
@@ -176,6 +223,7 @@
     "items": [
       "f5283db5-fed3-4ad6-9184-300b3feb7f21",
       "d3e7f055-f1e4-433d-9628-83910810acee",
+      "8f1d716d-9807-4ae1-9ef5-25f1949f6f65",
       "0dd828ad-01d0-4a99-a811-9e187ccac848"
     ]
   },
@@ -185,7 +233,7 @@
   "creators": [
     "admin"
   ],
-  "description": "Test reCaptcha captcha",
+  "description": "Test reCaptcha captcha, but first configure it on /controlpanel/recaptcha",
   "effective": "2026-06-15T17:49:00+00:00",
   "exclude_from_nav": false,
   "expires": null,
@@ -199,7 +247,7 @@
     "locked": false,
     "stealable": true
   },
-  "modified": "2026-06-15T19:00:50+00:00",
+  "modified": "2026-06-18T12:56:58+00:00",
   "nav_title": null,
   "preview_caption_link": null,
   "review_state": "published",

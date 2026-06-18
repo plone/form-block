@@ -1,10 +1,42 @@
 # Form Block 🚀
 
-[![Built with Cookieplone](https://img.shields.io/badge/built%20with-Cookieplone-0083be.svg?logo=cookiecutter)](https://github.com/plone/cookieplone-templates/)
-[![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![CI](https://github.com/plone/form-block/actions/workflows/main.yml/badge.svg)](https://github.com/plone/form-block/actions/workflows/main.yml)
+A Plone add-on supporting the creation of forms inside blocks.
 
-A Plone add-on supporting the creation of forms inside blocks
+<div align="center">
+
+[![PyPI](https://img.shields.io/pypi/v/plone.formblock)](https://pypi.org/project/plone.formblock/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/plone.formblock)](https://pypi.org/project/plone.formblock/)
+[![PyPI - Wheel](https://img.shields.io/pypi/wheel/plone.formblock)](https://pypi.org/project/plone.formblock/)
+[![PyPI - License](https://img.shields.io/pypi/l/plone.formblock)](https://pypi.org/project/plone.formblock/)
+[![PyPI - Status](https://img.shields.io/pypi/status/plone.formblock)](https://pypi.org/project/plone.formblock/)
+
+</div>
+
+<div align="center">
+
+[![npm](https://img.shields.io/npm/v/@plone/volto-form-block)](https://www.npmjs.com/package/@plone/volto-form-block)
+[![](https://img.shields.io/badge/-Storybook-ff4785?logo=Storybook&logoColor=white&style=flat-square)](https://plone.github.io/form-block/)
+
+</div>
+
+<div align="center">
+
+[![CI](https://github.com/plone/form-block/actions/workflows/main.yml/badge.svg)](https://github.com/plone/form-block/actions/workflows/main.yml)
+[![Built with Cookieplone](https://img.shields.io/badge/built%20with-Cookieplone-0083be.svg?logo=cookiecutter)](https://github.com/plone/cookieplone-templates/)
+
+[![GitHub contributors](https://img.shields.io/github/contributors/plone/form-block)](https://github.com/plone/form-block)
+[![GitHub Repo stars](https://img.shields.io/github/stars/plone/form-block?style=social)](https://github.com/plone/form-block)
+
+</div>
+
+## About Form Block
+
+This add-on is composed of two packages:
+
+* Backend: [`plone.formblock`](https://pypi.org/project/plone.formblock/)
+* Frontend: [`@plone/volto-form-block`](https://www.npmjs.com/package/@plone/volto-form-block)
+
+In order to have the complete solution you need to install both of them in your project, please follow the instructions: [`backend`](./backend/README.md) and [`frontend`](./frontend/README.md).
 
 ## Quick Start 🏁
 
@@ -144,5 +176,9 @@ make i18n
 ```
 
 ## Credits and acknowledgements 🙏
+
+This add-on is built on top of the awesome add-ons [volto-form-block](https://github.com/collective/volto-form-block) and [collective.volto.formsupport](https://github.com/collective/collective.volto.formsupport) developed by **RedTurtle Technology**.
+
+The current version of the codebase was developed by **kitconcept GmbH** and sponsored by the **Fachhochschule Nordwestschweiz**.
 
 Generated using [Cookieplone (2.0.0b3)](https://github.com/plone/cookieplone) and [cookieplone-templates (6678734)](https://github.com/plone/cookieplone-templates/commit/6678734cc3713f3fab9ea510616cef59dc466514) on 2026-06-10 18:43:35.112495. A special thanks to all contributors and supporters!
