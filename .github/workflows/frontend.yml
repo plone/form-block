@@ -67,8 +67,8 @@ jobs:
       deploy_mode: ${{ inputs.storybook-deploy-mode }}
     permissions:
       contents: read
-      pages: write
       id-token: write
+      pages: write
 
   release:
     name: "Frontend: Build and publish container image"
