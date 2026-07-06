@@ -38,15 +38,19 @@ class TestCaptchaVocabulary:
         # no adapters configured
         assert data["@id"].endswith(self.endpoint)
 
-        # honeypot is always active if it's in buildout
-        assert data["items_total"] == 1
-        assert data["items"] == [{"title": "Honeypot Support", "token": "honeypot"}]
+        assert data["items_total"] == 2
+        assert data["items"][0] == {
+            "title": "NoRobots ReCaptcha Support",
+            "token": "norobots-captcha",
+        }
+        assert data["items"][1] == {"title": "Honeypot Support", "token": "honeypot"}
 
     @pytest.mark.parametrize(
         "token,title",
         [
             ["recaptcha", "Google ReCaptcha"],
             ["hcaptcha", "HCaptcha"],
+            ["norobots-captcha", "NoRobots ReCaptcha Support"],
         ],
     )
     def test_adapters(self, manager_request, configure_captcha_adapters, token, title):

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<registry>
+  <records interface="plone.formblock.interfaces.IFormSettings"
+           prefix="schemaform"
+  >
+    <value key="mail_templates" />
+    <value key="mail_templates_json">{'default': '\n${mail_header}\n&lt;hr /&gt;\n${form_fields}\n&lt;hr /&gt;\n${mail_footer}\n'}</value>
+  </records>
+</registry>
