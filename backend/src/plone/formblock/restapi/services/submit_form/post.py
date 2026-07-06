@@ -6,6 +6,7 @@ from plone.formblock.interfaces import IFormSubmissionProcessor
 from plone.formblock.restapi.services.base import BaseService
 from plone.formblock.utils import fix_block_schema
 from plone.formblock.utils import get_blocks
+from plone.formblock.utils.email import addresses_from_block
 from plone.protect.interfaces import IDisableCSRFProtection
 from plone.restapi.deserializer import json_body
 from zExceptions import BadRequest
@@ -174,18 +175,19 @@ class SubmitPost(BaseService):
         self.block_id = ""
         self.block = {}
         schema = {}
-
         if block_id := body.get("block_id", ""):
             self.block_id = block_id
             self.block = self.get_block_data(block_id=block_id)
             schema = self.block.get("schema", {})
 
         self.form_data = self.cleanup_data(schema, body.get("data", {}))
+        addresses = addresses_from_block(self.block, self.form_data)
         self.submission_context = FormSubmissionContext(
             context=self.context,
             request=self.request,
             block=self.block,
             form_data=self.form_data,
+            addresses=addresses,
         )
 
     def reply(self) -> dict:

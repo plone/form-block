@@ -3,6 +3,21 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     >
 
+  <genericsetup:upgradeSteps
+      profile="plone.formblock:default"
+      source="1000"
+      destination="1001"
+      >
+    <genericsetup:upgradeDepends
+        title="Update registry records for plone.formblock"
+        import_steps="plone.app.registry"
+        />
+    <genericsetup:upgradeStep
+        title="Migrate mail_templates to mail_templates_json"
+        handler=".migrate_mail_templates"
+        />
+  </genericsetup:upgradeSteps>
+
   <!-- -*- extra stuff goes here -*- -->
 
 </configure>

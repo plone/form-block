@@ -1,11 +1,102 @@
 from email import policy
 from email.message import EmailMessage
+from email.utils import formataddr
+from plone import api
+from plone.formblock import _
+from plone.formblock.interfaces import AddressesFromBlock
+from plone.formblock.interfaces import DEFAULT_TEMPLATE
+from plone.formblock.interfaces import SchemaFormBlock
 
 import codecs
 import os
+import re
 
 
 CTE = os.environ.get("MAIL_CONTENT_TRANSFER_ENCODING", None)
+
+
+def is_mailhost_configured() -> bool:
+    """Check if MailHost is configured with SMTP host and email from address."""
+    smtp_host = api.portal.get_registry_record("plone.smtp_host")
+    email_from_address = api.portal.get_registry_record("plone.email_from_address")
+    return bool(smtp_host and email_from_address)
+
+
+def available_templates() -> dict[str, str]:
+    """Return a dictionary of available email templates."""
+    templates: dict[str, str] = api.portal.get_registry_record(
+        "schemaform.mail_templates_json"
+    )
+    return templates or {}
+
+
+def get_template_from_block(block: SchemaFormBlock) -> str:
+    """Return the email template for the given template name."""
+    templates: dict[str, str] = available_templates()
+    template_name = block.get("mail_template", "default")
+    return templates.get(template_name) or DEFAULT_TEMPLATE
+
+
+def substitute_variables(
+    value: str, context: dict | None = None, form_data: dict | None = None
+) -> str:
+    """Substitute variables in the form ${variable_name} with values from the context
+    or form_data.
+    """
+    if context is None and form_data is not None:
+        context = form_data
+    elif context is None:
+        context = {}
+
+    def replace(match):
+        name = match.group(1)
+        return context.get(name, "")
+
+    pattern = r"\$\{([^}]+)\}"
+    return re.sub(pattern, replace, value)
+
+
+def format_property(factory: str, value: str | bool | list | None) -> str:
+    response = str(value)
+    if factory == "label_boolean_field" or factory == "termsAccepted":
+        response = (
+            api.portal.translate(_("Yes"))
+            if value is True
+            else api.portal.translate(_("No"))
+        )
+    elif factory == "checkbox_group" and isinstance(value, list):
+        response = "<br/>".join(value)
+    elif factory in ("label_date_field", "label_datetime_field"):
+        util = api.portal.get_tool("translation_service")
+        response = util.toLocalizedTime(
+            value, long_format=factory == "label_datetime_field"
+        )
+    return response
+
+
+def addresses_from_block(block: SchemaFormBlock, form_data: dict) -> AddressesFromBlock:
+    """Extract addresses from a form block, substituting variables if necessary."""
+    default_addr: str = api.portal.get_registry_record("plone.email_from_address")
+    default_name: str = api.portal.get_registry_record("plone.email_from_name")
+    admin_recipients: str = block.get("recipients", default_addr)
+    _sender = (
+        substitute_variables(block.get("sender", ""), context=form_data) or default_addr
+    )
+    _sender_name = (
+        substitute_variables(block.get("sender_name", ""), context=form_data)
+        or default_name
+    )
+    sender: str = formataddr((_sender_name, _sender))
+    bcc: str = substitute_variables(block.get("bcc", ""), context=form_data) or ""
+    rcpts: str = substitute_variables(
+        block.get("confirmation_recipients", ""), context=form_data
+    )
+    return AddressesFromBlock(
+        sender=sender,
+        admin_recipients=admin_recipients,
+        confirmation_recipients=rcpts,
+        bcc=bcc,
+    )
 
 
 def add_attachaments_to_msg(

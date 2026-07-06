@@ -1,0 +1,1 @@
+Moved the mail templates setting to a ``JSONField`` (``schemaform.mail_templates_json``), deprecating ``schemaform.mail_templates``, with an upgrade step that migrates existing templates. @ericof
