@@ -1,6 +1,8 @@
 from plone.dexterity.content import DexterityContent
 from plone.schema import JSONField
 from typing import Any
+from typing import Literal
+from typing import NotRequired
 from typing import TypedDict
 from zope import schema
 from zope.interface import Attribute
@@ -61,34 +63,39 @@ class RichTextField(TypedDict):
     data: str
 
 
-class SchemaFormBlock(TypedDict):
-    """A form block schema definition."""
-
-    schema: FormSchema
-    title: str
-    description: str
-    submit_label: str
-    show_cancel: bool
-    cancel_label: str
-    forward_user_to: str
-    success: str
-    thankyou: str
-    captcha: str
-    send: bool
-    recipients: str
-    bcc: str
-    admin_info: str
-    sender: str
-    sender_name: str
-    subject: str
-    mail_header: RichTextField
-    mail_footer: RichTextField
-    store: bool
-    data_wipe: int
-    send_confirmation: bool
-    confirmation_recipients: str
-    fixed_attachment: Any
-    mail_template: str
+SchemaFormBlock = TypedDict(
+    "SchemaFormBlock",
+    {
+        "@type": Literal["schemaForm"],
+        "schema": FormSchema,
+        "title": NotRequired[str],
+        "description": NotRequired[str],
+        "submit_label": NotRequired[str],
+        "show_cancel": bool,
+        "cancel_label": NotRequired[str],
+        "forward_user_to": NotRequired[str],
+        "success": NotRequired[str],
+        "thankyou": NotRequired[str],
+        "captcha": NotRequired[str],
+        "captcha_props": NotRequired[dict],
+        "send": NotRequired[bool],
+        "recipients": NotRequired[str],
+        "bcc": NotRequired[str],
+        "admin_info": NotRequired[str],
+        "httpHeaders": NotRequired[str],
+        "sender": NotRequired[str],
+        "sender_name": NotRequired[str],
+        "subject": str,
+        "mail_header": NotRequired[RichTextField],
+        "mail_footer": NotRequired[RichTextField],
+        "store": NotRequired[bool],
+        "data_wipe": NotRequired[int],
+        "send_confirmation": NotRequired[bool],
+        "confirmation_recipients": NotRequired[str],
+        "fixed_attachment": NotRequired[Any],
+        "mail_template": NotRequired[str],
+    },
+)
 
 
 @dataclasses.dataclass
