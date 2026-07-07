@@ -1,4 +1,3 @@
-from plone import api
 from plone.app.contenttypes.testing import PLONE_APP_CONTENTTYPES_FIXTURE
 from plone.app.testing import applyProfile
 from plone.app.testing import FunctionalTesting
@@ -24,15 +23,9 @@ class Layer(PloneSandboxLayer):
     def setUpPloneSite(self, portal):
         applyProfile(portal, "plone.restapi:blocks")
         applyProfile(portal, "plone.formblock:default")
+        applyProfile(portal, "plone.formblock.testing:testing")
         quickInstallProduct(portal, "collective.MockMailHost")
         applyProfile(portal, "collective.MockMailHost:default")
-
-        # Set the email from address and name to avoid validation errors
-        # when sending emails
-        api.portal.set_registry_record(
-            "plone.email_from_address", "site_addr@plone.com"
-        )
-        api.portal.set_registry_record("plone.email_from_name", "Plone test site")
 
         # Mock the validate email token function
         def validate_email_token_mock(*args, **kwargs):

@@ -1,4 +1,7 @@
-<configure xmlns="http://namespaces.zope.org/zope">
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    >
 
   <include package="collective.honeypot" />
   <include package="collective.MockMailHost" />
@@ -7,4 +10,13 @@
       for="plone.formblock.interfaces.IPostEvent"
       handler="plone.formblock.testing.event_handler.event_handler"
       />
+
+  <genericsetup:registerProfile
+      name="testing"
+      title="Form Block (testing)"
+      description="Testing profile for the Form Block."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/testing"
+      />
+
 </configure>

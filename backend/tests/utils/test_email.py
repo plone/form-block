@@ -1,14 +1,19 @@
 """Unit tests for plone.formblock.utils.email.
 
-These cover the two pure helpers used to build outgoing form e-mails:
-``add_attachaments_to_msg`` and ``create_message``. They do not need a Plone
-site, so they run as plain unit tests with fixtures and parametrization.
+The pure helpers (``add_attachaments_to_msg``, ``create_message`` and
+``substitute_variables``) need no Plone site and run as plain unit tests with
+fixtures and parametrization. The helpers that read the registry or translate
+strings (``is_mailhost_configured``, ``available_templates``,
+``get_template_from_block``, ``format_property`` and ``addresses_from_block``)
+need ``api`` access and live in :class:`TestApiSettings`.
 """
 
 from email import policy
 from email.message import EmailMessage
+from plone import api
 from plone.formblock.utils.email import add_attachaments_to_msg
 from plone.formblock.utils.email import create_message
+from plone.formblock.utils.email import substitute_variables
 
 import base64
 import pytest
@@ -224,3 +229,177 @@ class TestCreateMessage:
         assert len(attachments) == 1
         assert attachments[0].get_filename() == "x.png"
         assert attachments[0].get_content_type() == "image/png"
+
+
+class TestSubstituteVariables:
+    """``substitute_variables`` is a pure ``${var}`` interpolation helper."""
+
+    def test_no_variables_returns_unchanged(self):
+        assert substitute_variables("plain text") == "plain text"
+
+    @pytest.mark.parametrize(
+        "template,context,expected",
+        [
+            ("hi ${name}", {"name": "Bob"}, "hi Bob"),
+            ("${a}-${b}", {"a": "1", "b": "2"}, "1-2"),
+            ("${g}, ${name}!", {"g": "Hello", "name": "Ana"}, "Hello, Ana!"),
+        ],
+    )
+    def test_substitution_with_context(self, template, context, expected):
+        assert substitute_variables(template, context=context) == expected
+
+    def test_missing_variable_becomes_empty(self):
+        assert substitute_variables("a${x}b", context={}) == "ab"
+
+    def test_form_data_used_when_context_is_none(self):
+        assert substitute_variables("hi ${name}", form_data={"name": "X"}) == "hi X"
+
+    def test_context_takes_precedence_over_form_data(self):
+        # When both are given, ``form_data`` is ignored entirely.
+        result = substitute_variables(
+            "${a}", context={"a": "ctx"}, form_data={"a": "fd"}
+        )
+        assert result == "ctx"
+
+    def test_both_none_treats_all_variables_as_missing(self):
+        assert substitute_variables("x${y}z") == "xz"
+
+    def test_non_string_substitution_value_raises(self):
+        # ``re.sub`` requires the replacement to be a string, so a non-string
+        # value in the context surfaces as a TypeError. Documents a latent
+        # constraint: callers must pass stringified values.
+        with pytest.raises(TypeError):
+            substitute_variables("${n}", context={"n": 5})
+
+
+class TestApiSettings:
+    @pytest.fixture(autouse=True)
+    def _setup(self, portal_class):
+        self.portal = portal_class
+
+    def test_is_mailhost_configured(self):
+        from plone.formblock.utils.email import is_mailhost_configured
+
+        assert is_mailhost_configured() is True
+
+    def test_available_templates(self):
+        from plone.formblock.utils.email import available_templates
+
+        templates = available_templates()
+        assert isinstance(templates, dict)
+        assert "default" in templates
+        assert isinstance(templates["default"], str)
+
+    def test_get_template_from_block_defaults_to_default_template(self):
+        from plone.formblock.interfaces import DEFAULT_TEMPLATE
+        from plone.formblock.utils.email import get_template_from_block
+
+        # No ``mail_template`` key -> resolves the "default" entry.
+        assert get_template_from_block({}) == DEFAULT_TEMPLATE
+
+    def test_get_template_from_block_unknown_name_falls_back(self):
+        from plone.formblock.interfaces import DEFAULT_TEMPLATE
+        from plone.formblock.utils.email import get_template_from_block
+
+        block = {"mail_template": "does-not-exist"}
+        assert get_template_from_block(block) == DEFAULT_TEMPLATE
+
+    def test_get_template_from_block_returns_selected_template(self):
+        from plone.formblock.utils.email import get_template_from_block
+
+        record = "schemaform.mail_templates_json"
+        original = api.portal.get_registry_record(record)
+        try:
+            api.portal.set_registry_record(
+                record, {**original, "custom": "CUSTOM BODY"}
+            )
+            block = {"mail_template": "custom"}
+            assert get_template_from_block(block) == "CUSTOM BODY"
+        finally:
+            api.portal.set_registry_record(record, original)
+
+    @pytest.mark.parametrize(
+        "factory,value,expected",
+        [
+            ("label_boolean_field", True, "Yes"),
+            ("label_boolean_field", False, "No"),
+            ("termsAccepted", True, "Yes"),
+            ("termsAccepted", False, "No"),
+            # Identity check: only ``True`` is "Yes"; a truthy non-True is "No".
+            ("label_boolean_field", "true", "No"),
+        ],
+    )
+    def test_format_property_boolean(self, factory, value, expected):
+        from plone.formblock.utils.email import format_property
+
+        assert format_property(factory, value) == expected
+
+    def test_format_property_checkbox_group_joins_list(self):
+        from plone.formblock.utils.email import format_property
+
+        assert format_property("checkbox_group", ["a", "b", "c"]) == "a<br/>b<br/>c"
+
+    def test_format_property_checkbox_group_non_list_is_stringified(self):
+        from plone.formblock.utils.email import format_property
+
+        # Only list values are joined; anything else falls through to ``str``.
+        assert format_property("checkbox_group", "single") == "single"
+
+    @pytest.mark.parametrize("factory", ["label_date_field", "label_datetime_field"])
+    def test_format_property_dates_are_localized(self, factory):
+        from plone.formblock.utils.email import format_property
+
+        result = format_property(factory, "2026-07-06")
+        assert "2026" in result
+
+    @pytest.mark.parametrize(
+        "value,expected",
+        [(42, "42"), ("plain", "plain"), (None, "None")],
+    )
+    def test_format_property_default_stringifies(self, value, expected):
+        from plone.formblock.utils.email import format_property
+
+        assert format_property("text", value) == expected
+
+    def test_addresses_from_block_defaults(self):
+        from plone.formblock.utils.email import addresses_from_block
+
+        addresses = addresses_from_block({}, {})
+        assert addresses.sender == "Plone test site <site_addr@plone.com>"
+        assert addresses.admin_recipients == "site_addr@plone.com"
+        assert addresses.bcc == ""
+        assert addresses.confirmation_recipients == ""
+
+    def test_addresses_from_block_explicit_values(self):
+        from plone.formblock.utils.email import addresses_from_block
+
+        block = {
+            "sender": "me@x.com",
+            "sender_name": "Me",
+            "recipients": "admin@x.com",
+            "bcc": "b@x.com",
+            "confirmation_recipients": "c@x.com",
+        }
+        addresses = addresses_from_block(block, {})
+        assert addresses.sender == "Me <me@x.com>"
+        assert addresses.admin_recipients == "admin@x.com"
+        assert addresses.bcc == "b@x.com"
+        assert addresses.confirmation_recipients == "c@x.com"
+
+    def test_addresses_from_block_substitutes_variables(self):
+        from plone.formblock.utils.email import addresses_from_block
+
+        block = {"sender": "${email}", "confirmation_recipients": "${email}"}
+        form_data = {"email": "user@x.com"}
+        addresses = addresses_from_block(block, form_data)
+        # sender_name falls back to the site default; the address is substituted.
+        assert addresses.sender == "Plone test site <user@x.com>"
+        assert addresses.confirmation_recipients == "user@x.com"
+
+    def test_addresses_from_block_empty_recipients_not_defaulted(self):
+        from plone.formblock.utils.email import addresses_from_block
+
+        # ``recipients`` defaults to the site address only when the key is
+        # absent; an explicit empty string is preserved as-is.
+        addresses = addresses_from_block({"recipients": ""}, {})
+        assert addresses.admin_recipients == ""
