@@ -7,6 +7,51 @@
 -->
 
 <!-- towncrier release notes start -->
+## 1.0.0a3 (2026-07-07)
+
+### Backend
+
+
+#### New features:
+
+- Added forwarding of request HTTP headers configured on the form block (``httpHeaders``, one header name per line) into the administration email. @ericof [#21](https://github.com/plone/form-block/issues/21)
+
+
+#### Bug fixes:
+
+- Fixed the form email processor ignoring the block's configured settings: the selected mail template, admin info, mail header/footer and sender/recipient addresses are now honored when a form is submitted. @ericof [#19](https://github.com/plone/form-block/issues/19)
+
+
+#### Internal:
+
+- Moved the mail templates setting to a ``JSONField`` (``schemaform.mail_templates_json``), deprecating ``schemaform.mail_templates``, with an upgrade step that migrates existing templates. @ericof [#19](https://github.com/plone/form-block/issues/19)
+
+
+#### Tests
+
+- Added a dedicated GenericSetup testing profile to configure mail and captcha settings for the test suite. @ericof 
+
+
+
+### Frontend
+
+#### Feature
+
+- Added an HTTP Headers field to the form block configuration, letting editors list request headers (one per line) to forward into the administration email. @ericof [#21](https://github.com/plone/form-block/issues/21)
+
+#### Bugfix
+
+- Fixed the thank-you message help text so the ${field_id} and ${formfields} variable hints render correctly instead of being dropped by the i18n formatter. @ericof 
+
+
+
+### Project
+
+No significant changes.
+
+
+
+
 ## 1.0.0a2 (2026-06-18)
 
 ### Backend

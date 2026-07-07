@@ -1,6 +1,6 @@
 {
   "name": "@plone/volto-form-block",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "Volto block to build a form",
   "main": "src/index.ts",
   "license": "MIT",

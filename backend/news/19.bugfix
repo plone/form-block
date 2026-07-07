@@ -1,1 +1,0 @@
-Fixed the form email processor ignoring the block's configured settings: the selected mail template, admin info, mail header/footer and sender/recipient addresses are now honored when a form is submitted. @ericof

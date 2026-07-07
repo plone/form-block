@@ -1,3 +1,13 @@
+## 1.0.0-alpha.3 (2026-07-07)
+
+### Feature
+
+- Added an HTTP Headers field to the form block configuration, letting editors list request headers (one per line) to forward into the administration email. @ericof [#21](https://github.com/plone/form-block/issues/21)
+
+### Bugfix
+
+- Fixed the thank-you message help text so the ${field_id} and ${formfields} variable hints render correctly instead of being dropped by the i18n formatter. @ericof 
+
 ## 1.0.0-alpha.2 (2026-06-18)
 
 ### Feature

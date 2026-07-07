@@ -1,1 +1,0 @@
-Fixed the thank-you message help text so the ${field_id} and ${formfields} variable hints render correctly instead of being dropped by the i18n formatter. @ericof
