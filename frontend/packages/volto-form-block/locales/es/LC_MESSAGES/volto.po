@@ -323,6 +323,16 @@ msgstr ""
 msgid "hidden"
 msgstr ""
 
+#. Default: "HTTP Headers"
+#: components/Blocks/SchemaForm/schema
+msgid "http_headers"
+msgstr ""
+
+#. Default: "HTTP headers to be included in the email sent to the administration email (not for the user email), one per line. Exemple: X-Forwarded-For, User-Agent, Referer. The values will be taken from the request headers."
+#: components/Blocks/SchemaForm/schema
+msgid "http_headers_description"
+msgstr ""
+
 #. Default: "Mail template"
 #: components/Blocks/SchemaForm/schema
 msgid "mail_template"
@@ -389,7 +399,7 @@ msgstr ""
 msgid "thankyou"
 msgstr ""
 
-#. Default: "A text with simple formatting can be entered. Also it is possible to use variables; ${field_id} can be used to display the value of a field inside the form. The ${formfields} variable lists all form fields in a tabular view."
+#. Default: "A text with simple formatting can be entered. Also it is possible to use variables; $'{field_id}' can be used to display the value of a field inside the form. The $'{formfields}' variable lists all form fields in a tabular view."
 #: components/Blocks/SchemaForm/schema
 msgid "thankyou_description"
 msgstr ""

@@ -80,7 +80,7 @@ const messages = defineMessages({
   thankyou_description: {
     id: 'thankyou_description',
     defaultMessage:
-      'A text with simple formatting can be entered. Also it is possible to use variables; ${field_id} can be used to display the value of a field inside the form. The ${formfields} variable lists all form fields in a tabular view.', // eslint-disable-line no-template-curly-in-string
+      "A text with simple formatting can be entered. Also it is possible to use variables; $'{field_id}' can be used to display the value of a field inside the form. The $'{formfields}' variable lists all form fields in a tabular view.",
   },
   recipients_description: {
     id: 'The email addresses the submitted form data will be sent to. Multiple email addresses can be entered separated by a semicolon.',
@@ -104,6 +104,15 @@ const messages = defineMessages({
     id: 'admin_info_description',
     defaultMessage:
       'This field can be used to store additional information which should only be displayed in the email sent to the administration email (not for the user email).',
+  },
+  http_headers: {
+    id: 'http_headers',
+    defaultMessage: 'HTTP Headers',
+  },
+  http_headers_description: {
+    id: 'http_headers_description',
+    defaultMessage:
+      'HTTP headers to be included in the email sent to the administration email (not for the user email), one per line. Exemple: X-Forwarded-For, User-Agent, Referer. The values will be taken from the request headers.',
   },
   sender: {
     id: 'Sender',
@@ -265,7 +274,9 @@ export const schemaFormBlockSchema = (
             ? ['confirmation_recipients', 'fixed_attachment', 'mail_template']
             : []),
           'send',
-          ...(data?.send ? ['recipients', 'bcc', 'admin_info'] : []),
+          ...(data?.send
+            ? ['recipients', 'bcc', 'admin_info', 'httpHeaders']
+            : []),
           ...(data?.send || data?.send_confirmation
             ? ['sender', 'sender_name', 'subject', 'mail_header', 'mail_footer']
             : []),
@@ -345,6 +356,11 @@ export const schemaFormBlockSchema = (
       admin_info: {
         title: intl.formatMessage(messages.admin_info),
         description: intl.formatMessage(messages.admin_info_description),
+        widget: 'textarea',
+      },
+      httpHeaders: {
+        title: intl.formatMessage(messages.http_headers),
+        description: intl.formatMessage(messages.http_headers_description),
         widget: 'textarea',
       },
       sender: {
