@@ -101,12 +101,8 @@ class EmailFormProcessor:
         body = self.prepare_message(True)
         body_text = self._body_as_plain_text(body)
 
-        headers = {}
-        headers_to_forward = self.block.get("httpHeaders", [])
-        for header in headers_to_forward:
-            header_value = self.request.get(header)
-            if header_value:
-                headers[header] = header_value
+        # Extract headers from the block and request
+        headers = utils.request_headers_from_block(self.block, self.request)
 
         return utils.create_message(
             mfrom=mfrom,

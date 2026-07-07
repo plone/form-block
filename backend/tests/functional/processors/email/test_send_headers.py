@@ -10,10 +10,7 @@ def document_blocks() -> dict:
             "sender": "john@doe.com",
             "sender_name": "John Doe",
             "subject": "test subject",
-            "httpHeaders": [
-                "REMOTE_ADDR",
-                "PATH_INFO",
-            ],
+            "httpHeaders": "REMOTE_ADDR\nPATH_INFO",
             "schema": {
                 "fieldsets": [
                     {

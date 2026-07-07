@@ -8,6 +8,7 @@ strings (``is_mailhost_configured``, ``available_templates``,
 need ``api`` access and live in :class:`TestApiSettings`.
 """
 
+from copy import deepcopy
 from email import policy
 from email.message import EmailMessage
 from plone import api
@@ -403,3 +404,44 @@ class TestApiSettings:
         # absent; an explicit empty string is preserved as-is.
         addresses = addresses_from_block({"recipients": ""}, {})
         assert addresses.admin_recipients == ""
+
+
+class TestRequestHeadersFromBlock:
+    @pytest.fixture(autouse=True)
+    def _setup(self, functional_portal, functional_http_request):
+        from plone.formblock.utils.email import request_headers_from_block
+
+        self.portal = functional_portal
+        self.request = functional_http_request
+        self.func = request_headers_from_block
+
+    @pytest.mark.parametrize(
+        "httpHeaders,headers,total",
+        (
+            ("", {"HTTP_USER_AGENT": "Mozilla/5.0"}, 0),
+            ("USER_AGENT", {"HTTP_USER_AGENT": "Mozilla/5.0"}, 1),
+            ("REMOTE_ADDR", {"HTTP_USER_AGENT": "Mozilla/5.0"}, 0),
+            (
+                "X_FORWARDED_FOR\nREMOTE_ADDR\nUSER_AGENT",
+                {"HTTP_USER_AGENT": "Mozilla/5.0"},
+                1,
+            ),
+            (
+                "X_FORWARDED_FOR\nREMOTE_ADDR\nUSER_AGENT",
+                {"HTTP_USER_AGENT": "Mozilla/5.0", "REMOTE_ADDR": "200.162.135.12"},
+                2,
+            ),
+        ),
+    )
+    def test_request_headers_from_block_empty(
+        self, block_info, httpHeaders: str, headers: dict[str, str], total: int
+    ):
+        # Set values in the block
+        block = deepcopy(block_info)
+        block["httpHeaders"] = httpHeaders
+        # Set headers in request
+        request = self.request
+        for key, value in headers.items():
+            request.environ[key] = value
+        headers = self.func(block, request)
+        assert len(headers) == total

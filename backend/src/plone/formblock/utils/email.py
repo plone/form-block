@@ -6,6 +6,7 @@ from plone.formblock import _
 from plone.formblock.interfaces import AddressesFromBlock
 from plone.formblock.interfaces import DEFAULT_TEMPLATE
 from plone.formblock.interfaces import SchemaFormBlock
+from zope.publisher.http import HTTPRequest
 
 import codecs
 import os
@@ -156,3 +157,23 @@ def create_message(
     attachments = attachments or {}
     add_attachaments_to_msg(msg=msg, attachments=attachments)
     return msg
+
+
+def request_headers_from_block(
+    block: SchemaFormBlock, request: HTTPRequest
+) -> dict[str, str]:
+    """Extract HTTP headers from a form block and request.
+
+    Substituting variables if necessary.
+    """
+    raw_http_headers: str = block.get("httpHeaders", "") or ""
+    headers_to_forward: list[str] = [
+        header.strip().upper()
+        for header in raw_http_headers.splitlines()
+        if header.strip()
+    ]
+    headers: dict[str, str] = {}
+    for header in headers_to_forward:
+        if header_value := request.getHeader(header):
+            headers[header] = header_value
+    return headers
