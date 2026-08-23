@@ -1,12 +1,13 @@
 # Translation of plone.formblock.pot to Spanish
-# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2023.
+# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: plone.formblock\n"
 "POT-Creation-Date: 2026-06-17 17:36+0000\n"
-"PO-Revision-Date: 2023-05-11 10:11-0400\n"
+"PO-Revision-Date: 2026-08-23 22:35+0200\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language-Team: ES <LL@li.org>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,17 +16,16 @@ msgstr ""
 "Language-Name: Español\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: plone.formblock\n"
-"Language: es\n"
 "X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 3.9\n"
 
 #: plone/formblock/profiles.zcml:23
 msgid "Create example content for the Form Block."
-msgstr ""
+msgstr "Crea contenido de ejemplo para el bloque Formulario."
 
 #: plone/formblock/restapi/services/validation/email.py:52
 msgid "Email confirmation code"
-msgstr ""
+msgstr "Código de confirmación por correo electrónico"
 
 #: plone/formblock/profiles.zcml:14
 msgid "Form Block"
@@ -33,7 +33,7 @@ msgstr "Volto: Soporte a formularios"
 
 #: plone/formblock/profiles.zcml:23
 msgid "Form Block (example content)"
-msgstr ""
+msgstr "Volto: Soporte a formularios (contenido de ejemplo)"
 
 #: plone/formblock/profiles.zcml:31
 msgid "Form Block (uninstall)"
@@ -53,7 +53,7 @@ msgstr "HCaptcha invisible"
 
 #: plone/formblock/captcha/honeypot.py:10
 msgid "Honeypot Support"
-msgstr ""
+msgstr "Soporte de Honeypot"
 
 #: plone/formblock/profiles.zcml:14
 msgid "Installs the plone.formblock add-on."
@@ -61,7 +61,7 @@ msgstr "Instala o complemento plone.formblock."
 
 #: plone/formblock/processors/email.py:141
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: plone/formblock/captcha/hcaptcha.py:47
 #: plone/formblock/captcha/norobots.py:50
@@ -75,11 +75,11 @@ msgstr "Soporte de NoRobots ReCaptcha"
 
 #: plone/formblock/restapi/services/validation/email.py:95
 msgid "OTP is wrong"
-msgstr ""
+msgstr "El OTP es incorrecto"
 
 #: plone/formblock/browser/templates/email_confirm_view.pt:17
 msgid "Simple Transactional Email"
-msgstr ""
+msgstr "Correo electrónico transaccional sencillo"
 
 #: plone/formblock/captcha/hcaptcha.py:55
 #: plone/formblock/captcha/norobots.py:73
@@ -89,23 +89,23 @@ msgstr "El código que ingresaste es incorrecto, ingresa el nuevo."
 
 #: plone/formblock/restapi/services/validation/email.py:65
 msgid "The email field is missing"
-msgstr ""
+msgstr "Falta el campo del correo electrónico"
 
 #: plone/formblock/browser/templates/email_confirm_view.pt:386
 msgid "The form on ${page} was compiled with this email address, if it was not you, ignore the message."
-msgstr ""
+msgstr "El formulario en ${page} se compiló con esta dirección de correo electrónico, si no fue usted, ignore el mensaje."
 
 #: plone/formblock/restapi/services/validation/email.py:89
 msgid "The otp field is missing"
-msgstr ""
+msgstr "Falta el campo del OTP"
 
 #: plone/formblock/restapi/services/validation/email.py:68
 msgid "The provided email address is not valid"
-msgstr ""
+msgstr "La dirección de correo electrónico facilitada no es válida"
 
 #: plone/formblock/restapi/services/validation/email.py:71
 msgid "The uid field is missing"
-msgstr ""
+msgstr "Falta el campo uid"
 
 #: plone/formblock/profiles.zcml:31
 msgid "Uninstalls the plone.formblock add-on."
@@ -113,11 +113,11 @@ msgstr "Desinstala o complemento plone.formblock."
 
 #: plone/formblock/processors/email.py:136
 msgid "Yes"
-msgstr ""
+msgstr "Sí"
 
 #: plone/formblock/browser/templates/email_confirm_view.pt:371
 msgid "Your code to validate the email address:"
-msgstr ""
+msgstr "Tu código para validar la dirección de correo electrónico:"
 
 #. Default: "Attachments too big. You uploaded ${uploaded_str}, but limit is ${max} MB. Try to compress files."
 #: plone/formblock/restapi/services/submit_form/post.py:145
@@ -126,31 +126,30 @@ msgstr "Adjuntos demasiado grandes. Subiste el archivo ${uploaded_str}, pero el 
 
 #. Default: "Block with @type \"schemaForm\" and id \"$block\" not found in this context: $context"
 #: plone/formblock/restapi/services/submit_form/post.py:83
-#, fuzzy
 msgid "block_form_not_found_label"
 msgstr "Bloque con @type \"form\" y id \"${block}\" no encontrado en contexto: $context."
 
 #. Default: "Empty form data."
 #: plone/formblock/restapi/services/submit_form/post.py:97
 msgid "empty_form_data"
-msgstr "Formulario sem dados."
+msgstr "Formulario sin datos."
 
 #. Default: "Unable to process form. Please retry later or contact site administrator."
 #: plone/formblock/restapi/services/submit_form/post.py:45
 msgid "form_action_exception"
-msgstr ""
+msgstr "No se ha podido procesar el formulario. Inténtalo de nuevo más tarde o ponte en contacto con el administrador del sitio web."
 
 #. Default: "Error submitting form."
 #: plone/formblock/captcha/honeypot.py:27
 msgid "honeypot_error"
-msgstr ""
+msgstr "Error al enviar el formulario."
 
 #. Default: "Invalid form data."
 #: plone/formblock/restapi/services/submit_form/post.py:59
 msgid "invalid_form_data"
-msgstr ""
+msgstr "Datos del formulario no válidos."
 
 #. Default: "Missing block_id"
 #: plone/formblock/restapi/services/submit_form/post.py:76
 msgid "missing_blockid_label"
-msgstr "Campo block_id no informado"
+msgstr "Falta el campo block_id"
