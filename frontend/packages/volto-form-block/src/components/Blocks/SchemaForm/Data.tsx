@@ -2,7 +2,11 @@ import React from 'react';
 import BlockDataForm from '@plone/volto/components/manage/Form/BlockDataForm';
 import { useIntl } from 'react-intl';
 import type { JSONSchema } from '@plone/types';
-import { schemaFormBlockSchema } from '@plone/volto-form-block/components/Blocks/SchemaForm/schema';
+import {
+  applySchemaFormConditions,
+  schemaFormBlockSchema,
+  type SchemaFormIntl,
+} from '@plone/volto-form-block/components/Blocks/SchemaForm/schema';
 
 export interface SchemaFormBlockData {
   '@type'?: string;
@@ -36,13 +40,17 @@ const wrapRecipients = (value?: string): string | undefined =>
 const SchemaFormBlockDataForm: React.FC<SchemaFormBlockDataProps> = (props) => {
   const { data, block, onChangeBlock, navRoot, contentType } = props;
   const intl = useIntl();
-  // The schema builder reads the raw block-edit props plus `intl` (as the old
-  // class passed `this.props`). Bridge the nominal cross-package mismatch
-  // (react-intl's IntlShape vs @plone/types', index-signature props) via unknown.
-  const schema = schemaFormBlockSchema({
-    ...props,
-    intl,
-  } as unknown as Parameters<typeof schemaFormBlockSchema>[0]);
+  // The settings schema needs only intl. The settings of this block, and the
+  // content it is in, then decide which fields are shown and required.
+  const schema = applySchemaFormConditions(
+    schemaFormBlockSchema({
+      intl: intl as unknown as SchemaFormIntl,
+    }),
+    {
+      data,
+      content: props.content,
+    },
+  );
 
   return (
     <BlockDataForm

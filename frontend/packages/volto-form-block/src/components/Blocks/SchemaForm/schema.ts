@@ -1,9 +1,9 @@
-import { defineMessages } from 'react-intl';
+import { defineMessages, type MessageDescriptor } from 'react-intl';
 import config from '@plone/volto/registry';
 import map from 'lodash/map';
 import keys from 'lodash/keys';
 import filter from 'lodash/filter';
-import type { BlockSchemaArgs, JSONSchema, IntlShape } from '@plone/types';
+import type { BlockSchemaArgs, JSONSchema } from '@plone/types';
 import type { SchemaFormConfig } from '@plone/volto-form-block/types/blocks';
 
 const messages = defineMessages({
@@ -219,34 +219,68 @@ const defaultEmptyData = {
   required: [],
 };
 
-export interface BlockSchemaArgsReq extends BlockSchemaArgs {
-  intl: IntlShape;
-  content?: { title?: string; [key: string]: any };
+/** The intl object of Volto's block schema arguments. */
+export type SchemaFormIntl = NonNullable<BlockSchemaArgs['intl']>;
+
+export interface SchemaFormBlockSchemaArgs {
+  intl?: SchemaFormIntl;
 }
 
-interface SchemaFormData {
+export interface SchemaFormData {
   schema?: { properties?: Record<string, any> };
   [key: string]: any;
 }
 
-export const schemaFormBlockSchema = (
-  props: BlockSchemaArgsReq,
-): JSONSchema => {
-  const { intl } = props;
-  const blockConfig = config.blocks?.blocksConfig
-    ?.schemaForm as SchemaFormConfig;
-  let data = (props.data || props.formData) as SchemaFormData | undefined;
-  let conditional_required = [];
-  if (data?.store !== true && data?.send !== true) {
-    conditional_required.push('store');
-    conditional_required.push('send');
-  }
-  if (data?.send_confirmation) {
-    conditional_required.push('confirmation_recipients');
-  }
+export interface SchemaFormConditionsArgs {
+  data?: SchemaFormData;
+  content?: { title?: string; [key: string]: any };
+}
+
+interface SchemaFieldset {
+  id: string;
+  title: string;
+  fields: string[];
+}
+
+/**
+ * Defaults of the schemaForm block configuration. They apply where the
+ * registry has no configuration, such as on the server, which builds the
+ * schema for the @blocks-schema endpoint. A registry value overrides them.
+ */
+export const schemaFormDefaults = {
+  captchaProvidersVocabulary: 'plone.formblock.captcha.providers',
+  mailTemplatesVocabulary: 'plone.formblock.mail.templates',
+  defaultSender: 'noreply@plone.org',
+  defaultSenderName: 'Plone',
+};
+
+/**
+ * The settings schema of the schemaForm block, with every field.
+ *
+ * It takes only intl, so the @blocks-schema endpoint can build it outside the
+ * editor. The fields that depend on the settings are shown, and their
+ * requirements are set, by applySchemaFormConditions in the editor.
+ *
+ * @param {Object} args The arguments, with the intl object.
+ * @returns {Object} The JSON schema of the block settings.
+ */
+export const schemaFormBlockSchema = ({
+  intl,
+}: SchemaFormBlockSchemaArgs = {}): JSONSchema => {
+  // Without intl, as on a call that has no translations, the default texts are used.
+  const formatMessage = (message: MessageDescriptor): string =>
+    intl
+      ? (intl.formatMessage(message as any) as string)
+      : String(message.defaultMessage);
+  const blockConfig = {
+    ...schemaFormDefaults,
+    ...(config.blocks?.blocksConfig?.schemaForm as
+      | Partial<SchemaFormConfig>
+      | undefined),
+  };
 
   return {
-    title: intl.formatMessage(messages.form),
+    title: formatMessage(messages.form),
     fieldsets: [
       {
         id: 'default',
@@ -256,36 +290,39 @@ export const schemaFormBlockSchema = (
           'description',
           'submit_label',
           'show_cancel',
-          ...(data?.show_cancel ? ['cancel_label'] : []),
+          'cancel_label',
           'captcha',
         ],
       },
       {
         id: 'confirmation',
-        title: intl.formatMessage(messages.fieldset_confirmation),
+        title: formatMessage(messages.fieldset_confirmation),
         fields: ['forward_user_to', 'success', 'thankyou'],
       },
       {
         id: 'mailing',
-        title: intl.formatMessage(messages.fieldset_mailing),
+        title: formatMessage(messages.fieldset_mailing),
         fields: [
           'send_confirmation',
-          ...(data?.send_confirmation
-            ? ['confirmation_recipients', 'fixed_attachment', 'mail_template']
-            : []),
+          'confirmation_recipients',
+          'fixed_attachment',
+          'mail_template',
           'send',
-          ...(data?.send
-            ? ['recipients', 'bcc', 'admin_info', 'httpHeaders']
-            : []),
-          ...(data?.send || data?.send_confirmation
-            ? ['sender', 'sender_name', 'subject', 'mail_header', 'mail_footer']
-            : []),
+          'recipients',
+          'bcc',
+          'admin_info',
+          'httpHeaders',
+          'sender',
+          'sender_name',
+          'subject',
+          'mail_header',
+          'mail_footer',
         ],
       },
       {
         id: 'savedata',
-        title: intl.formatMessage(messages.fieldset_store),
-        fields: ['store', ...(data?.store ? ['data_wipe'] : [])],
+        title: formatMessage(messages.fieldset_store),
+        fields: ['store', 'data_wipe'],
       },
     ],
     properties: {
@@ -294,46 +331,46 @@ export const schemaFormBlockSchema = (
         default: defaultEmptyData,
       },
       title: {
-        title: intl.formatMessage(messages.title),
+        title: formatMessage(messages.title),
       },
       description: {
-        title: intl.formatMessage(messages.description),
+        title: formatMessage(messages.description),
         widget: 'textarea',
       },
       submit_label: {
-        title: intl.formatMessage(messages.submit_label),
-        default: intl.formatMessage(messages.submit),
+        title: formatMessage(messages.submit_label),
+        default: formatMessage(messages.submit),
       },
       show_cancel: {
         type: 'boolean',
-        title: intl.formatMessage(messages.show_cancel),
+        title: formatMessage(messages.show_cancel),
         default: false,
       },
       cancel_label: {
-        title: intl.formatMessage(messages.cancel_label),
-        default: intl.formatMessage(messages.cancel),
+        title: formatMessage(messages.cancel_label),
+        default: formatMessage(messages.cancel),
       },
       forward_user_to: {
-        title: intl.formatMessage(messages.forward_user_to),
-        description: intl.formatMessage(messages.forward_user_to_description),
+        title: formatMessage(messages.forward_user_to),
+        description: formatMessage(messages.forward_user_to_description),
         widget: 'object_browser',
         mode: 'link',
         allowExternals: true,
       },
       success: {
         type: 'string',
-        title: intl.formatMessage(messages.success),
-        default: intl.formatMessage(messages.success_default),
+        title: formatMessage(messages.success),
+        default: formatMessage(messages.success_default),
       },
       thankyou: {
         type: 'string',
-        title: intl.formatMessage(messages.thankyou),
-        description: intl.formatMessage(messages.thankyou_description),
+        title: formatMessage(messages.thankyou),
+        description: formatMessage(messages.thankyou_description),
         widget: 'textarea',
         default: '${formfields}', // eslint-disable-line no-template-curly-in-string
       },
       captcha: {
-        title: intl.formatMessage(messages.captcha),
+        title: formatMessage(messages.captcha),
         type: 'string',
         factory: 'Choice',
         vocabulary: {
@@ -342,91 +379,81 @@ export const schemaFormBlockSchema = (
       },
       send: {
         type: 'boolean',
-        title: intl.formatMessage(messages.send),
-        description: intl.formatMessage(messages.send_description),
+        title: formatMessage(messages.send),
+        description: formatMessage(messages.send_description),
       },
       recipients: {
-        title: intl.formatMessage(messages.recipients),
-        description: intl.formatMessage(messages.recipients_description),
+        title: formatMessage(messages.recipients),
+        description: formatMessage(messages.recipients_description),
       },
       bcc: {
-        title: intl.formatMessage(messages.bcc),
-        description: intl.formatMessage(messages.bcc_description),
+        title: formatMessage(messages.bcc),
+        description: formatMessage(messages.bcc_description),
       },
       admin_info: {
-        title: intl.formatMessage(messages.admin_info),
-        description: intl.formatMessage(messages.admin_info_description),
+        title: formatMessage(messages.admin_info),
+        description: formatMessage(messages.admin_info_description),
         widget: 'textarea',
       },
       httpHeaders: {
-        title: intl.formatMessage(messages.http_headers),
-        description: intl.formatMessage(messages.http_headers_description),
+        title: formatMessage(messages.http_headers),
+        description: formatMessage(messages.http_headers_description),
         widget: 'textarea',
       },
       sender: {
-        title: intl.formatMessage(messages.sender),
-        description: intl.formatMessage(messages.sender_description),
+        title: formatMessage(messages.sender),
+        description: formatMessage(messages.sender_description),
         default: blockConfig.defaultSender,
       },
       sender_name: {
-        title: intl.formatMessage(messages.sender_name),
-        description: intl.formatMessage(messages.sender_name_description),
+        title: formatMessage(messages.sender_name),
+        description: formatMessage(messages.sender_name_description),
         default: blockConfig.defaultSenderName,
       },
       subject: {
-        title: intl.formatMessage(messages.subject),
-        description: intl.formatMessage(messages.subject_description),
-        default: props.content?.title,
+        title: formatMessage(messages.subject),
+        description: formatMessage(messages.subject_description),
       },
       mail_header: {
-        title: intl.formatMessage(messages.mail_header),
+        title: formatMessage(messages.mail_header),
         widget: 'richtext',
         type: 'string',
-        description: intl.formatMessage(messages.mail_header_description),
+        description: formatMessage(messages.mail_header_description),
       },
       mail_footer: {
-        title: intl.formatMessage(messages.mail_footer),
+        title: formatMessage(messages.mail_footer),
         widget: 'richtext',
         type: 'string',
-        description: intl.formatMessage(messages.mail_footer_description),
+        description: formatMessage(messages.mail_footer_description),
       },
       store: {
         type: 'boolean',
-        title: intl.formatMessage(messages.store),
-        description: intl.formatMessage(messages.store_description),
+        title: formatMessage(messages.store),
+        description: formatMessage(messages.store_description),
       },
       data_wipe: {
         type: 'integer',
-        title: intl.formatMessage(messages.data_wipe),
-        description: intl.formatMessage(messages.data_wipe_description),
+        title: formatMessage(messages.data_wipe),
+        description: formatMessage(messages.data_wipe_description),
         default: -1,
       },
       send_confirmation: {
         type: 'boolean',
-        title: intl.formatMessage(messages.send_confirmation),
+        title: formatMessage(messages.send_confirmation),
       },
       confirmation_recipients: {
-        title: intl.formatMessage(messages.confirmation_recipients),
+        title: formatMessage(messages.confirmation_recipients),
         description: intl.formatMessage(
           messages.confirmation_recipients_description,
         ),
-        choices: map(
-          filter(
-            keys(data.schema?.properties || {}),
-            (value) =>
-              data.schema.properties[value].factory === 'label_email' ||
-              data.schema.properties[value].factory === 'Email',
-          ),
-          (property) => [property, data.schema.properties[property].title],
-        ),
       },
       fixed_attachment: {
-        title: intl.formatMessage(messages.fixed_attachment),
+        title: formatMessage(messages.fixed_attachment),
         type: 'object',
         widget: 'file',
       },
       mail_template: {
-        title: intl.formatMessage(messages.mail_template),
+        title: formatMessage(messages.mail_template),
         type: 'string',
         factory: 'Choice',
         vocabulary: {
@@ -434,6 +461,84 @@ export const schemaFormBlockSchema = (
         },
       },
     },
-    required: conditional_required,
+    required: [],
+  };
+};
+
+/**
+ * Applies the settings of a form to its schema, in the editor.
+ *
+ * It hides the fields of the settings that are off, sets the requirements of
+ * the settings, lists the email fields of the form as confirmation recipients,
+ * and defaults the subject to the title of the content.
+ *
+ * @param {Object} schema The schema from schemaFormBlockSchema.
+ * @param {Object} args The settings of the block and the content it is in.
+ * @returns {Object} The schema of the settings form.
+ */
+export const applySchemaFormConditions = (
+  schema: JSONSchema,
+  { data, content }: SchemaFormConditionsArgs,
+): JSONSchema => {
+  const hidden = new Set<string>();
+  if (!data?.show_cancel) {
+    hidden.add('cancel_label');
+  }
+  if (!data?.send_confirmation) {
+    ['confirmation_recipients', 'fixed_attachment', 'mail_template'].forEach(
+      (field) => hidden.add(field),
+    );
+  }
+  if (!data?.send) {
+    ['recipients', 'bcc', 'admin_info', 'httpHeaders'].forEach((field) =>
+      hidden.add(field),
+    );
+  }
+  if (!data?.send && !data?.send_confirmation) {
+    ['sender', 'sender_name', 'subject', 'mail_header', 'mail_footer'].forEach(
+      (field) => hidden.add(field),
+    );
+  }
+  if (!data?.store) {
+    hidden.add('data_wipe');
+  }
+
+  const required: string[] = [];
+  if (data?.store !== true && data?.send !== true) {
+    required.push('store', 'send');
+  }
+  if (data?.send_confirmation) {
+    required.push('confirmation_recipients');
+  }
+
+  const formProperties = data?.schema?.properties || {};
+  const emailFields = filter(
+    keys(formProperties),
+    (field) =>
+      formProperties[field].factory === 'label_email' ||
+      formProperties[field].factory === 'Email',
+  );
+
+  return {
+    ...schema,
+    fieldsets: (schema.fieldsets as SchemaFieldset[]).map((fieldset) => ({
+      ...fieldset,
+      fields: fieldset.fields.filter((field) => !hidden.has(field)),
+    })),
+    properties: {
+      ...schema.properties,
+      subject: {
+        ...schema.properties.subject,
+        default: content?.title,
+      },
+      confirmation_recipients: {
+        ...schema.properties.confirmation_recipients,
+        choices: map(emailFields, (field) => [
+          field,
+          formProperties[field].title,
+        ]),
+      },
+    },
+    required,
   };
 };
