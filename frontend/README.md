@@ -34,6 +34,8 @@ This add-on adds the Form block and the needed reducers to your project.
 
 This add-on requires **Volto 19 or later**.
 
+The block documentation and schema of the form block, published by the `@blocks-schema` endpoint of the Volto server, require **Volto 19.6 or later**. Older versions ignore the `docs.block.md` file of the block.
+
 Add `@plone/volto-form-block` to your `package.json`.
 
 ```json

@@ -1,6 +1,9 @@
 import type { SchemaFormConfig } from '@plone/volto-form-block/types/blocks';
 import formSVG from '@plone/volto/icons/form.svg';
-import { schemaFormBlockSchema } from '@plone/volto-form-block/components/Blocks/SchemaForm/schema';
+import {
+  schemaFormBlockSchema,
+  schemaFormDefaults,
+} from '@plone/volto-form-block/components/Blocks/SchemaForm/schema';
 import schemaFormBlockEdit from '@plone/volto-form-block/components/Blocks/SchemaForm/Edit';
 import schemaFormBlockView from '@plone/volto-form-block/components/Blocks/SchemaForm/View';
 
@@ -15,8 +18,8 @@ const schemaFormBlock: SchemaFormConfig = {
   component: null,
   buttonComponent: null,
   blockSchema: schemaFormBlockSchema,
-  captchaProvidersVocabulary: 'plone.formblock.captcha.providers',
-  mailTemplatesVocabulary: 'plone.formblock.mail.templates',
+  captchaProvidersVocabulary: schemaFormDefaults.captchaProvidersVocabulary,
+  mailTemplatesVocabulary: schemaFormDefaults.mailTemplatesVocabulary,
   disableEnter: true,
   filterFactory: [
     'label_text_field',
@@ -44,8 +47,8 @@ const schemaFormBlock: SchemaFormConfig = {
     { value: 'time', label: 'Time' },
   ],
   filterFactorySend: ['static_text'],
-  defaultSender: 'noreply@plone.org',
-  defaultSenderName: 'Plone',
+  defaultSender: schemaFormDefaults.defaultSender,
+  defaultSenderName: schemaFormDefaults.defaultSenderName,
   restricted: false,
   mostUsed: true,
   security: {
