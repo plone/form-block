@@ -1,1 +1,0 @@
-Updated Spanish translation for the frontend add-on. @macagua

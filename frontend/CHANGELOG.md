@@ -1,3 +1,10 @@
+## 1.0.0-alpha.4 (2026-11-12)
+
+### Feature
+
+- Updated Spanish translation for the frontend add-on. @macagua [#26](https://github.com/plone/form-block/issues/26)
+- Added the block documentation and schema of the form block for the `@blocks-schema` endpoint of Volto 19.6 or later. The settings schema no longer depends on the block's own values, so the endpoint can build it outside the editor. @ericof [#29](https://github.com/plone/form-block/issues/29)
+
 ## 1.0.0-alpha.3 (2026-07-07)
 
 ### Feature

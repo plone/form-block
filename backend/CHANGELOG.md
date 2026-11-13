@@ -9,6 +9,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a4 (2026-11-12)
+
+
+### New features:
+
+- Updated Spanish translation for the backend add-on. @macagua [#25](https://github.com/plone/form-block/issues/25)
+
+
+### Bug fixes:
+
+- Fix error about missing `z3c.jbot` dependency. @davisagli [#23](https://github.com/plone/form-block/issues/23)
+
 ## 1.0.0a3 (2026-07-07)
 
 

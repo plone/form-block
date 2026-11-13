@@ -7,6 +7,38 @@
 -->
 
 <!-- towncrier release notes start -->
+## 1.0.0a4 (2026-11-12)
+
+### Backend
+
+
+#### New features:
+
+- Updated Spanish translation for the backend add-on. @macagua [#25](https://github.com/plone/form-block/issues/25)
+
+
+#### Bug fixes:
+
+- Fix error about missing `z3c.jbot` dependency. @davisagli [#23](https://github.com/plone/form-block/issues/23)
+
+
+
+### Frontend
+
+#### Feature
+
+- Updated Spanish translation for the frontend add-on. @macagua [#26](https://github.com/plone/form-block/issues/26)
+- Added the block documentation and schema of the form block for the `@blocks-schema` endpoint of Volto 19.6 or later. The settings schema no longer depends on the block's own values, so the endpoint can build it outside the editor. @ericof [#29](https://github.com/plone/form-block/issues/29)
+
+
+
+### Project
+
+No significant changes.
+
+
+
+
 ## 1.0.0a3 (2026-07-07)
 
 ### Backend

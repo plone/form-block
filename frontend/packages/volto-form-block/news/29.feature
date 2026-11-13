@@ -1,1 +1,0 @@
-Added the block documentation and schema of the form block for the `@blocks-schema` endpoint of Volto 19.6 or later. The settings schema no longer depends on the block's own values, so the endpoint can build it outside the editor. @ericof
